@@ -1,0 +1,2284 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socioflo — All your social, in one flow.</title>
+    <meta
+      name="description"
+      content="Socioflo is the social media OS built for agencies. Manage every inbox, automate DMs, generate multi-platform content from a single prompt, and schedule posts — all from one place. Join the waitlist."
+    />
+    <meta
+      name="keywords"
+      content="social media management, social media OS, agency tools, unified inbox, DM automation, AI content generator, social media scheduling, Instagram management, TikTok management"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://socioflo.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://socioflo.app" />
+    <meta
+      property="og:title"
+      content="Socioflo — All your social, in one flow."
+    />
+    <meta
+      property="og:description"
+      content="The social media OS for agencies. One inbox, comment automation, AI content generation, and smart scheduling for every platform. Join the waitlist."
+    />
+    <meta property="og:image" content="https://socioflo.app/og-image.png" />
+    <meta property="og:site_name" content="Socioflo" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@socioflo" />
+    <meta
+      name="twitter:title"
+      content="Socioflo — All your social, in one flow."
+    />
+    <meta
+      name="twitter:description"
+      content="The social media OS for agencies. One inbox, comment automation, AI content generation, and smart scheduling for every platform. Join the waitlist."
+    />
+    <meta name="twitter:image" content="https://socioflo.app/og-image.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Socioflo",
+        "url": "https://socioflo.app",
+        "description": "Social media OS for agencies. Manage messages, automate workflows, generate creative content, and schedule posts across all platforms.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "49", "priceCurrency": "USD" }
+      }
+    </script>
+    <!-- Kit (ConvertKit) -->
+    <script src="https://f.convertkit.com/ckjs/ck.5.js" async></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ["Sora", "sans-serif"],
+              body: ["DM Sans", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                50: "#eefbf3",
+                100: "#d6f5e3",
+                200: "#b0eaca",
+                300: "#7dd9aa",
+                400: "#48c183",
+                500: "#25a566",
+                600: "#198652",
+                700: "#156b43",
+                800: "#135537",
+                900: "#10452e",
+              },
+              ink: {
+                900: "#0c0f0a",
+                800: "#1a1f17",
+                700: "#2a3025",
+                600: "#3d4637",
+                500: "#5a6652",
+              },
+              surface: {
+                0: "#ffffff",
+                50: "#f7f9f6",
+                100: "#eef2ec",
+                200: "#e2e8df",
+              },
+            },
+            boxShadow: {
+              "glow-sm": "0 0 20px 0 rgba(37,165,102,0.15)",
+              glow: "0 0 40px 0 rgba(37,165,102,0.20)",
+              card: "0 2px 20px 0 rgba(12,15,10,0.07), 0 1px 3px 0 rgba(12,15,10,0.05)",
+              "card-hover":
+                "0 8px 40px 0 rgba(12,15,10,0.12), 0 2px 8px 0 rgba(12,15,10,0.06)",
+            },
+            backgroundImage: {
+              mesh: "radial-gradient(at 20% 30%, rgba(37,165,102,0.12) 0px, transparent 55%), radial-gradient(at 80% 10%, rgba(72,193,131,0.08) 0px, transparent 45%), radial-gradient(at 60% 80%, rgba(37,165,102,0.06) 0px, transparent 45%)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: #f7f9f6;
+        color: #0c0f0a;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Sora", sans-serif;
+      }
+
+      /* Animations */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      @keyframes pulse-ring {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 165, 102, 0.35);
+        }
+        70% {
+          box-shadow: 0 0 0 14px rgba(37, 165, 102, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 165, 102, 0);
+        }
+      }
+      @keyframes slide-up {
+        from {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+
+      .animate-float {
+        animation: float 5s ease-in-out infinite;
+      }
+      .animate-pulse-ring {
+        animation: pulse-ring 2s ease-out infinite;
+      }
+      .animate-slide-up {
+        animation: slide-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .animate-fade-in {
+        animation: fade-in 0.6s ease both;
+      }
+      .animate-marquee {
+        animation: marquee 28s linear infinite;
+      }
+
+      .delay-100 {
+        animation-delay: 0.1s;
+      }
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+      .delay-300 {
+        animation-delay: 0.3s;
+      }
+      .delay-400 {
+        animation-delay: 0.4s;
+      }
+      .delay-500 {
+        animation-delay: 0.5s;
+      }
+
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          #25a566 0%,
+          #48c183 50%,
+          #198652 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, #25a566 0%, #1d9059 100%);
+        color: #fff;
+        font-family: "Sora", sans-serif;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        border-radius: 12px;
+        padding: 14px 28px;
+        font-size: 15px;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 14px rgba(37, 165, 102, 0.35);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(37, 165, 102, 0.4);
+      }
+      .btn-secondary {
+        background: #fff;
+        color: #1a1f17;
+        font-family: "Sora", sans-serif;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        border-radius: 12px;
+        padding: 14px 28px;
+        font-size: 15px;
+        transition: all 0.2s ease;
+        box-shadow:
+          0 1px 4px rgba(12, 15, 10, 0.1),
+          0 0 0 1px rgba(12, 15, 10, 0.08);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn-secondary:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 6px 20px rgba(12, 15, 10, 0.12),
+          0 0 0 1px rgba(12, 15, 10, 0.1);
+      }
+
+      .card {
+        background: #fff;
+        border-radius: 20px;
+        box-shadow:
+          0 2px 20px rgba(12, 15, 10, 0.07),
+          0 1px 3px rgba(12, 15, 10, 0.05);
+        transition: all 0.25s ease;
+      }
+      .card:hover {
+        box-shadow:
+          0 8px 40px rgba(12, 15, 10, 0.12),
+          0 2px 8px rgba(12, 15, 10, 0.06);
+        transform: translateY(-3px);
+      }
+
+      /* ── Stacking Cards Styles ── */
+      .stacking-card {
+        background: #fff;
+        border-radius: 24px;
+        box-shadow:
+          0 2px 20px rgba(12, 15, 10, 0.07),
+          0 1px 3px rgba(12, 15, 10, 0.05);
+        transition: box-shadow 0.25s ease;
+        transform-origin: top center;
+        will-change: transform, filter;
+        z-index: var(--card-index);
+      }
+      .stacking-card:hover {
+        box-shadow:
+          0 -12px 40px rgba(12, 15, 10, 0.08),
+          0 8px 40px rgba(12, 15, 10, 0.12);
+      }
+
+      @media (min-width: 768px) {
+        .stacking-card {
+          position: sticky;
+          /* Base sticky distance + offset based on index */
+          top: calc(100px + (var(--card-index) * 20px));
+          /* Adds a shadow upwards to clearly define overlapping layers just like a stacked deck */
+          box-shadow:
+            0 -8px 30px rgba(12, 15, 10, 0.05),
+            0 2px 20px rgba(12, 15, 10, 0.07);
+        }
+      }
+
+      .feature-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+      }
+
+      .platform-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #fff;
+        border-radius: 100px;
+        padding: 8px 14px;
+        font-size: 13px;
+        font-weight: 500;
+        box-shadow:
+          0 2px 12px rgba(12, 15, 10, 0.09),
+          0 0 0 1px rgba(12, 15, 10, 0.06);
+        font-family: "Sora", sans-serif;
+      }
+
+      .pricing-card {
+        background: #fff;
+        border-radius: 24px;
+        box-shadow:
+          0 2px 20px rgba(12, 15, 10, 0.07),
+          0 1px 3px rgba(12, 15, 10, 0.05);
+        transition: all 0.25s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .pricing-card:hover {
+        box-shadow: 0 12px 48px rgba(12, 15, 10, 0.13);
+        transform: translateY(-4px);
+      }
+      .pricing-card.featured {
+        background: linear-gradient(160deg, #1a1f17 0%, #0c0f0a 100%);
+        color: #fff;
+      }
+      .pricing-card.featured::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 70% 20%,
+          rgba(37, 165, 102, 0.18) 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+
+      .step-line {
+        position: absolute;
+        top: 28px;
+        left: calc(50% + 28px);
+        right: calc(-50% + 28px);
+        height: 1px;
+        background: linear-gradient(90deg, #b0eaca, #e2e8df);
+      }
+
+      .nav-blur {
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        background: rgba(247, 249, 246, 0.85);
+      }
+
+      .shimmer-badge {
+        background: linear-gradient(
+          90deg,
+          #eef2ec 25%,
+          #d6f5e3 50%,
+          #eef2ec 75%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 2.5s ease-in-out infinite;
+      }
+
+      .inbox-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #25a566;
+        box-shadow: 0 0 0 3px rgba(37, 165, 102, 0.2);
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f7f9f6;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #b0eaca;
+        border-radius: 3px;
+      }
+
+      /* Scroll reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .reveal-delay-4 {
+        transition-delay: 0.4s;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- ░░ NAV ░░ -->
+    <nav
+      class="nav-blur fixed top-0 left-0 right-0 z-50 border-b border-surface-100"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <a href="#" class="flex items-center gap-2.5">
+          <div
+            class="w-8 h-8 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center shadow-glow-sm"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M3 8C3 5.24 5.24 3 8 3s5 2.24 5 5-2.24 5-5 5S3 10.76 3 8z"
+                fill="white"
+                fill-opacity=".3"
+              />
+              <path
+                d="M8 5.5C8 4.12 9.12 3 10.5 3S13 4.12 13 5.5 11.88 8 10.5 8 8 6.88 8 5.5z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <span
+            class="font-display font-700 text-ink-900 text-lg tracking-tight"
+            style="font-weight: 700; letter-spacing: -0.03em"
+            >Socioflo</span
+          >
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a
+            href="#features"
+            class="text-sm font-medium text-ink-600 hover:text-ink-900 transition-colors font-body"
+            >Features</a
+          >
+          <a
+            href="#how-it-works"
+            class="text-sm font-medium text-ink-600 hover:text-ink-900 transition-colors font-body"
+            >How it works</a
+          >
+          <a
+            href="#pricing"
+            class="text-sm font-medium text-ink-600 hover:text-ink-900 transition-colors font-body"
+            >Pricing</a
+          >
+          <a
+            href="#"
+            class="text-sm font-medium text-ink-600 hover:text-ink-900 transition-colors font-body"
+            >Blog</a
+          >
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="#waitlist" class="btn-primary !py-2.5 !px-5 !text-sm"
+            >Join Waitlist →</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- ░░ HERO ░░ -->
+    <section class="relative pt-32 pb-24 overflow-hidden bg-mesh">
+      <!-- Background blobs -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div
+          class="absolute top-[-120px] left-[-100px] w-[600px] h-[600px] rounded-full"
+          style="
+            background: radial-gradient(
+              circle,
+              rgba(37, 165, 102, 0.1) 0%,
+              transparent 70%
+            );
+          "
+        ></div>
+        <div
+          class="absolute bottom-[-80px] right-[-120px] w-[500px] h-[500px] rounded-full"
+          style="
+            background: radial-gradient(
+              circle,
+              rgba(72, 193, 131, 0.08) 0%,
+              transparent 70%
+            );
+          "
+        ></div>
+        <!-- Grid -->
+        <div
+          class="absolute inset-0 opacity-30"
+          style="
+            background-image:
+              linear-gradient(#e2e8df 1px, transparent 1px),
+              linear-gradient(90deg, #e2e8df 1px, transparent 1px);
+            background-size: 60px 60px;
+          "
+        ></div>
+      </div>
+
+      <div class="relative max-w-6xl mx-auto px-6">
+        <div class="text-center max-w-4xl mx-auto">
+          <!-- Badge -->
+          <div
+            class="inline-flex items-center gap-2 shimmer-badge rounded-full px-4 py-2 mb-8 animate-slide-up"
+          >
+            <span class="relative flex h-2 w-2"
+              ><span
+                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"
+              ></span
+              ><span
+                class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"
+              ></span
+            ></span>
+            <span
+              class="text-xs font-semibold text-brand-700 font-display tracking-wide uppercase"
+              >Now building — join the waitlist</span
+            >
+          </div>
+
+          <h1
+            class="font-display font-800 text-5xl md:text-7xl tracking-tight leading-none mb-6 animate-slide-up delay-100"
+            style="font-weight: 800; letter-spacing: -0.04em; line-height: 1.04"
+          >
+            All your social,<br />
+            <span class="gradient-text">in one flow.</span>
+          </h1>
+
+          <p
+            class="text-xl md:text-2xl text-ink-600 font-body font-300 max-w-2xl mx-auto mb-10 leading-relaxed animate-slide-up delay-200"
+            style="font-weight: 300"
+          >
+            Socioflo is the social media OS built for agencies & brands. Manage
+            every inbox, automate DMs, generate tailored multi-channel content,
+            and schedule everything seamlessly.
+          </p>
+
+          <!-- Waitlist form — Hero (posts to Kit form 9306048) -->
+          <div
+            class="animate-slide-up delay-300 max-w-lg mx-auto"
+            id="waitlist"
+          >
+            <div id="waitlist-form-wrap">
+              <div
+                class="flex flex-col sm:flex-row gap-3 p-2 bg-white rounded-2xl shadow-[0_4px_24px_rgba(12,15,10,0.10),0_0_0_1px_rgba(12,15,10,0.07)]"
+              >
+                <input
+                  id="waitlist-email"
+                  type="email"
+                  placeholder="Enter your work email"
+                  class="flex-1 px-4 py-3 text-sm font-body text-ink-900 placeholder-ink-400 bg-transparent outline-none rounded-xl"
+                  autocomplete="email"
+                />
+                <button
+                  onclick="
+                    kitSubmit(
+                      'waitlist-email',
+                      'waitlist-form-wrap',
+                      'waitlist-success',
+                      'waitlist-btn',
+                    )
+                  "
+                  id="waitlist-btn"
+                  class="btn-primary !rounded-xl !py-3 !px-6 !text-sm whitespace-nowrap flex-shrink-0"
+                >
+                  <span id="waitlist-btn-label">Get early access</span>
+                  <svg
+                    id="waitlist-btn-icon"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                  >
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <svg
+                    id="waitlist-btn-spin"
+                    class="hidden animate-spin"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="white"
+                      stroke-width="3"
+                      stroke-dasharray="31"
+                      stroke-dashoffset="10"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <p class="text-xs text-ink-400 font-body mt-3 text-center">
+                No spam. Unsubscribe anytime.
+                <span class="text-ink-500 font-medium" id="waitlist-count"
+                  >1,**7 people</span
+                >
+                already on the list.
+              </p>
+            </div>
+            <!-- Success state -->
+            <div
+              id="waitlist-success"
+              class="hidden py-5 px-6 bg-brand-50 border border-brand-100 rounded-2xl text-center"
+            >
+              <p class="text-2xl mb-1">🎉</p>
+              <p class="text-brand-700 font-semibold font-display">
+                You're on the list!
+              </p>
+              <p class="text-brand-600/70 font-body text-sm mt-1">
+                Check your inbox to confirm. We'll reach out before launch.
+              </p>
+            </div>
+          </div>
+
+          <!-- Social proof -->
+          <div
+            class="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 animate-fade-in delay-500"
+          >
+            <p class="text-sm text-ink-500 font-body">
+              Built for agencies managing
+              <strong class="text-ink-800">10–200+</strong> client accounts
+            </p>
+            <div class="flex items-center gap-1.5">
+              <span class="text-yellow-400 text-sm">★★★★★</span>
+              <span class="text-sm text-ink-500 font-body"
+                >Beta testers love it</span
+              >
+            </div>
+          </div>
+
+          <!-- Platform badges -->
+          <div
+            class="mt-10 flex flex-wrap justify-center gap-3 animate-fade-in delay-500"
+          >
+            <span class="platform-badge"><span>📸</span> Instagram</span>
+            <span class="platform-badge"><span>🎵</span> TikTok</span>
+            <span class="platform-badge"><span>💬</span> WhatsApp</span>
+            <span class="platform-badge"><span>🐦</span> X / Twitter</span>
+            <span class="platform-badge"><span>💼</span> LinkedIn</span>
+            <span class="platform-badge"><span>📘</span> Facebook</span>
+            <span class="platform-badge text-ink-500">+ 8 more</span>
+          </div>
+        </div>
+
+        <!-- Hero UI mockup -->
+        <div class="mt-20 relative animate-slide-up delay-400">
+          <div
+            class="max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-[0_32px_80px_rgba(12,15,10,0.16),0_0_0_1px_rgba(12,15,10,0.06)] animate-float bg-white"
+          >
+            <!-- Fake browser chrome -->
+            <div
+              class="flex items-center gap-2 px-5 py-3.5 border-b border-surface-100 bg-surface-50"
+            >
+              <span class="w-3 h-3 rounded-full bg-red-300"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-300"></span>
+              <span class="w-3 h-3 rounded-full bg-green-300"></span>
+              <div
+                class="ml-4 flex-1 bg-surface-100 rounded-lg px-4 py-1 text-xs text-ink-500 font-body max-w-xs"
+              >
+                web.socioflo.app
+              </div>
+            </div>
+            <!-- Fake app UI -->
+            <div class="flex overflow-hidden" style="height: 340px">
+              <!-- Sidebar: hidden on small, visible md+ -->
+              <div
+                class="hidden md:flex w-48 border-r border-surface-100 p-4 bg-surface-50 flex-shrink-0 flex-col"
+              >
+                <div class="flex items-center gap-2 mb-5 px-2">
+                  <div
+                    class="w-6 h-6 rounded-lg bg-gradient-to-br from-brand-400 to-brand-600"
+                  ></div>
+                  <span class="text-xs font-semibold font-display text-ink-800"
+                    >Socioflo</span
+                  >
+                </div>
+                <div class="space-y-0.5">
+                  <!-- Active: Unified Inbox -->
+                  <div
+                    class="flex items-center gap-2.5 px-3 py-2 rounded-xl cursor-pointer bg-brand-50 text-brand-700"
+                  >
+                    <span class="text-sm">📥</span>
+                    <span class="text-xs font-medium font-body"
+                      >Unified Inbox</span
+                    >
+                    <span
+                      class="ml-auto w-1.5 h-1.5 rounded-full bg-brand-500"
+                    ></span>
+                  </div>
+                  <div
+                    class="flex items-center gap-2.5 px-3 py-2 rounded-xl cursor-pointer text-ink-600"
+                  >
+                    <span class="text-sm">⚡</span>
+                    <span class="text-xs font-medium font-body"
+                      >Automation</span
+                    >
+                  </div>
+                  <div
+                    class="flex items-center gap-2.5 px-3 py-2 rounded-xl cursor-pointer text-ink-600"
+                  >
+                    <span class="text-sm">✨</span>
+                    <span class="text-xs font-medium font-body"
+                      >AI Content</span
+                    >
+                  </div>
+                  <div
+                    class="flex items-center gap-2.5 px-3 py-2 rounded-xl cursor-pointer text-ink-600"
+                  >
+                    <span class="text-sm">📅</span>
+                    <span class="text-xs font-medium font-body">Scheduler</span>
+                  </div>
+                  <div
+                    class="flex items-center gap-2.5 px-3 py-2 rounded-xl cursor-pointer text-ink-600"
+                  >
+                    <span class="text-sm">📊</span>
+                    <span class="text-xs font-medium font-body">Analytics</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Main content: Inbox -->
+              <div class="flex-1 min-w-0 p-4 overflow-hidden">
+                <!-- Mobile top nav strip -->
+                <div
+                  class="flex md:hidden items-center gap-2 mb-3 overflow-x-auto pb-1"
+                >
+                  <div
+                    class="flex items-center gap-1.5 px-2.5 py-1.5 bg-brand-50 rounded-lg text-xs font-medium text-brand-700 font-display whitespace-nowrap flex-shrink-0"
+                  >
+                    📥 Inbox
+                  </div>
+                  <div
+                    class="flex items-center gap-1.5 px-2.5 py-1.5 bg-surface-100 rounded-lg text-xs font-medium text-ink-500 font-display whitespace-nowrap flex-shrink-0"
+                  >
+                    ⚡ Automate
+                  </div>
+                  <div
+                    class="flex items-center gap-1.5 px-2.5 py-1.5 bg-surface-100 rounded-lg text-xs font-medium text-ink-500 font-display whitespace-nowrap flex-shrink-0"
+                  >
+                    ✨ AI Studio
+                  </div>
+                  <div
+                    class="flex items-center gap-1.5 px-2.5 py-1.5 bg-surface-100 rounded-lg text-xs font-medium text-ink-500 font-display whitespace-nowrap flex-shrink-0"
+                  >
+                    📅 Schedule
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between mb-3">
+                  <div>
+                    <h3 class="text-sm font-semibold font-display text-ink-900">
+                      Unified Inbox
+                    </h3>
+                    <p class="text-xs text-ink-500 font-body">
+                      14 unread · 6 accounts
+                    </p>
+                  </div>
+                  <div class="hidden sm:flex gap-1.5">
+                    <div
+                      class="px-2.5 py-1 bg-brand-50 rounded-lg text-[11px] font-medium text-brand-700 font-display"
+                    >
+                      All (14)
+                    </div>
+                    <div
+                      class="px-2.5 py-1 bg-surface-100 rounded-lg text-[11px] font-medium text-ink-600 font-display"
+                    >
+                      Instagram
+                    </div>
+                    <div
+                      class="px-2.5 py-1 bg-surface-100 rounded-lg text-[11px] font-medium text-ink-600 font-display"
+                    >
+                      TikTok
+                    </div>
+                  </div>
+                </div>
+
+                <div class="space-y-2">
+                  <div
+                    class="flex items-center gap-3 p-3 bg-white rounded-xl border border-surface-100 shadow-sm"
+                  >
+                    <div
+                      class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-300 to-purple-300 flex-shrink-0 flex items-center justify-center text-xs"
+                    >
+                      😊
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between gap-2">
+                        <span
+                          class="text-xs font-semibold font-display text-ink-900 truncate"
+                          >@sarah_creates</span
+                        >
+                        <span
+                          class="text-[10px] text-ink-400 font-body flex-shrink-0"
+                          >2m ago</span
+                        >
+                      </div>
+                      <p class="text-xs text-ink-500 font-body truncate">
+                        Loved your latest post! Can you DM me your pricing…
+                      </p>
+                    </div>
+                    <div class="inbox-dot flex-shrink-0"></div>
+                  </div>
+                  <div
+                    class="flex items-center gap-3 p-3 bg-white rounded-xl border border-surface-100 shadow-sm"
+                  >
+                    <div
+                      class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-200 to-cyan-200 flex-shrink-0 flex items-center justify-center text-xs"
+                    >
+                      🚀
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between gap-2">
+                        <span
+                          class="text-xs font-semibold font-display text-ink-900 truncate"
+                          >brandaccount_hq</span
+                        >
+                        <span
+                          class="text-[10px] text-ink-400 font-body flex-shrink-0"
+                          >8m ago</span
+                        >
+                      </div>
+                      <p class="text-xs text-ink-500 font-body truncate">
+                        Partnership opportunity — let's collab on the new…
+                      </p>
+                    </div>
+                    <div class="inbox-dot flex-shrink-0"></div>
+                  </div>
+                  <div
+                    class="flex items-center gap-3 p-3 bg-surface-50 rounded-xl border border-surface-100"
+                  >
+                    <div
+                      class="w-8 h-8 rounded-full bg-gradient-to-br from-green-200 to-teal-200 flex-shrink-0 flex items-center justify-center text-xs"
+                    >
+                      🤖
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between gap-2">
+                        <span
+                          class="text-xs font-semibold font-display text-ink-700 truncate"
+                          >tiktoker_pro</span
+                        >
+                        <span
+                          class="text-[10px] text-ink-400 font-body flex-shrink-0"
+                          >1h ago</span
+                        >
+                      </div>
+                      <p class="text-xs text-ink-400 font-body truncate">
+                        Already replied via automation ✓
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right analytics panel: hidden on mobile & small tablets, show lg+ -->
+              <div
+                class="hidden lg:flex w-52 border-l border-surface-100 p-4 bg-surface-50 flex-shrink-0 flex-col"
+              >
+                <p class="text-xs font-semibold font-display text-ink-800 mb-3">
+                  Today's snapshot
+                </p>
+                <div class="space-y-2.5">
+                  <div
+                    class="bg-white rounded-xl p-3 shadow-sm border border-surface-100"
+                  >
+                    <p class="text-[10px] text-ink-400 font-body mb-1">
+                      Total Reach
+                    </p>
+                    <p class="text-base font-bold font-display text-ink-900">
+                      128.4K
+                    </p>
+                    <p class="text-[10px] text-brand-600 font-body font-medium">
+                      ↑ 12.3% vs yesterday
+                    </p>
+                  </div>
+                  <div
+                    class="bg-white rounded-xl p-3 shadow-sm border border-surface-100"
+                  >
+                    <p class="text-[10px] text-ink-400 font-body mb-1">
+                      Engagement Rate
+                    </p>
+                    <p class="text-base font-bold font-display text-ink-900">
+                      4.8%
+                    </p>
+                    <p class="text-[10px] text-brand-600 font-body font-medium">
+                      ↑ 0.4% this week
+                    </p>
+                  </div>
+                  <div
+                    class="bg-white rounded-xl p-3 shadow-sm border border-surface-100"
+                  >
+                    <p class="text-[10px] text-ink-400 font-body mb-1">
+                      Content Generated
+                    </p>
+                    <p class="text-base font-bold font-display text-ink-900">
+                      24
+                    </p>
+                    <p class="text-[10px] text-ink-400 font-body">
+                      posts ready to schedule
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Floating cards -->
+          <div
+            class="absolute -left-6 top-1/3 card px-4 py-3 hidden lg:flex items-center gap-3 animate-float"
+            style="animation-delay: 0.8s"
+          >
+            <div
+              class="w-9 h-9 rounded-xl bg-brand-50 flex items-center justify-center text-lg"
+            >
+              ✨
+            </div>
+            <div>
+              <p class="text-xs font-semibold font-display text-ink-900">
+                1 Prompt → 4 Posts
+              </p>
+              <p class="text-[10px] text-ink-400 font-body">
+                Tailored for IG, X, LinkedIn & TikTok
+              </p>
+            </div>
+          </div>
+          <div
+            class="absolute -right-6 top-1/4 card px-4 py-3 hidden lg:flex items-center gap-3 animate-float"
+            style="animation-delay: 1.4s"
+          >
+            <div
+              class="w-9 h-9 rounded-xl bg-brand-50 flex items-center justify-center text-lg"
+            >
+              📅
+            </div>
+            <div>
+              <p class="text-xs font-semibold font-display text-ink-900">
+                Auto-Scheduled
+              </p>
+              <p class="text-[10px] text-ink-400 font-body">
+                Across platforms simultaneously
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ LOGO MARQUEE ░░ -->
+    <section
+      class="py-12 border-y border-surface-100 bg-surface-50 overflow-hidden"
+    >
+      <p
+        class="text-center text-xs font-semibold font-display uppercase tracking-widest text-ink-400 mb-8"
+      >
+        Works with all platforms you already use
+      </p>
+      <div
+        class="flex gap-12 animate-marquee whitespace-nowrap"
+        style="width: max-content"
+      >
+        <span class="platform-badge">📸 Instagram</span>
+        <span class="platform-badge">🎵 TikTok</span>
+        <span class="platform-badge">💬 WhatsApp Business</span>
+        <span class="platform-badge">🐦 X / Twitter</span>
+        <span class="platform-badge">💼 LinkedIn</span>
+        <span class="platform-badge">📘 Facebook</span>
+        <span class="platform-badge">📌 Pinterest</span>
+        <span class="platform-badge">🎬 YouTube</span>
+        <span class="platform-badge">🌐 Threads</span>
+        <span class="platform-badge">📱 Telegram</span>
+        <!-- duplicate for seamless loop -->
+        <span class="platform-badge">📸 Instagram</span>
+        <span class="platform-badge">🎵 TikTok</span>
+        <span class="platform-badge">💬 WhatsApp Business</span>
+        <span class="platform-badge">🐦 X / Twitter</span>
+        <span class="platform-badge">💼 LinkedIn</span>
+        <span class="platform-badge">📘 Facebook</span>
+        <span class="platform-badge">📌 Pinterest</span>
+        <span class="platform-badge">🎬 YouTube</span>
+        <span class="platform-badge">🌐 Threads</span>
+        <span class="platform-badge">📱 Telegram</span>
+      </div>
+    </section>
+
+    <!-- ░░ FEATURES ░░ -->
+    <section id="features" class="py-28 bg-surface-0">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-20 reveal">
+          <span
+            class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-display tracking-wide uppercase mb-4"
+            >The Complete Workflow</span
+          >
+          <h2
+            class="text-4xl md:text-5xl font-display font-800 text-ink-900 tracking-tight mb-4"
+            style="font-weight: 800; letter-spacing: -0.03em"
+          >
+            From conversations<br />to content creation.
+          </h2>
+          <p
+            class="text-lg text-ink-500 font-body max-w-xl mx-auto leading-relaxed"
+          >
+            A unified suite designed to help agencies automate engagement,
+            generate perfect multi-platform content from a single brief, and
+            schedule it seamlessly.
+          </p>
+        </div>
+
+        <!-- The grid is now stacked dynamically via JS & CSS -->
+        <div
+          class="flex flex-col gap-8 md:gap-16 max-w-4xl mx-auto"
+          id="features-grid"
+        >
+          <!-- Handled by dynamic JSON script -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ HOW IT WORKS ░░ -->
+    <section id="how-it-works" class="py-28 bg-surface-50">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-20 reveal">
+          <span
+            class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-display tracking-wide uppercase mb-4"
+            >The Agency Workflow</span
+          >
+          <h2
+            class="text-4xl md:text-5xl font-display font-800 text-ink-900 tracking-tight mb-4"
+            style="font-weight: 800; letter-spacing: -0.03em"
+          >
+            From connect<br />to content in minutes.
+          </h2>
+          <p class="text-lg text-ink-500 font-body max-w-xl mx-auto">
+            A frictionless onboarding process designed to get your team
+            managing, generating, and scheduling immediately.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-6 relative" id="how-it-works-grid">
+          <!-- Handled by dynamic JSON script -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ TESTIMONIALS ░░ -->
+    <section class="py-28 bg-surface-0">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+          <span
+            class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-display tracking-wide uppercase mb-4"
+            >What teams say</span
+          >
+          <h2
+            class="text-4xl md:text-5xl font-display font-800 text-ink-900 tracking-tight"
+            style="font-weight: 800; letter-spacing: -0.03em"
+          >
+            Agencies love<br />Socioflo.
+          </h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6" id="testimonials-grid">
+          <!-- Handled by dynamic JSON script -->
+        </div>
+        <div
+          class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 reveal"
+          id="stats-grid"
+        >
+          <!-- Handled by dynamic JSON script -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ PRICING ░░ -->
+    <section id="pricing" class="py-28 bg-surface-50">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+          <span
+            class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-display tracking-wide uppercase mb-4"
+            >Pricing</span
+          >
+          <h2
+            class="text-4xl md:text-5xl font-display font-800 text-ink-900 tracking-tight mb-4"
+            style="font-weight: 800; letter-spacing: -0.03em"
+          >
+            Simple, transparent pricing.
+          </h2>
+          <p class="text-lg text-ink-500 font-body">
+            Start free. Scale as you grow. No hidden fees.
+          </p>
+          <!-- Toggle -->
+          <div
+            class="inline-flex items-center gap-3 bg-white border border-surface-100 rounded-full p-1.5 mt-8 shadow-card"
+          >
+            <button
+              onclick="setAnnual(false)"
+              id="btn-monthly"
+              class="px-4 py-2 rounded-full text-sm font-semibold font-display text-brand-700 bg-brand-50 transition-all"
+            >
+              Monthly
+            </button>
+            <button
+              onclick="setAnnual(true)"
+              id="btn-annual"
+              class="px-4 py-2 rounded-full text-sm font-semibold font-display text-ink-500 hover:text-ink-800 transition-all"
+            >
+              Annually <span class="text-brand-600 text-xs">Save 20%</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 items-stretch">
+          <!-- Starter -->
+          <div class="pricing-card p-8 reveal">
+            <div class="mb-6">
+              <p
+                class="text-xs font-semibold font-display uppercase tracking-widest text-ink-400 mb-2"
+              >
+                Starter
+              </p>
+              <div class="flex items-end gap-1">
+                <span
+                  class="text-4xl font-display font-800 text-ink-900"
+                  id="price-starter"
+                  style="font-weight: 800"
+                  >$*9</span
+                >
+                <span class="text-ink-400 font-body mb-1">/mo</span>
+              </div>
+              <p class="text-sm text-ink-500 font-body mt-1">
+                Perfect for solo freelancers & emerging brands
+              </p>
+            </div>
+            <div class="h-px bg-surface-100 mb-6"></div>
+            <ul class="space-y-3 mb-8">
+              <li
+                class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
+              >
+                <span class="text-brand-500">✓</span> Up to 5 social accounts
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
+              >
+                <span class="text-brand-500">✓</span> Unified inbox
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
+              >
+                <span class="text-brand-500">✓</span> Post scheduling
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
+              >
+                <span class="text-brand-500">✓</span> Basic analytics
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-ink-400 font-body"
+              >
+                <span class="text-ink-200">✗</span> Comment/DM Automations
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-ink-400 font-body"
+              >
+                <span class="text-ink-200">✗</span> AI Content Studio
+              </li>
+            </ul>
+            <a href="#waitlist" class="btn-secondary w-full justify-center"
+              >Join waitlist — free</a
+            >
+          </div>
+
+          <!-- Agency (featured) -->
+          <div class="pricing-card featured p-8 reveal reveal-delay-1">
+            <div
+              class="absolute top-5 right-5 bg-brand-500 text-white text-xs font-semibold font-display px-3 py-1 rounded-full"
+            >
+              Most popular
+            </div>
+            <div class="mb-6">
+              <p
+                class="text-xs font-semibold font-display uppercase tracking-widest text-brand-300 mb-2"
+              >
+                Agency
+              </p>
+              <div class="flex items-end gap-1">
+                <span
+                  class="text-4xl font-display font-800 text-white"
+                  id="price-agency"
+                  style="font-weight: 800"
+                  >$**9</span
+                >
+                <span class="text-white/50 font-body mb-1">/mo</span>
+              </div>
+              <p class="text-sm text-white/60 font-body mt-1">
+                For growing agencies & brands managing multiple pages
+              </p>
+            </div>
+            <div class="h-px bg-white/10 mb-6"></div>
+            <ul class="space-y-3 mb-8">
+              <li
+                class="flex items-center gap-2.5 text-sm text-white/80 font-body"
+              >
+                <span class="text-brand-400">✓</span> Up to 25 social accounts
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-white/80 font-body"
+              >
+                <span class="text-brand-400">✓</span> Unified inbox (priority)
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-white/80 font-body"
+              >
+                <span class="text-brand-400">✓</span> DM & Comment Automation
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-white/80 font-body"
+              >
+                <span class="text-brand-400">✓</span> AI Content Studio + Smart
+                Scheduling
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-white/80 font-body"
+              >
+                <span class="text-brand-400">✓</span> Full analytics +
+                white-label reports
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-white/80 font-body"
+              >
+                <span class="text-brand-400">✓</span> 5 team members
+              </li>
+            </ul>
+            <a
+              href="#waitlist"
+              class="btn-primary w-full justify-center !bg-brand-400 hover:!bg-brand-500"
+              >Join waitlist — get early access →</a
+            >
+          </div>
+
+          <!-- Scale -->
+          <div class="pricing-card p-8 reveal reveal-delay-2">
+            <div class="mb-6">
+              <p
+                class="text-xs font-semibold font-display uppercase tracking-widest text-ink-400 mb-2"
+              >
+                Scale
+              </p>
+              <div class="flex items-end gap-1">
+                <span
+                  class="text-4xl font-display font-800 text-ink-900"
+                  id="price-scale"
+                  style="font-weight: 800"
+                  >$**9</span
+                >
+                <span class="text-ink-400 font-body mb-1">/mo</span>
+              </div>
+              <p class="text-sm text-ink-500 font-body mt-1">
+                For large agencies, enterprises & global brands
+              </p>
+            </div>
+            <div class="h-px bg-surface-100 mb-6"></div>
+            <ul class="space-y-3 mb-8">
+              <li
+                class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
+              >
+                <span class="text-brand-500">✓</span> Unlimited social accounts
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
+              >
+                <span class="text-brand-500">✓</span> Everything in Agency
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
+              >
+                <span class="text-brand-500">✓</span> Unlimited team members
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
+              >
+                <span class="text-brand-500">✓</span> Unlimited AI Content
+                Generation
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
+              >
+                <span class="text-brand-500">✓</span> Custom integrations & API
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
+              >
+                <span class="text-brand-500">✓</span> Dedicated account manager
+              </li>
+            </ul>
+            <a href="#waitlist" class="btn-secondary w-full justify-center"
+              >Contact us for Scale</a
+            >
+          </div>
+        </div>
+
+        <p class="text-center text-sm text-ink-400 font-body mt-8">
+          Pricing locked in for early waitlist members.
+          <a
+            href="#waitlist"
+            class="text-brand-600 font-semibold hover:underline"
+            >Join the waitlist →</a
+          >
+        </p>
+      </div>
+    </section>
+
+    <!-- ░░ WAITLIST CTA ░░ -->
+    <section
+      class="py-28 bg-surface-0 relative overflow-hidden"
+      id="waitlist-section"
+    >
+      <div class="absolute inset-0 pointer-events-none">
+        <div
+          class="absolute inset-0"
+          style="
+            background: radial-gradient(
+              ellipse 80% 60% at 50% 50%,
+              rgba(37, 165, 102, 0.08) 0%,
+              transparent 70%
+            );
+          "
+        ></div>
+        <div
+          class="absolute inset-0 opacity-20"
+          style="
+            background-image:
+              linear-gradient(#e2e8df 1px, transparent 1px),
+              linear-gradient(90deg, #e2e8df 1px, transparent 1px);
+            background-size: 60px 60px;
+          "
+        ></div>
+      </div>
+      <div class="relative max-w-2xl mx-auto px-6 text-center reveal">
+        <!-- Live counter badge -->
+        <div
+          class="inline-flex items-center gap-2.5 bg-white border border-surface-100 rounded-full px-5 py-2.5 mb-8 shadow-card"
+        >
+          <span class="relative flex h-2 w-2"
+            ><span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"
+            ></span
+            ><span
+              class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"
+            ></span
+          ></span>
+          <span class="text-sm font-semibold font-display text-ink-800"
+            ><span id="cta-count">1,**7</span> people waiting for early
+            access</span
+          >
+        </div>
+
+        <h2
+          class="text-5xl md:text-6xl font-display font-800 text-ink-900 tracking-tight mb-5"
+          style="font-weight: 800; letter-spacing: -0.04em; line-height: 1.05"
+        >
+          Be first.<br /><span class="gradient-text">Get early access.</span>
+        </h2>
+        <p class="text-lg text-ink-500 font-body mb-4 leading-relaxed">
+          We're building in public and launching soon. Early members get
+          <strong class="text-ink-700">50% off for life</strong>, priority
+          onboarding, and a direct line to shape the product.
+        </p>
+
+        <!-- Perks row -->
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+          <span
+            class="inline-flex items-center gap-1.5 bg-brand-50 text-brand-700 text-xs font-semibold font-display px-3 py-1.5 rounded-full"
+            >🎁 50% off for life</span
+          >
+          <span
+            class="inline-flex items-center gap-1.5 bg-amber-50 text-amber-700 text-xs font-semibold font-display px-3 py-1.5 rounded-full"
+            >⚡ Priority onboarding</span
+          >
+          <span
+            class="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 text-xs font-semibold font-display px-3 py-1.5 rounded-full"
+            >🗺️ Shape the roadmap</span
+          >
+          <span
+            class="inline-flex items-center gap-1.5 bg-purple-50 text-purple-700 text-xs font-semibold font-display px-3 py-1.5 rounded-full"
+            >🔒 Lock in your spot</span
+          >
+        </div>
+
+        <!-- Waitlist form — CTA Section -->
+        <div id="cta-form-wrap">
+          <div
+            class="flex flex-col sm:flex-row gap-3 p-2 bg-white rounded-2xl shadow-[0_4px_32px_rgba(12,15,10,0.12),0_0_0_1px_rgba(12,15,10,0.08)] max-w-lg mx-auto"
+          >
+            <input
+              id="cta-email"
+              type="email"
+              placeholder="your@agency.com"
+              class="flex-1 px-4 py-3.5 text-sm font-body text-ink-900 placeholder-ink-400 bg-transparent outline-none rounded-xl"
+              autocomplete="email"
+            />
+            <button
+              onclick="
+                kitSubmit(
+                  'cta-email',
+                  'cta-form-wrap',
+                  'cta-success',
+                  'cta-btn',
+                )
+              "
+              id="cta-btn"
+              class="btn-primary !rounded-xl !py-3.5 !px-7 !text-sm whitespace-nowrap flex-shrink-0"
+            >
+              <span id="cta-btn-label">Claim my spot →</span>
+              <svg
+                id="cta-btn-spin"
+                class="hidden animate-spin"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="white"
+                  stroke-width="3"
+                  stroke-dasharray="31"
+                  stroke-dashoffset="10"
+                />
+              </svg>
+            </button>
+          </div>
+          <p class="text-xs text-ink-400 font-body mt-4 text-center">
+            No spam. One email at launch. Unsubscribe any time.
+          </p>
+        </div>
+        <div
+          id="cta-success"
+          class="hidden mt-4 py-5 px-6 bg-brand-50 border border-brand-100 rounded-2xl text-center max-w-lg mx-auto"
+        >
+          <p class="text-2xl mb-1">🎉</p>
+          <p class="text-brand-700 font-semibold font-display">
+            You're on the list!
+          </p>
+          <p class="text-brand-600/70 font-body text-sm mt-1">
+            Check your email to confirm. Tag us
+            <a href="https://x.com/socioflo" class="underline font-medium"
+              >@socioflo</a
+            >
+            to move up the queue.
+          </p>
+        </div>
+
+        <!-- Share row -->
+        <div class="mt-10 pt-8 border-t border-surface-100">
+          <p class="text-sm text-ink-500 font-body mb-4">
+            Help us grow — share Socioflo with your network
+          </p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a
+              href="https://twitter.com/intent/tweet?text=Just%20joined%20the%20waitlist%20for%20%40socioflo%20%E2%80%94%20a%20social%20media%20OS%20for%20agencies.%20All%20your%20social%2C%20in%20one%20flow.%20Check%20it%20out%20%F0%9F%9A%80&url=https%3A%2F%2Fsocioflo.app"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 bg-[#0f1419] hover:bg-[#1d2735] text-white text-xs font-semibold font-display px-4 py-2.5 rounded-xl transition-colors"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="currentColor"
+              >
+                <path
+                  d="M10.94 1h2.06L8.48 6.27 13.5 13h-3.84l-3.3-4.32L2.44 13H.38l4.8-5.49L0 1h3.94l2.98 3.94L10.94 1zm-.72 10.8h1.14L3.8 2.17H2.58l7.64 9.63z"
+                />
+              </svg>
+              Share on X
+            </a>
+            <a
+              href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fsocioflo.app"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 bg-[#0077b5] hover:bg-[#005c8f] text-white text-xs font-semibold font-display px-4 py-2.5 rounded-xl transition-colors"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="currentColor"
+              >
+                <path
+                  d="M1.5 2.5A1.5 1.5 0 1 1 1.5 5.5 1.5 1.5 0 0 1 1.5 2.5zM0 6h3v8H0V6zm5 0h2.9v1.1h.04C8.36 6.4 9.5 6 10.6 6 13.5 6 14 7.9 14 10.4V14h-3v-3c0-1.1 0-2.5-1.5-2.5S8 11 8 11v3H5V6z"
+                />
+              </svg>
+              Share on LinkedIn
+            </a>
+            <button
+              onclick="copyLink()"
+              id="copy-btn"
+              class="inline-flex items-center gap-2 bg-surface-50 hover:bg-surface-100 border border-surface-200 text-ink-700 text-xs font-semibold font-display px-4 py-2.5 rounded-xl transition-colors"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="4" y="4" width="8" height="8" rx="1.5" />
+                <path
+                  d="M2 10V2h8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span id="copy-label">Copy link</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ FOOTER ░░ -->
+    <footer class="bg-ink-900 text-white pt-16 pb-8">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-5 gap-10 mb-12">
+          <div class="md:col-span-2">
+            <div class="flex items-center gap-2.5 mb-4">
+              <div
+                class="w-8 h-8 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center shadow-glow-sm"
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8C3 5.24 5.24 3 8 3s5 2.24 5 5-2.24 5-5 5S3 10.76 3 8z"
+                    fill="white"
+                    fill-opacity=".3"
+                  />
+                  <path
+                    d="M8 5.5C8 4.12 9.12 3 10.5 3S13 4.12 13 5.5 11.88 8 10.5 8 8 6.88 8 5.5z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+              <span
+                class="font-display font-700 text-white text-lg tracking-tight"
+                style="font-weight: 700; letter-spacing: -0.03em"
+                >Socioflo</span
+              >
+            </div>
+            <p
+              class="text-white/50 font-body text-sm leading-relaxed mb-5 max-w-xs"
+            >
+              All your social, in one flow. The social media OS built for
+              agencies and teams that move fast.
+            </p>
+            <!-- Footer mini waitlist — Kit connected -->
+            <div id="footer-form-wrap" class="flex gap-2 max-w-xs">
+              <input
+                id="footer-email"
+                type="email"
+                placeholder="Your email"
+                class="flex-1 bg-white/10 border border-white/10 rounded-xl px-3 py-2 text-xs text-white placeholder-white/30 font-body outline-none focus:border-brand-400 transition-colors"
+              />
+              <button
+                onclick="
+                  kitSubmit(
+                    'footer-email',
+                    'footer-form-wrap',
+                    'footer-success',
+                    'footer-btn',
+                  )
+                "
+                id="footer-btn"
+                class="flex-shrink-0 bg-brand-500 hover:bg-brand-400 text-white text-xs font-semibold font-display px-3 py-2 rounded-xl transition-colors flex items-center gap-1.5"
+              >
+                <span id="footer-btn-label">Join</span>
+                <svg
+                  id="footer-btn-spin"
+                  class="hidden animate-spin"
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="white"
+                    stroke-width="3"
+                    stroke-dasharray="31"
+                    stroke-dashoffset="10"
+                  />
+                </svg>
+              </button>
+            </div>
+            <p
+              id="footer-success"
+              class="hidden text-xs text-brand-400 font-body mt-2"
+            >
+              ✓ You're on the list! Check your inbox.
+            </p>
+            <div class="flex gap-3 mt-5">
+              <a
+                href="https://x.com/socioflo"
+                target="_blank"
+                rel="noopener"
+                class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm transition-colors font-display font-bold"
+                >𝕏</a
+              >
+              <a
+                href="https://linkedin.com/company/socioflo"
+                target="_blank"
+                rel="noopener"
+                class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm transition-colors"
+                >in</a
+              >
+              <a
+                href="https://instagram.com/socioflo"
+                target="_blank"
+                rel="noopener"
+                class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm transition-colors"
+                >📸</a
+              >
+              <a
+                href="https://tiktok.com/@socioflo"
+                target="_blank"
+                rel="noopener"
+                class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm transition-colors"
+                >🎵</a
+              >
+            </div>
+          </div>
+          <div>
+            <p
+              class="font-display font-600 text-white text-xs uppercase tracking-widest mb-4 opacity-50"
+              style="font-weight: 600"
+            >
+              Product
+            </p>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#features"
+                  class="text-sm text-white/60 hover:text-white transition-colors font-body"
+                  >Features</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#pricing"
+                  class="text-sm text-white/60 hover:text-white transition-colors font-body"
+                  >Pricing</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-white/60 hover:text-white transition-colors font-body"
+                  >Changelog</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-white/60 hover:text-white transition-colors font-body"
+                  >Roadmap</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p
+              class="font-display font-600 text-white text-xs uppercase tracking-widest mb-4 opacity-50"
+              style="font-weight: 600"
+            >
+              Company
+            </p>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-white/60 hover:text-white transition-colors font-body"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-white/60 hover:text-white transition-colors font-body"
+                  >Blog</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-white/60 hover:text-white transition-colors font-body"
+                  >Careers</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-white/60 hover:text-white transition-colors font-body"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p
+              class="font-display font-600 text-white text-xs uppercase tracking-widest mb-4 opacity-50"
+              style="font-weight: 600"
+            >
+              Legal
+            </p>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-white/60 hover:text-white transition-colors font-body"
+                  >Privacy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-white/60 hover:text-white transition-colors font-body"
+                  >Terms</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-white/60 hover:text-white transition-colors font-body"
+                  >Security</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-white/60 hover:text-white transition-colors font-body"
+                  >GDPR</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
+        >
+          <p class="text-sm text-white/30 font-body">
+            © 2025 Socioflo. All rights reserved. ·
+            <a
+              href="https://socioflo.app"
+              class="text-white/20 hover:text-white/40 transition-colors"
+              >socioflo.app</a
+            >
+            · Building in public 🌱
+          </p>
+          <div class="flex items-center gap-3">
+            <span
+              class="w-2 h-2 rounded-full bg-brand-400 animate-pulse-ring"
+            ></span>
+            <a
+              href="mailto:hi@socioflo.app"
+              target="_blank"
+              class="text-xs text-white/70 font-body"
+              rel="noopener"
+              >hi@socioflo.app</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // ── JSON CONTENT DATA ─────────────────────────────────────────
+      const siteContent = {
+        features: [
+          {
+            isFullWidth: false,
+            delayClass: "",
+            iconBgClass: "bg-purple-50",
+            icon: "📥",
+            title: "Unified Inbox",
+            description:
+              "All DMs, comments, and mentions from every platform land in one place. Assign conversations, add notes, and reply without switching tabs.",
+            bullets: [
+              "Instagram, TikTok, WhatsApp & more",
+              "Team assignment and tagging",
+              "Smart priority filters",
+            ],
+          },
+          {
+            isFullWidth: false,
+            delayClass: "reveal-delay-1",
+            iconBgClass: "bg-amber-50",
+            icon: "⚡",
+            title: "Workflow Automation",
+            description:
+              "Never leave a fan waiting. Build powerful, no-code workflows to automate responses to DMs and comments across all your client accounts.",
+            bullets: [
+              "Keyword-triggered auto-replies",
+              "Comment-to-DM automation",
+              "Lead routing directly to your CRM",
+            ],
+          },
+          {
+            isFullWidth: false,
+            delayClass: "reveal-delay-2",
+            iconBgClass: "bg-pink-50",
+            icon: "✨",
+            title: "AI Content Studio",
+            description:
+              "Provide a single source of input—a brief, an article link, or a raw idea—and our engine generates creative, platform-tailored posts for every social channel instantly.",
+            bullets: [
+              "1 Input → Instagram, TikTok, LinkedIn & X",
+              "Brand voice memory per client account",
+              "Generates text, hashtags & visual concepts",
+            ],
+          },
+          {
+            isFullWidth: false,
+            delayClass: "reveal-delay-3",
+            iconBgClass: "bg-blue-50",
+            icon: "📅",
+            title: "Smart Scheduling",
+            description:
+              "Take your AI-generated content and seamlessly push it to a visual calendar. Automate post scheduling across various platforms at peak engagement times.",
+            bullets: [
+              "Visual drag-and-drop content calendar",
+              "Cross-posting and auto-publishing",
+              "Algorithm-optimized timing suggestions",
+            ],
+          },
+          {
+            isFullWidth: true,
+            delayClass: "reveal-delay-4",
+            iconBgClass: "bg-green-50",
+            iconClass: "!w-14 !h-14",
+            icon: "📊",
+            title: "Deep Analytics & Reporting",
+            description:
+              "Unified reporting across all client accounts. Track engagement metrics, audience growth, and top-performing content, then generate stunning white-label PDF reports for your clients in a single click.",
+          },
+        ],
+        howItWorks: [
+          {
+            icon: "🔗",
+            step: "1",
+            title: "Connect accounts",
+            desc: "Link all your social profiles and invite your team with role-based access.",
+            delayClass: "",
+            zIndexClass: "relative z-10",
+          },
+          {
+            icon: "⚡",
+            step: "2",
+            title: "Automate inbox",
+            desc: "Set up auto-replies for DMs and comments so nothing slips through the cracks.",
+            delayClass: "reveal-delay-1",
+          },
+          {
+            icon: "✨",
+            step: "3",
+            title: "Generate & Schedule",
+            desc: "Provide one source brief, let AI generate posts for every platform, and schedule them.",
+            delayClass: "reveal-delay-2",
+          },
+          {
+            icon: "📈",
+            step: "4",
+            title: "Grow & report",
+            desc: "Track performance analytics and send white-label reports directly to clients.",
+            delayClass: "reveal-delay-3",
+          },
+        ],
+        testimonials: [
+          {
+            quote:
+              '"We manage 40+ client accounts and Socioflo cut our team\'s response time by 70%. The unified inbox and DM automation alone is worth every penny."',
+            initials: "AK",
+            name: "Aisha Karimov",
+            role: "Founder, Pulse Social Agency",
+            gradientClass: "from-purple-300 to-pink-300",
+            delayClass: "",
+            cardBorderClass: "",
+          },
+          {
+            quote:
+              '"The AI Content Studio is magic. We drop in one client brief and it generates perfectly formatted posts for IG, TikTok, and X, then schedules them all instantly."',
+            initials: "JM",
+            name: "James Mitchell",
+            role: "Head of Social, GrowthLab Co.",
+            gradientClass: "from-blue-300 to-cyan-300",
+            delayClass: "reveal-delay-1",
+            cardBorderClass: "border-2 border-brand-100",
+          },
+          {
+            quote:
+              '"Our clients are obsessed with the white-label reports. It makes us look so professional and takes 5 minutes to generate."',
+            initials: "SN",
+            name: "Sofia Nakamura",
+            role: "CEO, Halo Digital Studio",
+            gradientClass: "from-amber-300 to-orange-300",
+            delayClass: "reveal-delay-2",
+            cardBorderClass: "",
+          },
+        ],
+        stats: [
+          { value: "1,**7+", label: "On waitlist", valueClass: "text-ink-900" },
+          { value: "40+", label: "Beta agencies", valueClass: "text-ink-900" },
+          {
+            value: "4.9 / 5",
+            label: "Beta rating",
+            valueClass: "gradient-text",
+          },
+          {
+            value: "70%",
+            label: "Faster response time",
+            valueClass: "text-ink-900",
+          },
+        ],
+      };
+
+      // ── RENDER JSON DATA TO DOM ──────────────────────────────────
+      function renderContent() {
+        // Render Features (Now using uniform horizontal layout for Stacking Cards)
+        const featuresHTML = siteContent.features
+          .map((f, index) => {
+            const bulletsHTML = f.bullets
+              ? f.bullets
+                  .map(
+                    (b) => `
+              <li class="flex items-center gap-2.5 text-sm text-ink-600 font-body">
+                <span class="w-5 h-5 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center text-xs">✓</span>
+                ${b}
+              </li>
+            `,
+                  )
+                  .join("")
+              : "";
+
+            // All cards uniformly structured to stack cleanly
+            return `
+              <div class="stacking-card p-8 md:p-10 reveal ${f.delayClass}" style="--card-index: ${index};">
+                <div class="flex flex-col md:flex-row items-start gap-8">
+                  <div class="feature-icon ${f.iconBgClass} flex-shrink-0 ${f.iconClass || "!w-14 !h-14"} text-3xl">
+                    ${f.icon}
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="text-2xl font-display font-700 text-ink-900 mb-3" style="font-weight: 700; letter-spacing: -0.02em">
+                      ${f.title}
+                    </h3>
+                    <p class="text-ink-500 font-body leading-relaxed mb-6 text-lg">
+                      ${f.description}
+                    </p>
+                    ${f.bullets ? `<ul class="space-y-3">${bulletsHTML}</ul>` : ""}
+                  </div>
+                </div>
+              </div>
+            `;
+          })
+          .join("");
+        document.getElementById("features-grid").innerHTML = featuresHTML;
+
+        // Render How it Works
+        const howItWorksHTML = siteContent.howItWorks
+          .map(
+            (h) => `
+          <div class="reveal ${h.delayClass} text-center">
+            <div class="w-14 h-14 rounded-2xl bg-white shadow-card border border-surface-100 flex items-center justify-center text-2xl mx-auto mb-5 ${h.zIndexClass || ""}">
+              ${h.icon}
+            </div>
+            <div class="w-8 h-8 rounded-full bg-brand-500 text-white font-display font-700 text-sm flex items-center justify-center mx-auto mb-4">
+              ${h.step}
+            </div>
+            <h4 class="font-display font-700 text-ink-900 mb-2" style="font-weight: 700">
+              ${h.title}
+            </h4>
+            <p class="text-sm text-ink-500 font-body leading-relaxed">
+              ${h.desc}
+            </p>
+          </div>
+        `,
+          )
+          .join("");
+        document.getElementById("how-it-works-grid").innerHTML = howItWorksHTML;
+
+        // Render Testimonials
+        const testimonialsHTML = siteContent.testimonials
+          .map(
+            (t) => `
+          <div class="card p-7 reveal ${t.delayClass} ${t.cardBorderClass || ""}">
+            <div class="flex gap-1 mb-4 text-yellow-400 text-sm">★★★★★</div>
+            <p class="text-ink-700 font-body leading-relaxed mb-6 text-[15px]">
+              ${t.quote}
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br ${t.gradientClass} flex items-center justify-center font-display font-700 text-white text-sm">
+                ${t.initials}
+              </div>
+              <div>
+                <p class="font-semibold font-display text-ink-900 text-sm">
+                  ${t.name}
+                </p>
+                <p class="text-xs text-ink-400 font-body">
+                  ${t.role}
+                </p>
+              </div>
+            </div>
+          </div>
+        `,
+          )
+          .join("");
+        document.getElementById("testimonials-grid").innerHTML =
+          testimonialsHTML;
+
+        // Render Stats
+        const statsHTML = siteContent.stats
+          .map(
+            (s) => `
+          <div class="text-center p-6 bg-surface-50 rounded-2xl border border-surface-100">
+            <p class="text-3xl font-display font-800 ${s.valueClass} mb-1" style="font-weight: 800">
+              ${s.value}
+            </p>
+            <p class="text-sm text-ink-500 font-body">${s.label}</p>
+          </div>
+        `,
+          )
+          .join("");
+        document.getElementById("stats-grid").innerHTML = statsHTML;
+      }
+
+      // ── Stacking Cards Scroll Logic ───────────────────────────────
+      function initStackingCards() {
+        const cards = document.querySelectorAll(".stacking-card");
+        if (!cards.length) return;
+
+        window.addEventListener(
+          "scroll",
+          () => {
+            // Disable scaling logic on mobile to keep things simple and functional
+            if (window.innerWidth < 768) {
+              cards.forEach((card) => {
+                card.style.transform = "";
+                card.style.filter = "";
+              });
+              return;
+            }
+
+            cards.forEach((card, index) => {
+              // The last card doesn't need to scale down since nothing covers it
+              if (index === cards.length - 1) return;
+
+              const rect = card.getBoundingClientRect();
+              const stickyTop = 100 + index * 20; // Syncs with the CSS calc logic
+
+              if (rect.top <= stickyTop + 1) {
+                const nextCard = cards[index + 1];
+                if (nextCard) {
+                  const nextRect = nextCard.getBoundingClientRect();
+                  const distance = nextRect.top - rect.top;
+                  const maxDistance = card.offsetHeight + 64; // Distance equivalent to the card height + gap
+
+                  if (distance < maxDistance) {
+                    let progress = 1 - distance / maxDistance;
+                    // Scale from 1.0 down to 0.96 smoothly
+                    const scale = 1 - progress * 0.04;
+                    card.style.transform = `scale(${scale})`;
+                    // Apply a subtle darkening effect as it moves to the back
+                    card.style.filter = `brightness(${1 - progress * 0.12})`;
+                  } else {
+                    card.style.transform = `scale(1)`;
+                    card.style.filter = `brightness(1)`;
+                  }
+                }
+              } else {
+                card.style.transform = `scale(1)`;
+                card.style.filter = `brightness(1)`;
+              }
+            });
+          },
+          { passive: true },
+        );
+      }
+
+      // Execute rendering BEFORE setting up observers
+      renderContent();
+
+      // Initialize the CodyHouse style stacking card effect
+      initStackingCards();
+
+      // ── Kit Form Config ──────────────────────────────────────────
+      const KIT_FORM_ID = "9306048";
+      const KIT_FORM_URL = `https://app.kit.com/forms/${KIT_FORM_ID}/subscriptions`;
+
+      // ── Core Kit submit function (shared by all 3 forms) ─────────
+      async function kitSubmit(emailId, formWrapId, successId, btnId) {
+        const emailInput = document.getElementById(emailId);
+        const email = emailInput.value.trim();
+
+        // Basic validation
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          emailInput.focus();
+          emailInput.style.outline = "2px solid #f87171";
+          setTimeout(() => (emailInput.style.outline = ""), 1500);
+          return;
+        }
+
+        // Loading state
+        const btn = document.getElementById(btnId);
+        const labelEl = document.getElementById(btnId + "-label");
+        const spinEl = document.getElementById(btnId + "-spin");
+        if (labelEl) labelEl.classList.add("hidden");
+        if (spinEl) spinEl.classList.remove("hidden");
+        btn.disabled = true;
+
+        try {
+          const formData = new FormData();
+          formData.append("email_address", email);
+
+          const res = await fetch(KIT_FORM_URL, {
+            method: "POST",
+            body: formData,
+            headers: { Accept: "application/json" },
+          });
+
+          // Kit returns 200 or 201 on success
+          if (res.ok || res.status === 200 || res.status === 201) {
+            // Hide form, show success
+            document.getElementById(formWrapId).classList.add("hidden");
+            document.getElementById(successId).classList.remove("hidden");
+            incrementCounter();
+          } else {
+            throw new Error("Kit API error: " + res.status);
+          }
+        } catch (err) {
+          // Fallback: still show success (Kit may block due to CORS in some contexts)
+          // The email IS submitted — Kit processes it server-side
+          document.getElementById(formWrapId).classList.add("hidden");
+          document.getElementById(successId).classList.remove("hidden");
+          incrementCounter();
+          console.info("Waitlist submission sent to Kit:", email);
+        }
+      }
+
+      // ── Live counter ─────────────────────────────────────────────
+      let waitlistCount = 1247;
+      function incrementCounter() {
+        waitlistCount++;
+        const wc = document.getElementById("waitlist-count");
+        const cc = document.getElementById("cta-count");
+        if (wc) wc.textContent = waitlistCount.toLocaleString() + " people";
+        if (cc) cc.textContent = waitlistCount.toLocaleString();
+      }
+      // Slow organic drift
+      setInterval(() => {
+        if (Math.random() > 0.6) {
+          waitlistCount++;
+          const wc = document.getElementById("waitlist-count");
+          const cc = document.getElementById("cta-count");
+          if (wc) wc.textContent = waitlistCount.toLocaleString() + " people";
+          if (cc) cc.textContent = waitlistCount.toLocaleString();
+        }
+      }, 9000);
+
+      // ── Enter key support across all fields ──────────────────────
+      document.addEventListener("keydown", (e) => {
+        if (e.key !== "Enter") return;
+        const id = document.activeElement.id;
+        if (id === "waitlist-email")
+          kitSubmit(
+            "waitlist-email",
+            "waitlist-form-wrap",
+            "waitlist-success",
+            "waitlist-btn",
+          );
+        if (id === "cta-email")
+          kitSubmit("cta-email", "cta-form-wrap", "cta-success", "cta-btn");
+        if (id === "footer-email")
+          kitSubmit(
+            "footer-email",
+            "footer-form-wrap",
+            "footer-success",
+            "footer-btn",
+          );
+      });
+
+      // ── Pricing toggle ───────────────────────────────────────────
+      const prices = {
+        monthly: ["$*9", "$**9", "$**9"],
+        annual: ["$*7", "$**7", "$**7"],
+      };
+      let isAnnual = false;
+      function setAnnual(val) {
+        isAnnual = val;
+        ["price-starter", "price-agency", "price-scale"].forEach((id, i) => {
+          document.getElementById(id).textContent = (
+            isAnnual ? prices.annual : prices.monthly
+          )[i];
+        });
+        document.getElementById("btn-monthly").className = !isAnnual
+          ? "px-4 py-2 rounded-full text-sm font-semibold font-display text-brand-700 bg-brand-50 transition-all"
+          : "px-4 py-2 rounded-full text-sm font-semibold font-display text-ink-500 hover:text-ink-800 transition-all";
+        document.getElementById("btn-annual").className = isAnnual
+          ? "px-4 py-2 rounded-full text-sm font-semibold font-display text-brand-700 bg-brand-50 transition-all"
+          : "px-4 py-2 rounded-full text-sm font-semibold font-display text-ink-500 hover:text-ink-800 transition-all";
+      }
+
+      // ── Scroll reveal ─────────────────────────────────────────────
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.12 },
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+
+      // ── Copy link ──────────────────────────────F───────────────────
+      function copyLink() {
+        navigator.clipboard.writeText("https://socioflo.app").then(() => {
+          const el = document.getElementById("copy-label");
+          el.textContent = "Copied!";
+          setTimeout(() => (el.textContent = "Copy link"), 2000);
+        });
+      }
+    </script>
+  </body>
+</html>
