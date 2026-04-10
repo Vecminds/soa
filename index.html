@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://f.convertkit.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://app.kit.com; frame-src 'self';" />
     <title>Socioflo — Turn Social Media Into a Lead Machine</title>
     <meta
       name="description"
@@ -585,14 +586,6 @@
                   autocomplete="email"
                 />
                 <button
-                  onclick="
-                    kitSubmit(
-                      'waitlist-email',
-                      'waitlist-form-wrap',
-                      'waitlist-success',
-                      'waitlist-btn',
-                    )
-                  "
                   id="waitlist-btn"
                   class="btn-primary !rounded-xl !py-3 !px-6 !text-sm whitespace-nowrap flex-shrink-0"
                 >
@@ -1132,14 +1125,12 @@
             class="inline-flex items-center gap-3 bg-white border border-surface-100 rounded-full p-1.5 mt-8 shadow-card"
           >
             <button
-              onclick="setAnnual(false)"
               id="btn-monthly"
               class="px-4 py-2 rounded-full text-sm font-semibold font-display text-brand-700 bg-brand-50 transition-all"
             >
               Monthly
             </button>
             <button
-              onclick="setAnnual(true)"
               id="btn-annual"
               class="px-4 py-2 rounded-full text-sm font-semibold font-display text-ink-500 hover:text-ink-800 transition-all"
             >
@@ -1438,14 +1429,6 @@
               autocomplete="email"
             />
             <button
-              onclick="
-                kitSubmit(
-                  'cta-email',
-                  'cta-form-wrap',
-                  'cta-success',
-                  'cta-btn',
-                )
-              "
               id="cta-btn"
               class="btn-primary !rounded-xl !py-3.5 !px-7 !text-sm whitespace-nowrap flex-shrink-0"
             >
@@ -1484,7 +1467,7 @@
           </p>
           <p class="text-brand-600/70 font-body text-sm mt-1">
             Check your email to confirm. Tag us
-            <a href="https://x.com/socioflo" class="underline font-medium"
+            <a href="https://x.com/socioflo" target="_blank" rel="noopener noreferrer" class="underline font-medium"
               >@socioflo</a
             >
             to move up the queue.
@@ -1500,7 +1483,7 @@
             <a
               href="https://twitter.com/intent/tweet?text=Just%20joined%20the%20waitlist%20for%20%40socioflo%20%E2%80%94%20a%20social%20media%20OS%20for%20agencies.%20All%20your%20social%2C%20in%20one%20flow.%20Check%20it%20out%20%F0%9F%9A%80&url=https%3A%2F%2Fsocioflo.app"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               class="inline-flex items-center gap-2 bg-[#0f1419] hover:bg-[#1d2735] text-white text-xs font-semibold font-display px-4 py-2.5 rounded-xl transition-colors"
             >
               <svg
@@ -1518,7 +1501,7 @@
             <a
               href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fsocioflo.app"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               class="inline-flex items-center gap-2 bg-[#0077b5] hover:bg-[#005c8f] text-white text-xs font-semibold font-display px-4 py-2.5 rounded-xl transition-colors"
             >
               <svg
@@ -1534,7 +1517,6 @@
               Share on LinkedIn
             </a>
             <button
-              onclick="copyLink()"
               id="copy-btn"
               class="inline-flex items-center gap-2 bg-surface-50 hover:bg-surface-100 border border-surface-200 text-ink-700 text-xs font-semibold font-display px-4 py-2.5 rounded-xl transition-colors"
             >
@@ -1592,14 +1574,6 @@
                 class="flex-1 bg-white/10 border border-white/10 rounded-xl px-3 py-2 text-xs text-white placeholder-white/30 font-body outline-none focus:border-brand-400 transition-colors"
               />
               <button
-                onclick="
-                  kitSubmit(
-                    'footer-email',
-                    'footer-form-wrap',
-                    'footer-success',
-                    'footer-btn',
-                  )
-                "
                 id="footer-btn"
                 class="flex-shrink-0 bg-brand-500 hover:bg-brand-400 text-white text-xs font-semibold font-display px-3 py-2 rounded-xl transition-colors flex items-center gap-1.5"
               >
@@ -1634,28 +1608,28 @@
               <a
                 href="https://x.com/SociofloApp"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm transition-colors font-display font-bold"
                 >𝕏</a
               >
               <a
                 href="https://linkedin.com/company/sociofloapp"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm transition-colors"
                 >in</a
               >
               <a
                 href="https://instagram.com/socioflo.app"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm transition-colors"
                 >📸</a
               >
               <a
                 href="https://tiktok.com/@socioflo.app"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm transition-colors"
                 >🎵</a
               >
@@ -1799,7 +1773,7 @@
               href="mailto:hi@socioflo.app"
               target="_blank"
               class="text-xs text-white/40 font-body"
-              rel="noopener"
+              rel="noopener noreferrer"
               >hi@socioflo.app</a
             >
           </div>
@@ -2267,6 +2241,39 @@
           setTimeout(() => (el.textContent = "Copy link"), 2000);
         });
       }
+
+      // ── Event Listeners ──────────────────────────────────────────
+      document.addEventListener("DOMContentLoaded", () => {
+        const waitlistBtn = document.getElementById("waitlist-btn");
+        if (waitlistBtn) {
+          waitlistBtn.addEventListener("click", () => kitSubmit("waitlist-email", "waitlist-form-wrap", "waitlist-success", "waitlist-btn"));
+        }
+
+        const ctaBtn = document.getElementById("cta-btn");
+        if (ctaBtn) {
+          ctaBtn.addEventListener("click", () => kitSubmit("cta-email", "cta-form-wrap", "cta-success", "cta-btn"));
+        }
+
+        const footerBtn = document.getElementById("footer-btn");
+        if (footerBtn) {
+          footerBtn.addEventListener("click", () => kitSubmit("footer-email", "footer-form-wrap", "footer-success", "footer-btn"));
+        }
+
+        const btnMonthly = document.getElementById("btn-monthly");
+        if (btnMonthly) {
+          btnMonthly.addEventListener("click", () => setAnnual(false));
+        }
+
+        const btnAnnual = document.getElementById("btn-annual");
+        if (btnAnnual) {
+          btnAnnual.addEventListener("click", () => setAnnual(true));
+        }
+
+        const copyBtn = document.getElementById("copy-btn");
+        if (copyBtn) {
+          copyBtn.addEventListener("click", copyLink);
+        }
+      });
     </script>
   </body>
 </html>
