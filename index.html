@@ -4,17 +4,153 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Socioflo — One place to manage every social channel you run</title>
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKND2LDCNQ"></script>
+
+    <!-- Consent Mode v2 — geo-targeted defaults (must load BEFORE gtag.js) -->
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-TKND2LDCNQ');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      // ── REGULATED REGIONS ────────────────────────────────────
+      // EU/EEA countries (GDPR)
+      var EEA_REGIONS = [
+        "AT",
+        "BE",
+        "BG",
+        "HR",
+        "CY",
+        "CZ",
+        "DK",
+        "EE",
+        "FI",
+        "FR",
+        "DE",
+        "GR",
+        "HU",
+        "IE",
+        "IT",
+        "LV",
+        "LT",
+        "LU",
+        "MT",
+        "NL",
+        "PL",
+        "PT",
+        "RO",
+        "SK",
+        "SI",
+        "ES",
+        "SE",
+        "IS",
+        "LI",
+        "NO", // EEA non-EU members
+      ];
+      // Other regulated regions
+      var OTHER_REGULATED = [
+        "GB", // UK (UK GDPR)
+        "CH", // Switzerland (nDSG / FADP)
+        "BR", // Brazil (LGPD)
+      ];
+      // US states with comprehensive privacy laws
+      var US_REGULATED_STATES = [
+        "US-CA",
+        "US-VA",
+        "US-CO",
+        "US-CT",
+        "US-UT",
+        "US-TX",
+        "US-OR",
+        "US-MT",
+        "US-DE",
+        "US-IA",
+        "US-TN",
+        "US-IN",
+        "US-FL",
+      ];
+
+      var ALL_REGULATED = EEA_REGIONS.concat(
+        OTHER_REGULATED,
+        US_REGULATED_STATES,
+      );
+
+      // Check if user has already made a choice
+      var savedConsent = localStorage.getItem("cookie_consent");
+
+      if (savedConsent === "granted") {
+        // Returning user who accepted → grant everything globally
+        gtag("consent", "default", {
+          ad_storage: "granted",
+          ad_user_data: "granted",
+          ad_personalization: "granted",
+          analytics_storage: "granted",
+          functionality_storage: "granted",
+          personalization_storage: "granted",
+          security_storage: "granted",
+        });
+      } else if (savedConsent === "denied") {
+        // Returning user who declined → deny globally
+        gtag("consent", "default", {
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          analytics_storage: "denied",
+          functionality_storage: "denied",
+          personalization_storage: "denied",
+          security_storage: "granted",
+        });
+      } else {
+        // First-time visitor → region-specific defaults
+        // 1) Regulated regions: deny by default, wait for consent banner
+        gtag("consent", "default", {
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          analytics_storage: "denied",
+          functionality_storage: "denied",
+          personalization_storage: "denied",
+          security_storage: "granted",
+          wait_for_update: 500,
+          region: ALL_REGULATED,
+        });
+        // 2) Rest of world: grant by default (no consent required)
+        gtag("consent", "default", {
+          ad_storage: "granted",
+          ad_user_data: "granted",
+          ad_personalization: "granted",
+          analytics_storage: "granted",
+          functionality_storage: "granted",
+          personalization_storage: "granted",
+          security_storage: "granted",
+        });
+      }
     </script>
-    
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-TKND2LDCNQ"
+    ></script>
+    <script>
+      gtag("js", new Date());
+      gtag("config", "G-TKND2LDCNQ");
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-PRVXWCK3");
+    </script>
+    <!-- End Google Tag Manager -->
+
     <meta
       name="description"
       content="Socioflo gives agencies and brands one place to manage every social channel. Unified inbox, automation, AI content, and scheduling — without the tab-switching."
@@ -431,9 +567,143 @@
           0 2px 16px rgba(12, 15, 10, 0.06),
           0 0 0 1px rgba(12, 15, 10, 0.05);
       }
+
+      /* ── COOKIE CONSENT BANNER ─────────────────────────────── */
+      .consent-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(12, 15, 10, 0.25);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        z-index: 9998;
+        opacity: 0;
+        transition: opacity 0.35s ease;
+        pointer-events: none;
+      }
+      .consent-backdrop.visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .consent-banner {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%) translateY(120%);
+        z-index: 9999;
+        width: calc(100% - 32px);
+        max-width: 520px;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow:
+          0 20px 60px rgba(12, 15, 10, 0.18),
+          0 4px 16px rgba(12, 15, 10, 0.08),
+          0 0 0 1px rgba(12, 15, 10, 0.06);
+        padding: 28px 28px 24px;
+        opacity: 0;
+        transition:
+          transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 0.4s ease;
+      }
+      .consent-banner.visible {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+      .consent-banner.hiding {
+        transform: translateX(-50%) translateY(120%);
+        opacity: 0;
+      }
+      .consent-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #d6f5e3 0%, #b0eaca 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+      }
+      .consent-title {
+        font-family: "Sora", sans-serif;
+        font-weight: 700;
+        font-size: 16px;
+        color: #0c0f0a;
+        letter-spacing: -0.02em;
+      }
+      .consent-text {
+        font-family: "DM Sans", sans-serif;
+        font-size: 13.5px;
+        line-height: 1.6;
+        color: #5a6652;
+        margin-top: 12px;
+      }
+      .consent-text a {
+        color: #25a566;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+      .consent-text a:hover {
+        color: #198652;
+      }
+      .consent-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .consent-btn {
+        flex: 1;
+        padding: 12px 20px;
+        border-radius: 12px;
+        font-family: "Sora", sans-serif;
+        font-weight: 600;
+        font-size: 13.5px;
+        letter-spacing: -0.01em;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s ease;
+      }
+      .consent-btn-accept {
+        background: linear-gradient(135deg, #25a566 0%, #1d9059 100%);
+        color: #fff;
+        box-shadow: 0 4px 14px rgba(37, 165, 102, 0.3);
+      }
+      .consent-btn-accept:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(37, 165, 102, 0.4);
+      }
+      .consent-btn-decline {
+        background: #f7f9f6;
+        color: #3d4637;
+        box-shadow: 0 0 0 1px rgba(12, 15, 10, 0.1);
+      }
+      .consent-btn-decline:hover {
+        background: #eef2ec;
+        transform: translateY(-1px);
+      }
+      @media (max-width: 480px) {
+        .consent-banner {
+          bottom: 12px;
+          padding: 22px 20px 20px;
+          border-radius: 16px;
+        }
+        .consent-actions {
+          flex-direction: column;
+        }
+      }
     </style>
   </head>
   <body class="antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-PRVXWCK3"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <!-- NAV -->
     <nav
       class="nav-blur fixed top-0 left-0 right-0 z-50 border-b border-surface-100"
@@ -2145,6 +2415,196 @@
           .getElementById("copy-btn")
           ?.addEventListener("click", copyLink);
       });
+    </script>
+
+    <!-- ── COOKIE CONSENT BANNER ─────────────────────────────── -->
+    <div id="consent-backdrop" class="consent-backdrop"></div>
+    <div
+      id="consent-banner"
+      class="consent-banner"
+      role="dialog"
+      aria-label="Cookie consent"
+    >
+      <div style="display: flex; align-items: center; gap: 14px">
+        <div class="consent-icon">🍪</div>
+        <span class="consent-title">We value your privacy</span>
+      </div>
+      <p class="consent-text">
+        We use cookies and similar technologies to improve your experience,
+        analyze traffic, and personalize content. You can choose to accept all
+        cookies or decline non-essential ones.
+      </p>
+      <div class="consent-actions">
+        <button id="consent-decline" class="consent-btn consent-btn-decline">
+          Decline
+        </button>
+        <button id="consent-accept" class="consent-btn consent-btn-accept">
+          Accept all
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // ── GEO-TARGETED CONSENT BANNER LOGIC ──────────────────────
+      (function () {
+        var banner = document.getElementById("consent-banner");
+        var backdrop = document.getElementById("consent-backdrop");
+        var stored = localStorage.getItem("cookie_consent");
+
+        // If user already made a choice, don't show anything
+        if (stored) return;
+
+        // ── Regulated country/region codes (must match the consent default) ──
+        var REGULATED_COUNTRIES = [
+          // EU/EEA
+          "AT",
+          "BE",
+          "BG",
+          "HR",
+          "CY",
+          "CZ",
+          "DK",
+          "EE",
+          "FI",
+          "FR",
+          "DE",
+          "GR",
+          "HU",
+          "IE",
+          "IT",
+          "LV",
+          "LT",
+          "LU",
+          "MT",
+          "NL",
+          "PL",
+          "PT",
+          "RO",
+          "SK",
+          "SI",
+          "ES",
+          "SE",
+          "IS",
+          "LI",
+          "NO",
+          // UK, CH, BR
+          "GB",
+          "CH",
+          "BR",
+        ];
+
+        // US states with comprehensive privacy laws
+        var REGULATED_US_STATES = [
+          "California",
+          "Virginia",
+          "Colorado",
+          "Connecticut",
+          "Utah",
+          "Texas",
+          "Oregon",
+          "Montana",
+          "Delaware",
+          "Iowa",
+          "Tennessee",
+          "Indiana",
+          "Florida",
+        ];
+
+        function showBanner() {
+          setTimeout(function () {
+            banner.classList.add("visible");
+            backdrop.classList.add("visible");
+          }, 1200);
+        }
+
+        function hideBanner() {
+          banner.classList.remove("visible");
+          banner.classList.add("hiding");
+          backdrop.classList.remove("visible");
+          setTimeout(function () {
+            banner.style.display = "none";
+            backdrop.style.display = "none";
+          }, 500);
+        }
+
+        function grantAll() {
+          localStorage.setItem("cookie_consent", "granted");
+          gtag("consent", "update", {
+            ad_storage: "granted",
+            ad_user_data: "granted",
+            ad_personalization: "granted",
+            analytics_storage: "granted",
+            functionality_storage: "granted",
+            personalization_storage: "granted",
+            security_storage: "granted",
+          });
+        }
+
+        function denyAll() {
+          localStorage.setItem("cookie_consent", "denied");
+          gtag("consent", "update", {
+            ad_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied",
+            analytics_storage: "denied",
+            functionality_storage: "denied",
+            personalization_storage: "denied",
+            security_storage: "granted",
+          });
+        }
+
+        // ── Geo-lookup: determine if user is in a regulated region ──
+        fetch("https://ipapi.co/json/")
+          .then(function (res) {
+            return res.json();
+          })
+          .then(function (geo) {
+            var country = (geo.country_code || "").toUpperCase();
+            var region = geo.region || "";
+            var needsConsent = false;
+
+            // Check if country is in the regulated list
+            if (REGULATED_COUNTRIES.indexOf(country) !== -1) {
+              needsConsent = true;
+            }
+            // For US visitors, check if their state is regulated
+            if (
+              country === "US" &&
+              REGULATED_US_STATES.indexOf(region) !== -1
+            ) {
+              needsConsent = true;
+            }
+
+            if (needsConsent) {
+              // Show the consent banner for regulated regions
+              showBanner();
+            } else {
+              // Non-regulated region → auto-grant and hide banner
+              grantAll();
+              banner.style.display = "none";
+              backdrop.style.display = "none";
+            }
+          })
+          .catch(function () {
+            // If geo-lookup fails, show the banner as a safe fallback
+            showBanner();
+          });
+
+        // ── Button handlers ──
+        document
+          .getElementById("consent-accept")
+          .addEventListener("click", function () {
+            grantAll();
+            hideBanner();
+          });
+
+        document
+          .getElementById("consent-decline")
+          .addEventListener("click", function () {
+            denyAll();
+            hideBanner();
+          });
+      })();
     </script>
   </body>
 </html>
