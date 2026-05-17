@@ -3,18 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Socioflo — One place to manage every social channel you run</title>
 
-    <!-- Consent Mode v2 — geo-targeted defaults (must load BEFORE gtag.js) -->
+    <!-- Consent Mode v2 — geo-targeted defaults -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-
-      // ── REGULATED REGIONS ────────────────────────────────────
-      // EU/EEA countries (GDPR)
-      var EEA_REGIONS = [
+      var EEA = [
         "AT",
         "BE",
         "BG",
@@ -44,16 +40,10 @@
         "SE",
         "IS",
         "LI",
-        "NO", // EEA non-EU members
+        "NO",
       ];
-      // Other regulated regions
-      var OTHER_REGULATED = [
-        "GB", // UK (UK GDPR)
-        "CH", // Switzerland (nDSG / FADP)
-        "BR", // Brazil (LGPD)
-      ];
-      // US states with comprehensive privacy laws
-      var US_REGULATED_STATES = [
+      var OTHER = ["GB", "CH", "BR"];
+      var US_STATES = [
         "US-CA",
         "US-VA",
         "US-CO",
@@ -68,17 +58,9 @@
         "US-IN",
         "US-FL",
       ];
-
-      var ALL_REGULATED = EEA_REGIONS.concat(
-        OTHER_REGULATED,
-        US_REGULATED_STATES,
-      );
-
-      // Check if user has already made a choice
-      var savedConsent = localStorage.getItem("cookie_consent");
-
-      if (savedConsent === "granted") {
-        // Returning user who accepted → grant everything globally
+      var ALL_REGULATED = EEA.concat(OTHER, US_STATES);
+      var saved = localStorage.getItem("cookie_consent");
+      if (saved === "granted") {
         gtag("consent", "default", {
           ad_storage: "granted",
           ad_user_data: "granted",
@@ -88,8 +70,7 @@
           personalization_storage: "granted",
           security_storage: "granted",
         });
-      } else if (savedConsent === "denied") {
-        // Returning user who declined → deny globally
+      } else if (saved === "denied") {
         gtag("consent", "default", {
           ad_storage: "denied",
           ad_user_data: "denied",
@@ -100,8 +81,6 @@
           security_storage: "granted",
         });
       } else {
-        // First-time visitor → region-specific defaults
-        // 1) Regulated regions: deny by default, wait for consent banner
         gtag("consent", "default", {
           ad_storage: "denied",
           ad_user_data: "denied",
@@ -113,7 +92,6 @@
           wait_for_update: 500,
           region: ALL_REGULATED,
         });
-        // 2) Rest of world: grant by default (no consent required)
         gtag("consent", "default", {
           ad_storage: "granted",
           ad_user_data: "granted",
@@ -125,8 +103,6 @@
         });
       }
     </script>
-
-    <!-- Google tag (gtag.js) -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-TKND2LDCNQ"
@@ -135,8 +111,6 @@
       gtag("js", new Date());
       gtag("config", "G-TKND2LDCNQ");
     </script>
-
-    <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -149,15 +123,17 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-PRVXWCK3");
     </script>
-    <!-- End Google Tag Manager -->
 
+    <title>
+      Socioflo — Turn social conversations into paying customers, automatically
+    </title>
     <meta
       name="description"
-      content="Socioflo gives agencies and brands one place to manage every social channel. Unified inbox, automation, AI content, and scheduling — without the tab-switching."
+      content="Socioflo is an AI-native customer acquisition system for service businesses. Every inbound DM, comment, and mention is automatically qualified, followed up, and converted — without a sales team."
     />
     <meta
       name="keywords"
-      content="social media management, social media OS, agency tools, unified inbox, DM automation, social media scheduling, Instagram management, TikTok management"
+      content="AI customer acquisition, social media lead conversion, inbound DM automation, social sales automation, service business growth, lead qualification automation, social to revenue"
     />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://socioflo.app" />
@@ -166,11 +142,11 @@
     <meta property="og:url" content="https://socioflo.app" />
     <meta
       property="og:title"
-      content="Socioflo — One place to manage every social channel you run"
+      content="Socioflo — Turn social conversations into paying customers, automatically"
     />
     <meta
       property="og:description"
-      content="Unified inbox, automation, AI content, and scheduling for every platform your agency runs. Join the waitlist."
+      content="Every DM, comment, and mention your business gets on social is a potential client. Socioflo qualifies them, follows up, and converts them — without you lifting a finger."
     />
     <meta property="og:image" content="https://socioflo.app/og-image.png" />
     <meta property="og:site_name" content="Socioflo" />
@@ -178,11 +154,11 @@
     <meta name="twitter:site" content="@SociofloApp" />
     <meta
       name="twitter:title"
-      content="Socioflo — One place to manage every social channel you run"
+      content="Socioflo — Turn social conversations into paying customers, automatically"
     />
     <meta
       name="twitter:description"
-      content="Unified inbox, automation, AI content, and scheduling for every platform your agency runs. Join the waitlist."
+      content="Every DM, comment, and mention your business gets on social is a potential client. Socioflo qualifies them, follows up, and converts them — without you lifting a finger."
     />
     <meta name="twitter:image" content="https://socioflo.app/og-image.png" />
     <script type="application/ld+json">
@@ -191,12 +167,13 @@
         "@type": "SoftwareApplication",
         "name": "Socioflo",
         "url": "https://socioflo.app",
-        "description": "Social media management platform for agencies. Unified inbox, DM automation, AI content generation, and multi-platform scheduling.",
+        "description": "AI-native customer acquisition system for service businesses. Converts inbound social media conversations into paying customers automatically.",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
-        "offers": { "@type": "Offer", "price": "49", "priceCurrency": "USD" }
+        "offers": { "@type": "Offer", "price": "69", "priceCurrency": "USD" }
       }
     </script>
+
     <script src="https://f.convertkit.com/ckjs/ck.5.js" async></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -205,6 +182,7 @@
       href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
       rel="stylesheet"
     />
+
     <script>
       tailwind.config = {
         theme: {
@@ -254,6 +232,7 @@
         },
       };
     </script>
+
     <style>
       *,
       *::before,
@@ -276,6 +255,7 @@
       h6 {
         font-family: "Sora", sans-serif;
       }
+
       @keyframes float {
         0%,
         100% {
@@ -330,6 +310,18 @@
           background-position: -200% 0;
         }
       }
+      @keyframes flow-pulse {
+        0%,
+        100% {
+          opacity: 0.4;
+          transform: scaleX(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scaleX(1.02);
+        }
+      }
+
       .animate-float {
         animation: float 5s ease-in-out infinite;
       }
@@ -345,6 +337,10 @@
       .animate-marquee {
         animation: marquee 28s linear infinite;
       }
+      .animate-flow {
+        animation: flow-pulse 2.5s ease-in-out infinite;
+      }
+
       .delay-100 {
         animation-delay: 0.1s;
       }
@@ -360,6 +356,7 @@
       .delay-500 {
         animation-delay: 0.5s;
       }
+
       .gradient-text {
         background: linear-gradient(
           135deg,
@@ -371,6 +368,18 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
+      .gradient-text-warm {
+        background: linear-gradient(
+          135deg,
+          #f59e0b 0%,
+          #25a566 60%,
+          #198652 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
       .btn-primary {
         background: linear-gradient(135deg, #25a566 0%, #1d9059 100%);
         color: #fff;
@@ -413,6 +422,7 @@
           0 6px 20px rgba(12, 15, 10, 0.12),
           0 0 0 1px rgba(12, 15, 10, 0.1);
       }
+
       .card {
         background: #fff;
         border-radius: 20px;
@@ -427,6 +437,7 @@
           0 2px 8px rgba(12, 15, 10, 0.06);
         transform: translateY(-3px);
       }
+
       .stacking-card {
         background: #fff;
         border-radius: 24px;
@@ -452,6 +463,7 @@
             0 2px 20px rgba(12, 15, 10, 0.07);
         }
       }
+
       .feature-icon {
         width: 52px;
         height: 52px;
@@ -475,6 +487,7 @@
           0 0 0 1px rgba(12, 15, 10, 0.06);
         font-family: "Sora", sans-serif;
       }
+
       .pricing-card {
         background: #fff;
         border-radius: 24px;
@@ -504,6 +517,7 @@
         );
         pointer-events: none;
       }
+
       .nav-blur {
         backdrop-filter: blur(16px) saturate(180%);
         -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -519,13 +533,32 @@
         background-size: 200% 100%;
         animation: shimmer 2.5s ease-in-out infinite;
       }
-      .inbox-dot {
+
+      /* Pipeline flow node */
+      .flow-node {
+        background: #fff;
+        border-radius: 16px;
+        border: 1px solid #eef2ec;
+        padding: 16px 20px;
+        box-shadow: 0 2px 12px rgba(12, 15, 10, 0.06);
+      }
+      .flow-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #b0eaca;
+        font-size: 20px;
+      }
+
+      /* Signal dot */
+      .signal-dot {
         width: 8px;
         height: 8px;
         border-radius: 50%;
         background: #25a566;
         box-shadow: 0 0 0 3px rgba(37, 165, 102, 0.2);
       }
+
       ::-webkit-scrollbar {
         width: 6px;
       }
@@ -536,6 +569,7 @@
         background: #b0eaca;
         border-radius: 3px;
       }
+
       .reveal {
         opacity: 0;
         transform: translateY(24px);
@@ -559,16 +593,23 @@
       .reveal-delay-4 {
         transition-delay: 0.4s;
       }
-      .pain-card {
+
+      .outcome-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
         background: #fff;
-        border-radius: 16px;
-        padding: 24px;
-        box-shadow:
-          0 2px 16px rgba(12, 15, 10, 0.06),
-          0 0 0 1px rgba(12, 15, 10, 0.05);
+        border: 1px solid #e2e8df;
+        border-radius: 100px;
+        padding: 6px 14px;
+        font-size: 12px;
+        font-weight: 600;
+        font-family: "Sora", sans-serif;
+        color: #3d4637;
+        box-shadow: 0 1px 6px rgba(12, 15, 10, 0.06);
       }
 
-      /* ── COOKIE CONSENT BANNER ─────────────────────────────── */
+      /* Cookie banner */
       .consent-backdrop {
         position: fixed;
         inset: 0;
@@ -592,7 +633,7 @@
         z-index: 9999;
         width: calc(100% - 32px);
         max-width: 520px;
-        background: #ffffff;
+        background: #fff;
         border-radius: 20px;
         box-shadow:
           0 20px 60px rgba(12, 15, 10, 0.18),
@@ -642,9 +683,6 @@
         text-decoration: underline;
         text-underline-offset: 2px;
       }
-      .consent-text a:hover {
-        color: #198652;
-      }
       .consent-actions {
         display: flex;
         gap: 10px;
@@ -692,8 +730,8 @@
       }
     </style>
   </head>
+
   <body class="antialiased">
-    <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-PRVXWCK3"
@@ -702,9 +740,8 @@
         style="display: none; visibility: hidden"
       ></iframe
     ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
-    <!-- NAV -->
+    <!-- ░░ NAV ░░ -->
     <nav
       class="nav-blur fixed top-0 left-0 right-0 z-50 border-b border-surface-100"
     >
@@ -725,14 +762,14 @@
         </a>
         <div class="hidden md:flex items-center gap-8">
           <a
-            href="#features"
-            class="text-sm font-medium text-ink-600 hover:text-ink-900 transition-colors font-body"
-            >Features</a
-          >
-          <a
             href="#how-it-works"
             class="text-sm font-medium text-ink-600 hover:text-ink-900 transition-colors font-body"
             >How it works</a
+          >
+          <a
+            href="#system"
+            class="text-sm font-medium text-ink-600 hover:text-ink-900 transition-colors font-body"
+            >The system</a
           >
           <a
             href="#pricing"
@@ -741,13 +778,13 @@
           >
         </div>
         <a href="#waitlist" class="btn-primary !py-2.5 !px-5 !text-sm"
-          >Join Waitlist →</a
+          >Get early access →</a
         >
       </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="relative pt-32 pb-24 overflow-hidden bg-mesh">
+    <!-- ░░ HERO ░░ -->
+    <section class="relative pt-32 pb-28 overflow-hidden bg-mesh">
       <div class="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           class="absolute top-[-120px] left-[-100px] w-[600px] h-[600px] rounded-full"
@@ -770,7 +807,7 @@
           "
         ></div>
         <div
-          class="absolute inset-0 opacity-30"
+          class="absolute inset-0 opacity-[0.18]"
           style="
             background-image:
               linear-gradient(#e2e8df 1px, transparent 1px),
@@ -779,36 +816,56 @@
           "
         ></div>
       </div>
+
       <div class="relative max-w-6xl mx-auto px-6">
         <div class="text-center max-w-4xl mx-auto">
           <div
             class="inline-flex items-center gap-2 shimmer-badge rounded-full px-4 py-2 mb-8 animate-slide-up"
           >
+            <span class="relative flex h-2 w-2"
+              ><span
+                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"
+              ></span
+              ><span
+                class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"
+              ></span
+            ></span>
             <span
               class="text-xs font-semibold text-brand-700 font-display tracking-wide uppercase"
-              >Now building — join the waitlist</span
+              >Early access open — limited spots</span
             >
           </div>
 
           <h1
-            class="font-display text-4xl md:text-6xl tracking-tight leading-none mb-6 animate-slide-up delay-100"
-            style="font-weight: 800; letter-spacing: -0.04em; line-height: 1.04"
+            class="font-display text-4xl md:text-[64px] tracking-tight leading-none mb-7 animate-slide-up delay-100"
+            style="font-weight: 800; letter-spacing: -0.04em; line-height: 1.02"
           >
-            One place to manage<br /><span class="gradient-text"
-              >every social channel you run.</span
+            Your social media gets<br />thousands of signals.<br /><span
+              class="gradient-text"
+              >Almost none become clients.</span
             >
           </h1>
 
           <p
-            class="text-xl md:text-2xl text-ink-600 font-body max-w-2xl mx-auto mb-10 leading-relaxed animate-slide-up delay-200"
+            class="text-xl md:text-2xl text-ink-600 font-body max-w-2xl mx-auto mb-4 leading-relaxed animate-slide-up delay-200"
             style="font-weight: 300"
           >
-            Socioflo gives agencies and brands a unified inbox, smart
-            automation, AI-assisted content, and multi-platform scheduling — in
-            a single product.
+            Socioflo is an AI-native system that turns every inbound DM,
+            comment, and mention into a qualified lead — then follows up,
+            nurtures, and converts it into a paying customer. Automatically.
           </p>
 
-          <!-- Hero Waitlist Form -->
+          <p
+            class="text-base text-ink-400 font-body max-w-xl mx-auto mb-10 animate-slide-up delay-200"
+          >
+            Built for service businesses. Not a chatbot. Not a CRM plugin. Not
+            another inbox tool.<br />
+            <span class="text-ink-600 font-medium"
+              >Infrastructure for customer acquisition at scale.</span
+            >
+          </p>
+
+          <!-- Waitlist Form -->
           <div
             class="animate-slide-up delay-300 max-w-lg mx-auto"
             id="waitlist"
@@ -820,7 +877,7 @@
                 <input
                   id="waitlist-email"
                   type="email"
-                  placeholder="your@email.com"
+                  placeholder="your@business.com"
                   class="flex-1 px-4 py-3 text-sm font-body text-ink-900 placeholder-ink-400 bg-transparent outline-none rounded-xl"
                   autocomplete="email"
                 />
@@ -865,471 +922,757 @@
                 </button>
               </div>
               <p class="text-xs text-ink-400 font-body mt-3 text-center">
-                No spam. Unsubscribe anytime.
-                <span class="text-ink-500 font-medium" id="waitlist-count"
-                  >Join others</span
-                >
-                already on the list.
+                No spam. We'll reach out personally before we launch.
               </p>
             </div>
             <div
               id="waitlist-success"
               class="hidden py-5 px-6 bg-brand-50 border border-brand-100 rounded-2xl text-center"
             >
-              <p class="text-2xl mb-1">🎉</p>
+              <p class="text-2xl mb-1">✓</p>
               <p class="text-brand-700 font-semibold font-display">
-                You're on the list.
+                You're in. We'll be in touch.
               </p>
               <p class="text-brand-600/70 font-body text-sm mt-1">
-                Check your inbox to confirm. We'll reach out before launch.
+                Check your inbox to confirm. Follow
+                <a
+                  href="https://x.com/SociofloApp"
+                  class="underline font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >@SociofloApp</a
+                >
+                for updates.
               </p>
             </div>
           </div>
 
+          <!-- Outcome chips -->
           <div
-            class="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 animate-fade-in delay-500"
+            class="mt-10 flex flex-wrap justify-center gap-2.5 animate-fade-in delay-500"
           >
-            <p class="text-sm text-ink-500 font-body">
-              Built for agencies managing multiple client accounts with scalable
-              cloud infrastructure.
-            </p>
-            <!-- <div class="flex items-center gap-1.5">
-              <span class="text-yellow-400 text-sm">★★★★★</span
-              ><span class="text-sm text-ink-500 font-body"
-                >Early testers love it</span
-              >
-            </div> -->
-          </div>
-
-          <div
-            class="mt-10 flex flex-wrap justify-center gap-3 animate-fade-in delay-500"
-          >
-            <span class="platform-badge"><span>📸</span> Instagram</span>
-            <span class="platform-badge"><span>🎵</span> TikTok</span>
-            <span class="platform-badge"><span>💬</span> WhatsApp</span>
-            <span class="platform-badge"><span>🐦</span> X / Twitter</span>
-            <span class="platform-badge"><span>💼</span> LinkedIn</span>
-            <span class="platform-badge"><span>📘</span> Facebook</span>
-            <span class="platform-badge text-ink-500">+ more</span>
+            <span class="outcome-chip"
+              ><span class="text-brand-500">↑</span> Lead qualification
+              rate</span
+            >
+            <span class="outcome-chip"
+              ><span class="text-brand-500">↓</span> Response time to zero</span
+            >
+            <span class="outcome-chip"
+              ><span class="text-brand-500">↑</span> Conversion from DM to
+              booked call</span
+            >
+            <span class="outcome-chip"
+              ><span class="text-brand-500">↓</span> Leads that fall
+              through</span
+            >
+            <span class="outcome-chip"
+              ><span class="text-brand-500">↑</span> Revenue from inbound
+              social</span
+            >
           </div>
         </div>
 
-        <!-- Hero Mockup -->
-        <div class="mt-20 relative animate-slide-up delay-400">
-          <div
-            class="max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-[0_32px_80px_rgba(12,15,10,0.16),0_0_0_1px_rgba(12,15,10,0.06)] animate-float bg-white"
-          >
+        <!-- Pipeline flow diagram -->
+        <div class="mt-20 animate-slide-up delay-400">
+          <div class="max-w-5xl mx-auto">
+            <!-- Browser chrome -->
             <div
-              class="flex items-center gap-2 px-5 py-3.5 border-b border-surface-100 bg-surface-50"
+              class="rounded-2xl overflow-hidden shadow-[0_32px_80px_rgba(12,15,10,0.16),0_0_0_1px_rgba(12,15,10,0.06)] bg-white animate-float"
             >
-              <span class="w-3 h-3 rounded-full bg-red-300"></span
-              ><span class="w-3 h-3 rounded-full bg-yellow-300"></span
-              ><span class="w-3 h-3 rounded-full bg-green-300"></span>
               <div
-                class="ml-4 flex-1 bg-surface-100 rounded-lg px-4 py-1 text-xs text-ink-500 font-body max-w-xs"
+                class="flex items-center gap-2 px-5 py-3.5 border-b border-surface-100 bg-surface-50"
               >
-                web.socioflo.app
-              </div>
-            </div>
-            <div class="flex overflow-hidden" style="height: 340px">
-              <div
-                class="hidden md:flex w-48 border-r border-surface-100 p-4 bg-surface-50 flex-shrink-0 flex-col"
-              >
-                <div class="flex items-center gap-2 mb-5 px-2">
-                  <div
-                    class="w-6 h-6 rounded-lg bg-gradient-to-br from-brand-400 to-brand-600"
-                  ></div>
-                  <span class="text-xs font-semibold font-display text-ink-800"
-                    >XYZ Org</span
-                  >
-                </div>
-                <div class="space-y-0.5">
-                  <div
-                    class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-brand-50 text-brand-700"
-                  >
-                    <span class="text-sm">📥</span
-                    ><span class="text-xs font-medium font-body"
-                      >Unified Inbox</span
-                    ><span
-                      class="ml-auto w-1.5 h-1.5 rounded-full bg-brand-500"
-                    ></span>
-                  </div>
-                  <div
-                    class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-ink-600"
-                  >
-                    <span class="text-sm">⚡</span
-                    ><span class="text-xs font-medium font-body"
-                      >Automation Rules</span
-                    >
-                  </div>
-                  <div
-                    class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-ink-600"
-                  >
-                    <span class="text-sm">✨</span
-                    ><span class="text-xs font-medium font-body"
-                      >AI Content Box</span
-                    >
-                  </div>
-                  <div
-                    class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-ink-600"
-                  >
-                    <span class="text-sm">📅</span
-                    ><span class="text-xs font-medium font-body"
-                      >Scheduler</span
-                    >
-                  </div>
-                  <div
-                    class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-ink-600"
-                  >
-                    <span class="text-sm">📊</span
-                    ><span class="text-xs font-medium font-body">Metrics</span>
-                  </div>
-                  <div
-                    class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-ink-600"
-                  >
-                    <span class="text-sm">📜</span
-                    ><span class="text-xs font-medium font-body">Logs</span>
-                  </div>
-                  <div
-                    class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-ink-600"
-                  >
-                    <span class="text-sm">⚙️</span
-                    ><span class="text-xs font-medium font-body">Setup</span>
-                  </div>
-                </div>
-              </div>
-              <div class="flex-1 min-w-0 p-4 overflow-hidden">
+                <span class="w-3 h-3 rounded-full bg-red-300"></span>
+                <span class="w-3 h-3 rounded-full bg-yellow-300"></span>
+                <span class="w-3 h-3 rounded-full bg-green-300"></span>
                 <div
-                  class="flex md:hidden items-center gap-2 mb-3 overflow-x-auto pb-1"
+                  class="ml-4 flex-1 bg-surface-100 rounded-lg px-4 py-1 text-xs text-ink-500 font-body max-w-xs"
                 >
-                  <div
-                    class="flex items-center gap-1.5 px-2.5 py-1.5 bg-brand-50 rounded-lg text-xs font-medium text-brand-700 font-display whitespace-nowrap flex-shrink-0"
-                  >
-                    📥 Inbox
+                  app.socioflo.app / pipeline
+                </div>
+              </div>
+
+              <!-- App UI: pipeline view -->
+              <div class="flex overflow-hidden" style="height: 360px">
+                <!-- Left sidebar -->
+                <div
+                  class="hidden md:flex w-48 border-r border-surface-100 p-4 bg-surface-50 flex-shrink-0 flex-col"
+                >
+                  <div class="flex items-center gap-2 mb-5 px-2">
+                    <div
+                      class="w-6 h-6 rounded-lg bg-gradient-to-br from-brand-400 to-brand-600"
+                    ></div>
+                    <span
+                      class="text-xs font-semibold font-display text-ink-800"
+                      >Acme Studio</span
+                    >
                   </div>
-                  <div
-                    class="flex items-center gap-1.5 px-2.5 py-1.5 bg-surface-100 rounded-lg text-xs font-medium text-ink-500 font-display whitespace-nowrap flex-shrink-0"
-                  >
-                    ⚡ Automate
-                  </div>
-                  <div
-                    class="flex items-center gap-1.5 px-2.5 py-1.5 bg-surface-100 rounded-lg text-xs font-medium text-ink-500 font-display whitespace-nowrap flex-shrink-0"
-                  >
-                    ✨ AI Studio
-                  </div>
-                  <div
-                    class="flex items-center gap-1.5 px-2.5 py-1.5 bg-surface-100 rounded-lg text-xs font-medium text-ink-500 font-display whitespace-nowrap flex-shrink-0"
-                  >
-                    📅 Schedule
+                  <div class="space-y-0.5">
+                    <div
+                      class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-ink-600"
+                    >
+                      <span class="text-sm">📥</span
+                      ><span class="text-xs font-medium font-body">Inbox</span>
+                    </div>
+                    <div
+                      class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-brand-50 text-brand-700"
+                    >
+                      <span class="text-sm">⚡</span
+                      ><span class="text-xs font-medium font-body"
+                        >Pipeline</span
+                      ><span
+                        class="ml-auto w-1.5 h-1.5 rounded-full bg-brand-500"
+                      ></span>
+                    </div>
+                    <div
+                      class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-ink-600"
+                    >
+                      <span class="text-sm">🎯</span
+                      ><span class="text-xs font-medium font-body"
+                        >Qualification</span
+                      >
+                    </div>
+                    <div
+                      class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-ink-600"
+                    >
+                      <span class="text-sm">🔁</span
+                      ><span class="text-xs font-medium font-body"
+                        >Follow-ups</span
+                      >
+                    </div>
+                    <div
+                      class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-ink-600"
+                    >
+                      <span class="text-sm">📊</span
+                      ><span class="text-xs font-medium font-body"
+                        >Conversions</span
+                      >
+                    </div>
+                    <div
+                      class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-ink-600"
+                    >
+                      <span class="text-sm">📜</span
+                      ><span class="text-xs font-medium font-body">Logs</span>
+                    </div>
+                    <div
+                      class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-ink-600"
+                    >
+                      <span class="text-sm">⚙️</span
+                      ><span class="text-xs font-medium font-body">Setup</span>
+                    </div>
                   </div>
                 </div>
-                <div class="flex items-center justify-between mb-3">
-                  <div>
-                    <h3 class="text-sm font-semibold font-display text-ink-900">
-                      Unified Inbox
-                    </h3>
-                    <p class="text-xs text-ink-500 font-body">
-                      14 unread · 6 accounts
-                    </p>
+
+                <!-- Main pipeline board -->
+                <div class="flex-1 min-w-0 p-4 overflow-hidden">
+                  <!-- Mobile tabs -->
+                  <div
+                    class="flex md:hidden items-center gap-2 mb-3 overflow-x-auto pb-1"
+                  >
+                    <div
+                      class="flex items-center gap-1.5 px-2.5 py-1.5 bg-surface-100 rounded-lg text-xs font-medium text-ink-500 font-display whitespace-nowrap flex-shrink-0"
+                    >
+                      📥 Inbox
+                    </div>
+                    <div
+                      class="flex items-center gap-1.5 px-2.5 py-1.5 bg-brand-50 rounded-lg text-xs font-medium text-brand-700 font-display whitespace-nowrap flex-shrink-0"
+                    >
+                      ⚡ Pipeline
+                    </div>
+                    <div
+                      class="flex items-center gap-1.5 px-2.5 py-1.5 bg-surface-100 rounded-lg text-xs font-medium text-ink-500 font-display whitespace-nowrap flex-shrink-0"
+                    >
+                      📊 Conversions
+                    </div>
                   </div>
-                  <div class="hidden sm:flex gap-1.5">
-                    <div
-                      class="px-2.5 py-1 bg-brand-50 rounded-lg text-[11px] font-medium text-brand-700 font-display"
-                    >
-                      All (14)
+
+                  <div class="flex items-center justify-between mb-3">
+                    <div>
+                      <h3
+                        class="text-sm font-semibold font-display text-ink-900"
+                      >
+                        Acquisition Pipeline
+                      </h3>
+                      <p class="text-xs text-ink-500 font-body">
+                        Today · 28 signals captured · 6 qualified · 2 converted
+                      </p>
                     </div>
-                    <div
-                      class="px-2.5 py-1 bg-surface-100 rounded-lg text-[11px] font-medium text-ink-600 font-display"
-                    >
-                      Instagram
+                    <div class="hidden sm:flex items-center gap-2">
+                      <div
+                        class="w-2 h-2 rounded-full bg-brand-400 animate-pulse-ring"
+                      ></div>
+                      <span
+                        class="text-[11px] text-brand-600 font-semibold font-display"
+                        >Live</span
+                      >
                     </div>
-                    <div
-                      class="px-2.5 py-1 bg-surface-100 rounded-lg text-[11px] font-medium text-ink-600 font-display"
-                    >
-                      TikTok
+                  </div>
+
+                  <!-- Kanban pipeline columns -->
+                  <div class="flex gap-3 h-[260px] overflow-x-auto pb-2">
+                    <!-- Col 1: Captured -->
+                    <div class="flex-shrink-0 w-44">
+                      <div class="flex items-center gap-1.5 mb-2">
+                        <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                        <span
+                          class="text-[10px] font-semibold font-display text-ink-500 uppercase tracking-wide"
+                          >Captured</span
+                        >
+                        <span
+                          class="ml-auto text-[10px] bg-blue-50 text-blue-600 font-semibold font-display px-1.5 py-0.5 rounded-full"
+                          >14</span
+                        >
+                      </div>
+                      <div class="space-y-1.5">
+                        <div
+                          class="bg-white rounded-lg p-2.5 border border-surface-100 shadow-sm"
+                        >
+                          <div class="flex items-center gap-1.5 mb-1">
+                            <span class="text-[10px]">📸</span
+                            ><span
+                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              >@maya.design</span
+                            >
+                          </div>
+                          <p
+                            class="text-[10px] text-ink-400 font-body truncate"
+                          >
+                            "What are your prices for..."
+                          </p>
+                          <span class="text-[9px] text-ink-300 font-body"
+                            >Comment · 3m ago</span
+                          >
+                        </div>
+                        <div
+                          class="bg-white rounded-lg p-2.5 border border-surface-100 shadow-sm"
+                        >
+                          <div class="flex items-center gap-1.5 mb-1">
+                            <span class="text-[10px]">🎵</span
+                            ><span
+                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              >@fitlife_coach</span
+                            >
+                          </div>
+                          <p
+                            class="text-[10px] text-ink-400 font-body truncate"
+                          >
+                            "Do you work with brands?"
+                          </p>
+                          <span class="text-[9px] text-ink-300 font-body"
+                            >DM · 7m ago</span
+                          >
+                        </div>
+                        <div
+                          class="bg-white rounded-lg p-2.5 border border-surface-100 shadow-sm"
+                        >
+                          <div class="flex items-center gap-1.5 mb-1">
+                            <span class="text-[10px]">💬</span
+                            ><span
+                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              >+44 7700 900142</span
+                            >
+                          </div>
+                          <p
+                            class="text-[10px] text-ink-400 font-body truncate"
+                          >
+                            "Hi, saw your post about..."
+                          </p>
+                          <span class="text-[9px] text-ink-300 font-body"
+                            >WhatsApp · 12m ago</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Col 2: Qualifying -->
+                    <div class="flex-shrink-0 w-44">
+                      <div class="flex items-center gap-1.5 mb-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                        <span
+                          class="text-[10px] font-semibold font-display text-ink-500 uppercase tracking-wide"
+                          >Qualifying</span
+                        >
+                        <span
+                          class="ml-auto text-[10px] bg-amber-50 text-amber-600 font-semibold font-display px-1.5 py-0.5 rounded-full"
+                          >8</span
+                        >
+                      </div>
+                      <div class="space-y-1.5">
+                        <div
+                          class="bg-white rounded-lg p-2.5 border border-amber-100 shadow-sm"
+                        >
+                          <div class="flex items-center gap-1.5 mb-1">
+                            <span class="text-[10px]">📸</span
+                            ><span
+                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              >@sarahbrand_co</span
+                            >
+                          </div>
+                          <p
+                            class="text-[10px] text-ink-400 font-body truncate"
+                          >
+                            AI asking: "What's your budget range?"
+                          </p>
+                          <div class="flex items-center gap-1 mt-1">
+                            <span
+                              class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"
+                            ></span
+                            ><span
+                              class="text-[9px] text-amber-500 font-body font-medium"
+                              >AI qualifying now</span
+                            >
+                          </div>
+                        </div>
+                        <div
+                          class="bg-white rounded-lg p-2.5 border border-surface-100 shadow-sm"
+                        >
+                          <div class="flex items-center gap-1.5 mb-1">
+                            <span class="text-[10px]">💼</span
+                            ><span
+                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              >techventures_hq</span
+                            >
+                          </div>
+                          <p
+                            class="text-[10px] text-ink-400 font-body truncate"
+                          >
+                            Score: 82 / 100
+                          </p>
+                          <span
+                            class="text-[9px] text-brand-500 font-body font-medium"
+                            >High intent ↑</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Col 3: Qualified -->
+                    <div class="flex-shrink-0 w-44">
+                      <div class="flex items-center gap-1.5 mb-2">
+                        <span class="w-2 h-2 rounded-full bg-brand-500"></span>
+                        <span
+                          class="text-[10px] font-semibold font-display text-ink-500 uppercase tracking-wide"
+                          >Qualified</span
+                        >
+                        <span
+                          class="ml-auto text-[10px] bg-brand-50 text-brand-600 font-semibold font-display px-1.5 py-0.5 rounded-full"
+                          >6</span
+                        >
+                      </div>
+                      <div class="space-y-1.5">
+                        <div
+                          class="bg-white rounded-lg p-2.5 border border-brand-100 shadow-sm"
+                        >
+                          <div class="flex items-center gap-1.5 mb-1">
+                            <span class="text-[10px]">📸</span
+                            ><span
+                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              >@james.studio</span
+                            >
+                          </div>
+                          <p
+                            class="text-[10px] text-ink-400 font-body truncate"
+                          >
+                            Ready for discovery call
+                          </p>
+                          <span
+                            class="text-[9px] text-brand-600 font-body font-medium"
+                            >Follow-up sent ✓</span
+                          >
+                        </div>
+                        <div
+                          class="bg-white rounded-lg p-2.5 border border-brand-100 shadow-sm"
+                        >
+                          <div class="flex items-center gap-1.5 mb-1">
+                            <span class="text-[10px]">🎵</span
+                            ><span
+                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              >@novaagency</span
+                            >
+                          </div>
+                          <p
+                            class="text-[10px] text-ink-400 font-body truncate"
+                          >
+                            Budget: $2k–5k/mo
+                          </p>
+                          <span
+                            class="text-[9px] text-brand-600 font-body font-medium"
+                            >Nurture active ✓</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Col 4: Converted -->
+                    <div class="flex-shrink-0 w-44">
+                      <div class="flex items-center gap-1.5 mb-2">
+                        <span
+                          class="w-2 h-2 rounded-full bg-emerald-500"
+                        ></span>
+                        <span
+                          class="text-[10px] font-semibold font-display text-ink-500 uppercase tracking-wide"
+                          >Converted</span
+                        >
+                        <span
+                          class="ml-auto text-[10px] bg-emerald-50 text-emerald-600 font-semibold font-display px-1.5 py-0.5 rounded-full"
+                          >2 today</span
+                        >
+                      </div>
+                      <div class="space-y-1.5">
+                        <div
+                          class="bg-gradient-to-br from-brand-50 to-emerald-50 rounded-lg p-2.5 border border-brand-100 shadow-sm"
+                        >
+                          <div class="flex items-center gap-1.5 mb-1">
+                            <span class="text-[10px]">💬</span
+                            ><span
+                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              >@luna_wellness</span
+                            >
+                          </div>
+                          <p
+                            class="text-[10px] text-emerald-600 font-body font-medium"
+                          >
+                            Booked · $1,800/mo
+                          </p>
+                          <span class="text-[9px] text-ink-300 font-body"
+                            >Via Instagram DM → call</span
+                          >
+                        </div>
+                        <div
+                          class="bg-gradient-to-br from-brand-50 to-emerald-50 rounded-lg p-2.5 border border-brand-100 shadow-sm"
+                        >
+                          <div class="flex items-center gap-1.5 mb-1">
+                            <span class="text-[10px]">📸</span
+                            ><span
+                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              >@redbrick_build</span
+                            >
+                          </div>
+                          <p
+                            class="text-[10px] text-emerald-600 font-body font-medium"
+                          >
+                            Closed · $4,500
+                          </p>
+                          <span class="text-[9px] text-ink-300 font-body"
+                            >Comment → DM → deal</span
+                          >
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="space-y-2">
-                  <div
-                    class="flex items-center gap-3 p-3 bg-white rounded-xl border border-surface-100 shadow-sm"
+
+                <!-- Right: today's metrics -->
+                <div
+                  class="hidden lg:flex w-52 border-l border-surface-100 p-4 bg-surface-50 flex-shrink-0 flex-col"
+                >
+                  <p
+                    class="text-xs font-semibold font-display text-ink-800 mb-3"
                   >
+                    Revenue impact
+                  </p>
+                  <div class="space-y-2.5">
                     <div
-                      class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-300 to-purple-300 flex-shrink-0 flex items-center justify-center text-xs"
+                      class="bg-white rounded-xl p-3 shadow-sm border border-surface-100"
                     >
-                      😊
-                    </div>
-                    <div class="flex-1 min-w-0">
-                      <div class="flex items-center justify-between gap-2">
-                        <span
-                          class="text-xs font-semibold font-display text-ink-900 truncate"
-                          >@sarah_creates</span
-                        ><span
-                          class="text-[10px] text-ink-400 font-body flex-shrink-0"
-                          >2m ago</span
-                        >
-                      </div>
-                      <p class="text-xs text-ink-500 font-body truncate">
-                        Loved your post! Can you DM me your pricing?
+                      <p class="text-[10px] text-ink-400 font-body mb-1">
+                        Closed this week
+                      </p>
+                      <p class="text-base font-bold font-display text-ink-900">
+                        $6,300
+                      </p>
+                      <p
+                        class="text-[10px] text-brand-600 font-body font-medium"
+                      >
+                        from social conversations
                       </p>
                     </div>
-                    <div class="inbox-dot flex-shrink-0"></div>
-                  </div>
-                  <div
-                    class="flex items-center gap-3 p-3 bg-white rounded-xl border border-surface-100 shadow-sm"
-                  >
                     <div
-                      class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-200 to-cyan-200 flex-shrink-0 flex items-center justify-center text-xs"
+                      class="bg-white rounded-xl p-3 shadow-sm border border-surface-100"
                     >
-                      🚀
-                    </div>
-                    <div class="flex-1 min-w-0">
-                      <div class="flex items-center justify-between gap-2">
-                        <span
-                          class="text-xs font-semibold font-display text-ink-900 truncate"
-                          >brandaccount_hq</span
-                        ><span
-                          class="text-[10px] text-ink-400 font-body flex-shrink-0"
-                          >8m ago</span
-                        >
-                      </div>
-                      <p class="text-xs text-ink-500 font-body truncate">
-                        Partnership opportunity — let's collab on the new…
+                      <p class="text-[10px] text-ink-400 font-body mb-1">
+                        Avg response time
+                      </p>
+                      <p class="text-base font-bold font-display text-ink-900">
+                        &lt; 90s
+                      </p>
+                      <p
+                        class="text-[10px] text-brand-600 font-body font-medium"
+                      >
+                        was 14h manually
                       </p>
                     </div>
-                    <div class="inbox-dot flex-shrink-0"></div>
-                  </div>
-                  <div
-                    class="flex items-center gap-3 p-3 bg-surface-50 rounded-xl border border-surface-100"
-                  >
                     <div
-                      class="w-8 h-8 rounded-full bg-gradient-to-br from-green-200 to-teal-200 flex-shrink-0 flex items-center justify-center text-xs"
+                      class="bg-white rounded-xl p-3 shadow-sm border border-surface-100"
                     >
-                      🤖
-                    </div>
-                    <div class="flex-1 min-w-0">
-                      <div class="flex items-center justify-between gap-2">
-                        <span
-                          class="text-xs font-semibold font-display text-ink-700 truncate"
-                          >tiktoker_pro</span
-                        ><span
-                          class="text-[10px] text-ink-400 font-body flex-shrink-0"
-                          >1h ago</span
-                        >
-                      </div>
-                      <p class="text-xs text-ink-400 font-body truncate">
-                        Auto-replied via workflow ✓
+                      <p class="text-[10px] text-ink-400 font-body mb-1">
+                        Conversion rate
+                      </p>
+                      <p class="text-base font-bold font-display text-ink-900">
+                        21%
+                      </p>
+                      <p class="text-[10px] text-ink-400 font-body">
+                        signal → qualified
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+
+            <!-- Floating cards -->
+            <div
+              class="absolute -left-6 top-1/3 card px-4 py-3 hidden lg:flex items-center gap-3 animate-float"
+              style="animation-delay: 0.8s"
+            >
               <div
-                class="hidden lg:flex w-52 border-l border-surface-100 p-4 bg-surface-50 flex-shrink-0 flex-col"
+                class="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center text-lg"
               >
-                <p class="text-xs font-semibold font-display text-ink-800 mb-3">
-                  Today's snapshot
+                💰
+              </div>
+              <div>
+                <p class="text-xs font-semibold font-display text-ink-900">
+                  New client closed
                 </p>
-                <div class="space-y-2.5">
-                  <div
-                    class="bg-white rounded-xl p-3 shadow-sm border border-surface-100"
-                  >
-                    <p class="text-[10px] text-ink-400 font-body mb-1">
-                      Total Reach
-                    </p>
-                    <p class="text-base font-bold font-display text-ink-900">
-                      128.4K
-                    </p>
-                    <p class="text-[10px] text-brand-600 font-body font-medium">
-                      ↑ 12.3% vs yesterday
-                    </p>
-                  </div>
-                  <div
-                    class="bg-white rounded-xl p-3 shadow-sm border border-surface-100"
-                  >
-                    <p class="text-[10px] text-ink-400 font-body mb-1">
-                      Engagement Rate
-                    </p>
-                    <p class="text-base font-bold font-display text-ink-900">
-                      4.8%
-                    </p>
-                    <p class="text-[10px] text-brand-600 font-body font-medium">
-                      ↑ 0.4% this week
-                    </p>
-                  </div>
-                  <div
-                    class="bg-white rounded-xl p-3 shadow-sm border border-surface-100"
-                  >
-                    <p class="text-[10px] text-ink-400 font-body mb-1">
-                      Posts Scheduled
-                    </p>
-                    <p class="text-base font-bold font-display text-ink-900">
-                      24
-                    </p>
-                    <p class="text-[10px] text-ink-400 font-body">
-                      across 6 platforms
-                    </p>
-                  </div>
-                </div>
+                <p class="text-[10px] text-ink-400 font-body">
+                  From a comment. No manual work.
+                </p>
               </div>
             </div>
-          </div>
-          <div
-            class="absolute -left-6 top-1/3 card px-4 py-3 hidden lg:flex items-center gap-3 animate-float"
-            style="animation-delay: 0.8s"
-          >
             <div
-              class="w-9 h-9 rounded-xl bg-brand-50 flex items-center justify-center text-lg"
+              class="absolute -right-6 top-1/4 card px-4 py-3 hidden lg:flex items-center gap-3 animate-float"
+              style="animation-delay: 1.4s"
             >
-              ✨
-            </div>
-            <div>
-              <p class="text-xs font-semibold font-display text-ink-900">
-                1 brief → 4 posts
-              </p>
-              <p class="text-[10px] text-ink-400 font-body">
-                Formatted for every platform
-              </p>
-            </div>
-          </div>
-          <div
-            class="absolute -right-6 top-1/4 card px-4 py-3 hidden lg:flex items-center gap-3 animate-float"
-            style="animation-delay: 1.4s"
-          >
-            <div
-              class="w-9 h-9 rounded-xl bg-brand-50 flex items-center justify-center text-lg"
-            >
-              ⚡
-            </div>
-            <div>
-              <p class="text-xs font-semibold font-display text-ink-900">
-                Auto-replied
-              </p>
-              <p class="text-[10px] text-ink-400 font-body">
-                3 DMs handled while you slept
-              </p>
+              <div
+                class="w-9 h-9 rounded-xl bg-brand-50 flex items-center justify-center text-lg"
+              >
+                🎯
+              </div>
+              <div>
+                <p class="text-xs font-semibold font-display text-ink-900">
+                  Lead scored: 94/100
+                </p>
+                <p class="text-[10px] text-ink-400 font-body">
+                  Routed for immediate follow-up
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PLATFORM MARQUEE -->
+    <!-- ░░ PLATFORM MARQUEE ░░ -->
     <section
       class="py-12 border-y border-surface-100 bg-surface-50 overflow-hidden"
     >
       <p
         class="text-center text-xs font-semibold font-display uppercase tracking-widest text-ink-400 mb-8"
       >
-        Works with every platform your clients/brands are on
+        Captures inbound signals from every platform your customers use
       </p>
       <div
         class="flex gap-12 animate-marquee whitespace-nowrap"
         style="width: max-content"
       >
-        <span class="platform-badge">📸 Instagram</span
-        ><span class="platform-badge">🎵 TikTok</span
-        ><span class="platform-badge">💬 WhatsApp Business</span
-        ><span class="platform-badge">🐦 X / Twitter</span
-        ><span class="platform-badge">💼 LinkedIn</span
-        ><span class="platform-badge">📘 Facebook</span
-        ><span class="platform-badge">🌐 Threads</span
-        ><span class="platform-badge">📱 Telegram</span>
-        <span class="platform-badge">📸 Instagram</span
-        ><span class="platform-badge">🎵 TikTok</span
-        ><span class="platform-badge">💬 WhatsApp Business</span
-        ><span class="platform-badge">🐦 X / Twitter</span
-        ><span class="platform-badge">💼 LinkedIn</span
-        ><span class="platform-badge">📘 Facebook</span
-        ><span class="platform-badge">🌐 Threads</span
-        ><span class="platform-badge">📱 Telegram</span>
+        <span class="platform-badge">📸 Instagram DMs & Comments</span>
+        <span class="platform-badge">🎵 TikTok Comments & DMs</span>
+        <span class="platform-badge">💬 WhatsApp Business</span>
+        <span class="platform-badge">🐦 X Mentions & DMs</span>
+        <span class="platform-badge">💼 LinkedIn Messages</span>
+        <span class="platform-badge">📘 Facebook Messenger</span>
+        <span class="platform-badge">🌐 Threads</span>
+        <span class="platform-badge">📱 Telegram</span>
+        <span class="platform-badge">📸 Instagram DMs & Comments</span>
+        <span class="platform-badge">🎵 TikTok Comments & DMs</span>
+        <span class="platform-badge">💬 WhatsApp Business</span>
+        <span class="platform-badge">🐦 X Mentions & DMs</span>
+        <span class="platform-badge">💼 LinkedIn Messages</span>
+        <span class="platform-badge">📘 Facebook Messenger</span>
+        <span class="platform-badge">🌐 Threads</span>
+        <span class="platform-badge">📱 Telegram</span>
       </div>
     </section>
 
-    <!-- PROBLEM -->
+    <!-- ░░ PROBLEM ░░ -->
     <section class="py-28 bg-surface-0">
       <div class="max-w-5xl mx-auto px-6">
         <div class="text-center mb-16 reveal">
           <span
             class="inline-flex items-center gap-2 bg-red-50 text-red-600 rounded-full px-4 py-1.5 text-xs font-semibold font-display tracking-wide uppercase mb-4"
-            >The problem</span
+            >The real problem</span
           >
           <h2
             class="text-4xl md:text-5xl font-display text-ink-900 tracking-tight mb-5"
             style="font-weight: 800; letter-spacing: -0.03em"
           >
-            Running social at scale<br />is still a mess.
+            Your social media is generating<br />more demand than you can
+            convert.
           </h2>
           <p
-            class="text-lg text-ink-500 font-body max-w-xl mx-auto leading-relaxed"
+            class="text-lg text-ink-500 font-body max-w-2xl mx-auto leading-relaxed"
           >
-            Managing 10 clients across 6 platforms with 4 different tools isn't
-            a workflow. It's a liability.
+            Every post you publish creates inbound signals — comments, DMs,
+            mentions, replies. Most of them are people one conversation away
+            from becoming a client. Most of them never hear back fast enough.
           </p>
         </div>
-        <div class="grid md:grid-cols-3 gap-5">
-          <div class="pain-card reveal">
-            <div class="text-2xl mb-3">📱</div>
+
+        <div class="grid md:grid-cols-3 gap-5 mb-10">
+          <div
+            class="bg-white rounded-2xl p-6 border border-surface-100 shadow-card reveal"
+          >
+            <div class="text-3xl mb-4">⏰</div>
             <h3
               class="font-display text-ink-900 mb-2 text-lg"
               style="font-weight: 700"
             >
-              Too many tabs
+              The 5-minute rule is real
             </h3>
             <p class="text-sm text-ink-500 font-body leading-relaxed">
-              Your team bounces between Instagram, TikTok, WhatsApp, and three
-              other tools just to check messages. Hours lost every day.
+              Studies consistently show that responding to a lead within 5
+              minutes is 21x more effective than responding after 30 minutes.
+              Your average manual response time is measured in hours.
             </p>
           </div>
-          <div class="pain-card reveal reveal-delay-1">
-            <div class="text-2xl mb-3">🔕</div>
+          <div
+            class="bg-white rounded-2xl p-6 border border-surface-100 shadow-card reveal reveal-delay-1"
+          >
+            <div class="text-3xl mb-4">🔍</div>
             <h3
               class="font-display text-ink-900 mb-2 text-lg"
               style="font-weight: 700"
             >
-              Leads fall through the cracks
+              You can't qualify at scale
             </h3>
             <p class="text-sm text-ink-500 font-body leading-relaxed">
-              A DM arrives at 11pm. Nobody sees it until morning. The prospect
-              already messaged someone else. It happens every week.
+              When 50 comments come in on a post, you can't read all of them,
+              identify the buyers, ask qualifying questions, and follow up —
+              before they've moved on. A human can't. A system can.
             </p>
           </div>
-          <div class="pain-card reveal reveal-delay-2">
-            <div class="text-2xl mb-3">🔁</div>
+          <div
+            class="bg-white rounded-2xl p-6 border border-surface-100 shadow-card reveal reveal-delay-2"
+          >
+            <div class="text-3xl mb-4">📉</div>
             <h3
               class="font-display text-ink-900 mb-2 text-lg"
               style="font-weight: 700"
             >
-              Content takes forever
+              The gap is invisible until it isn't
             </h3>
             <p class="text-sm text-ink-500 font-body leading-relaxed">
-              Writing, resizing, and scheduling one post across six platforms
-              eats half a day. Then you do it again tomorrow, for every client.
+              You don't see the leads you're losing. They just quietly disappear
+              — into a competitor's DMs, or into silence. Socioflo makes the gap
+              visible. Then it closes it.
             </p>
+          </div>
+        </div>
+
+        <!-- The gap callout -->
+        <div class="bg-ink-900 rounded-2xl p-8 md:p-10 text-white reveal">
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <p
+                class="text-brand-400 text-xs font-semibold font-display uppercase tracking-widest mb-3"
+              >
+                The acquisition gap
+              </p>
+              <h3
+                class="text-2xl md:text-3xl font-display mb-4"
+                style="font-weight: 700; letter-spacing: -0.02em"
+              >
+                Between someone showing interest on social and them becoming a
+                paying client, there is a gap. Most businesses have no system to
+                close it.
+              </h3>
+              <p class="text-white/60 font-body text-sm leading-relaxed">
+                Socioflo is that system. It sits between your content and your
+                revenue — capturing every signal, qualifying every prospect,
+                following up on every conversation, and routing the right people
+                to your sales process at the right moment.
+              </p>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center gap-4 bg-white/5 rounded-xl p-4">
+                <div
+                  class="w-10 h-10 rounded-xl bg-brand-500/20 flex items-center justify-center text-xl flex-shrink-0"
+                >
+                  📢
+                </div>
+                <div>
+                  <p class="text-sm font-semibold font-display text-white">
+                    You publish content
+                  </p>
+                  <p class="text-xs text-white/40 font-body">
+                    Signals start flowing in immediately
+                  </p>
+                </div>
+              </div>
+              <div class="flex justify-center">
+                <div class="w-px h-6 bg-white/10"></div>
+              </div>
+              <div
+                class="flex items-center gap-4 bg-brand-500/10 border border-brand-500/20 rounded-xl p-4"
+              >
+                <div
+                  class="w-10 h-10 rounded-xl bg-brand-500/30 flex items-center justify-center text-xl flex-shrink-0"
+                >
+                  ⚡
+                </div>
+                <div>
+                  <p class="text-sm font-semibold font-display text-brand-300">
+                    Socioflo captures, qualifies, follows up
+                  </p>
+                  <p class="text-xs text-white/40 font-body">
+                    Automatically. In under 90 seconds.
+                  </p>
+                </div>
+              </div>
+              <div class="flex justify-center">
+                <div class="w-px h-6 bg-white/10"></div>
+              </div>
+              <div class="flex items-center gap-4 bg-white/5 rounded-xl p-4">
+                <div
+                  class="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center text-xl flex-shrink-0"
+                >
+                  💰
+                </div>
+                <div>
+                  <p class="text-sm font-semibold font-display text-white">
+                    Qualified leads reach your sales process
+                  </p>
+                  <p class="text-xs text-white/40 font-body">
+                    Warm, scored, and ready to close
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FEATURES -->
-    <section id="features" class="py-28 bg-surface-50">
+    <!-- ░░ THE SYSTEM ░░ -->
+    <section id="system" class="py-28 bg-surface-50">
       <div class="max-w-5xl mx-auto px-6">
         <div class="text-center mb-20 reveal">
           <span
             class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-display tracking-wide uppercase mb-4"
-            >What Socioflo does</span
+            >The acquisition system</span
           >
           <h2
             class="text-4xl md:text-5xl font-display text-ink-900 tracking-tight mb-4"
             style="font-weight: 800; letter-spacing: -0.03em"
           >
-            Everything in one product.<br />Nothing bolted on.
+            Five layers. One outcome.<br />Paying customers.
           </h2>
           <p
             class="text-lg text-ink-500 font-body max-w-xl mx-auto leading-relaxed"
           >
-            Four core capabilities, built to work together — not as four
-            separate tools you have to stitch together yourself.
+            Each layer does a specific job. Together, they form a complete
+            customer acquisition operation running 24/7 on your social channels.
           </p>
         </div>
         <div
@@ -1339,54 +1682,181 @@
       </div>
     </section>
 
-    <!-- HOW IT WORKS -->
+    <!-- ░░ HOW IT WORKS ░░ -->
     <section id="how-it-works" class="py-28 bg-surface-0">
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-20 reveal">
           <span
             class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-display tracking-wide uppercase mb-4"
-            >Getting started</span
+            >How it runs</span
           >
           <h2
             class="text-4xl md:text-5xl font-display text-ink-900 tracking-tight mb-4"
             style="font-weight: 800; letter-spacing: -0.03em"
           >
-            Set up in minutes.<br />See results the same day.
+            Connect once.<br />Acquire customers continuously.
           </h2>
           <p class="text-lg text-ink-500 font-body max-w-xl mx-auto">
-            No complex onboarding. Connect your accounts, configure automation,
-            and start working — without a dedicated ops person.
+            No manual work after setup. The system runs your acquisition
+            pipeline in the background while you focus on delivering for
+            clients.
           </p>
         </div>
         <div class="grid md:grid-cols-4 gap-6" id="how-it-works-grid"></div>
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="py-28 bg-surface-50">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16 reveal">
-          <span
-            class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-display tracking-wide uppercase mb-4"
-            >Early status</span
-          >
-          <!-- <h2
-            class="text-4xl md:text-5xl font-display text-ink-900 tracking-tight"
+    <!-- ░░ WHO IT'S FOR ░░ -->
+    <section class="py-24 bg-surface-50 border-t border-surface-100">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-12 reveal">
+          <h2
+            class="text-3xl md:text-4xl font-display text-ink-900 tracking-tight mb-3"
             style="font-weight: 800; letter-spacing: -0.03em"
           >
-            What our beta<br />users are saying.
-          </h2> -->
+            Built for service businesses<br />with inbound social demand.
+          </h2>
+          <p class="text-ink-500 font-body">
+            If people are already reaching out to you on social — but you're not
+            converting them systematically — this is built for you.
+          </p>
         </div>
-        <div class="grid md:grid-cols-3 gap-6" id="testimonials-grid"></div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div
+            class="reveal bg-brand-50 border border-brand-100 rounded-2xl p-7"
+          >
+            <div class="flex items-center gap-2.5 mb-5">
+              <div
+                class="w-8 h-8 rounded-xl bg-brand-500 flex items-center justify-center text-white text-sm"
+                style="font-weight: 700"
+              >
+                ✓
+              </div>
+              <h3
+                class="font-display text-ink-900 text-lg"
+                style="font-weight: 700"
+              >
+                Socioflo is right for you if…
+              </h3>
+            </div>
+            <ul class="space-y-3.5">
+              <li
+                class="flex items-start gap-3 text-sm text-ink-700 font-body leading-relaxed"
+              >
+                <span class="text-brand-500 mt-0.5 flex-shrink-0 font-bold"
+                  >✓</span
+                >You're a service business — agency, coach, consultant, local
+                service, SaaS — that gets inbound interest on social but has no
+                systematic way to qualify and convert it
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-ink-700 font-body leading-relaxed"
+              >
+                <span class="text-brand-500 mt-0.5 flex-shrink-0 font-bold"
+                  >✓</span
+                >You know you're missing leads. Comments, DMs, and mentions go
+                unanswered for hours — or get a generic reply that kills intent
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-ink-700 font-body leading-relaxed"
+              >
+                <span class="text-brand-500 mt-0.5 flex-shrink-0 font-bold"
+                  >✓</span
+                >You want to measure revenue from social — not just reach, not
+                engagement, not followers. Actual closed clients
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-ink-700 font-body leading-relaxed"
+              >
+                <span class="text-brand-500 mt-0.5 flex-shrink-0 font-bold"
+                  >✓</span
+                >You want infrastructure that scales without headcount — one
+                system handling 10 clients' pipelines as easily as one
+              </li>
+            </ul>
+          </div>
+          <div
+            class="reveal reveal-delay-1 bg-surface-0 border border-surface-200 rounded-2xl p-7"
+          >
+            <div class="flex items-center gap-2.5 mb-5">
+              <div
+                class="w-8 h-8 rounded-xl bg-surface-200 flex items-center justify-center text-ink-500 text-sm"
+                style="font-weight: 700"
+              >
+                –
+              </div>
+              <h3
+                class="font-display text-ink-900 text-lg"
+                style="font-weight: 700"
+              >
+                Socioflo is not the right fit if…
+              </h3>
+            </div>
+            <ul class="space-y-3.5">
+              <li
+                class="flex items-start gap-3 text-sm text-ink-500 font-body leading-relaxed"
+              >
+                <span class="text-ink-300 mt-0.5 flex-shrink-0 font-bold"
+                  >–</span
+                >You're a pure e-commerce brand with no human sales process — a
+                different class of automation tools is better suited
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-ink-500 font-body leading-relaxed"
+              >
+                <span class="text-ink-300 mt-0.5 flex-shrink-0 font-bold"
+                  >–</span
+                >You don't get any inbound social engagement today — the system
+                amplifies existing demand, it doesn't create it from scratch
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-ink-500 font-body leading-relaxed"
+              >
+                <span class="text-ink-300 mt-0.5 flex-shrink-0 font-bold"
+                  >–</span
+                >You need enterprise-grade CRM replacement, SOC2 compliance, or
+                Salesforce deep integration — that's not where we are yet
+              </li>
+              <li
+                class="flex items-start gap-3 text-sm text-ink-500 font-body leading-relaxed"
+              >
+                <span class="text-ink-300 mt-0.5 flex-shrink-0 font-bold"
+                  >–</span
+                >You're a solo freelancer with 1–2 clients and low social volume
+                — the ROI only compounds at moderate inbound scale
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ EARLY STATUS / STATS ░░ -->
+    <section class="py-20 bg-surface-0">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-10 reveal">
+          <span
+            class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-display tracking-wide uppercase mb-4"
+            >Where we are</span
+          >
+        </div>
         <div
           class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal"
           id="stats-grid"
         ></div>
+        <div class="mt-10 max-w-3xl mx-auto text-center reveal">
+          <p class="text-ink-500 font-body text-sm leading-relaxed">
+            We're in early development and working closely with a small group of
+            service businesses and agencies to build this right. If you have
+            strong inbound social demand and no system to convert it, we want to
+            talk to you — not just add you to a list.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- PRICING -->
-    <section id="pricing" class="py-28 bg-surface-0">
+    <!-- ░░ PRICING ░░ -->
+    <section id="pricing" class="py-28 bg-surface-50">
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-16 reveal">
           <span
@@ -1397,10 +1867,12 @@
             class="text-4xl md:text-5xl font-display text-ink-900 tracking-tight mb-4"
             style="font-weight: 800; letter-spacing: -0.03em"
           >
-            Predictable pricing.<br />No surprises.
+            Priced on outcomes,<br />not on seat count.
           </h2>
-          <p class="text-lg text-ink-500 font-body">
-            Pay for what you need. Upgrade when you're ready.
+          <p class="text-lg text-ink-500 font-body max-w-xl mx-auto">
+            Flat monthly price per workspace. No per-user fees. No contact-based
+            billing. If the system closes two clients this month, you should
+            keep most of that revenue — not send it back to us.
           </p>
           <div
             class="inline-flex items-center gap-3 bg-white border border-surface-100 rounded-full p-1.5 mt-8 shadow-card"
@@ -1419,13 +1891,15 @@
             </button>
           </div>
         </div>
+
         <div class="grid md:grid-cols-3 gap-6 items-stretch">
+          <!-- Growth -->
           <div class="pricing-card p-8 reveal">
             <div class="mb-6">
               <p
                 class="text-xs font-semibold font-display uppercase tracking-widest text-ink-400 mb-2"
               >
-                Starter
+                Growth
               </p>
               <div class="flex items-end gap-1">
                 <span
@@ -1436,7 +1910,7 @@
                 ><span class="text-ink-400 font-body mb-1">/mo</span>
               </div>
               <p class="text-sm text-ink-500 font-body mt-1">
-                For freelancers and small teams
+                For solo operators and early-stage businesses
               </p>
             </div>
             <div class="h-px bg-surface-100 mb-6"></div>
@@ -1444,38 +1918,54 @@
               <li
                 class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
               >
-                <span class="text-brand-500">✓</span> Up to 5 social accounts
+                <span class="text-brand-500">✓</span> 1 workspace (your
+                business)
               </li>
               <li
                 class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
               >
-                <span class="text-brand-500">✓</span> Unified inbox
+                <span class="text-brand-500">✓</span> 5 connected social
+                accounts
               </li>
               <li
                 class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
               >
-                <span class="text-brand-500">✓</span> Post scheduling
+                <span class="text-brand-500">✓</span> Inbound signal capture
               </li>
               <li
                 class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
               >
-                <span class="text-brand-500">✓</span> Basic analytics
+                <span class="text-brand-500">✓</span> Basic lead qualification
+                (3 flows)
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
+              >
+                <span class="text-brand-500">✓</span> Unified conversation inbox
               </li>
               <li
                 class="flex items-center gap-2.5 text-sm text-ink-400 font-body"
               >
-                <span class="text-ink-200">✗</span> Automation workflows
+                <span class="text-ink-200">✗</span> Full sales orchestration
               </li>
               <li
                 class="flex items-center gap-2.5 text-sm text-ink-400 font-body"
               >
-                <span class="text-ink-200">✗</span> AI Content Studio
+                <span class="text-ink-200">✗</span> Multi-workspace
+                (multi-client)
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-ink-400 font-body"
+              >
+                <span class="text-ink-200">✗</span> Conversion attribution
               </li>
             </ul>
             <a href="#waitlist" class="btn-secondary w-full justify-center"
               >Join waitlist</a
             >
           </div>
+
+          <!-- Operate (featured) -->
           <div class="pricing-card featured p-8 reveal reveal-delay-1">
             <div
               class="absolute top-5 right-5 bg-brand-500 text-white text-xs font-semibold font-display px-3 py-1 rounded-full"
@@ -1486,7 +1976,7 @@
               <p
                 class="text-xs font-semibold font-display uppercase tracking-widest text-brand-300 mb-2"
               >
-                Agency
+                Operate
               </p>
               <div class="flex items-end gap-1">
                 <span
@@ -1497,7 +1987,8 @@
                 ><span class="text-white/50 font-body mb-1">/mo</span>
               </div>
               <p class="text-sm text-white/60 font-body mt-1">
-                For agencies managing multiple clients
+                For service businesses and agencies ready to systematize
+                acquisition
               </p>
             </div>
             <div class="h-px bg-white/10 mb-6"></div>
@@ -1505,35 +1996,48 @@
               <li
                 class="flex items-center gap-2.5 text-sm text-white/80 font-body"
               >
-                <span class="text-brand-400">✓</span> Up to 25 social accounts
+                <span class="text-brand-400">✓</span> Up to 5 workspaces (5
+                clients)
               </li>
               <li
                 class="flex items-center gap-2.5 text-sm text-white/80 font-body"
               >
-                <span class="text-brand-400">✓</span> Unified inbox
+                <span class="text-brand-400">✓</span> 10 accounts per workspace
               </li>
               <li
                 class="flex items-center gap-2.5 text-sm text-white/80 font-body"
               >
-                <span class="text-brand-400">✓</span> DM &amp; comment
-                automation
+                <span class="text-brand-400">✓</span> Full lead qualification
+                engine
               </li>
               <li
                 class="flex items-center gap-2.5 text-sm text-white/80 font-body"
               >
-                <span class="text-brand-400">✓</span> AI Content Studio +
-                scheduling
+                <span class="text-brand-400">✓</span> Sales orchestration +
+                follow-up sequences
               </li>
               <li
                 class="flex items-center gap-2.5 text-sm text-white/80 font-body"
               >
-                <span class="text-brand-400">✓</span> Analytics + white-label
-                reports
+                <span class="text-brand-400">✓</span> AI content for
+                top-of-funnel pipeline
               </li>
               <li
                 class="flex items-center gap-2.5 text-sm text-white/80 font-body"
               >
-                <span class="text-brand-400">✓</span> 5 team seats
+                <span class="text-brand-400">✓</span> Conversion attribution
+                dashboard
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-white/80 font-body"
+              >
+                <span class="text-brand-400">✓</span> 5 team seats with role
+                permissions
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-white/80 font-body"
+              >
+                <span class="text-brand-400">✓</span> White-label client reports
               </li>
             </ul>
             <a
@@ -1542,6 +2046,8 @@
               >Get early access →</a
             >
           </div>
+
+          <!-- Scale -->
           <div class="pricing-card p-8 reveal reveal-delay-2">
             <div class="mb-6">
               <p
@@ -1558,7 +2064,7 @@
                 ><span class="text-ink-400 font-body mb-1">/mo</span>
               </div>
               <p class="text-sm text-ink-500 font-body mt-1">
-                For large agencies and in-house teams
+                For agencies running acquisition for 10+ clients
               </p>
             </div>
             <div class="h-px bg-surface-100 mb-6"></div>
@@ -1566,12 +2072,12 @@
               <li
                 class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
               >
-                <span class="text-brand-500">✓</span> Unlimited accounts
+                <span class="text-brand-500">✓</span> Unlimited workspaces
               </li>
               <li
                 class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
               >
-                <span class="text-brand-500">✓</span> Everything in Agency
+                <span class="text-brand-500">✓</span> Everything in Operate
               </li>
               <li
                 class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
@@ -1587,13 +2093,19 @@
               <li
                 class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
               >
-                <span class="text-brand-500">✓</span> API access + custom
-                integrations
+                <span class="text-brand-500">✓</span> API access + webhook
+                support
               </li>
               <li
                 class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
               >
-                <span class="text-brand-500">✓</span> Dedicated account manager
+                <span class="text-brand-500">✓</span> Dedicated onboarding +
+                account manager
+              </li>
+              <li
+                class="flex items-center gap-2.5 text-sm text-ink-600 font-body"
+              >
+                <span class="text-brand-500">✓</span> Custom workspace branding
               </li>
             </ul>
             <a href="#waitlist" class="btn-secondary w-full justify-center"
@@ -1601,8 +2113,9 @@
             >
           </div>
         </div>
+
         <p class="text-center text-sm text-ink-400 font-body mt-8">
-          Waitlist members lock in launch pricing.
+          Early waitlist members lock in these prices at launch.
           <a
             href="#waitlist"
             class="text-brand-600 font-semibold hover:underline"
@@ -1612,9 +2125,9 @@
       </div>
     </section>
 
-    <!-- WAITLIST CTA -->
+    <!-- ░░ WAITLIST CTA ░░ -->
     <section
-      class="py-28 bg-surface-50 relative overflow-hidden"
+      class="py-28 bg-ink-900 relative overflow-hidden"
       id="waitlist-section"
     >
       <div class="absolute inset-0 pointer-events-none">
@@ -1622,78 +2135,101 @@
           class="absolute inset-0"
           style="
             background: radial-gradient(
-              ellipse 80% 60% at 50% 50%,
-              rgba(37, 165, 102, 0.08) 0%,
+              ellipse 80% 60% at 50% 30%,
+              rgba(37, 165, 102, 0.12) 0%,
               transparent 70%
             );
           "
         ></div>
         <div
-          class="absolute inset-0 opacity-20"
+          class="absolute inset-0 opacity-10"
           style="
             background-image:
-              linear-gradient(#e2e8df 1px, transparent 1px),
-              linear-gradient(90deg, #e2e8df 1px, transparent 1px);
+              linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+              linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.05) 1px,
+                transparent 1px
+              );
             background-size: 60px 60px;
           "
         ></div>
       </div>
-      <div class="relative max-w-3xl mx-auto px-6 text-center reveal">
+      <div class="relative max-w-2xl mx-auto px-6 text-center reveal">
         <div
-          class="inline-flex items-center gap-2.5 bg-white border border-surface-100 rounded-full px-5 py-2.5 mb-8 shadow-card"
+          class="inline-flex items-center gap-2.5 bg-white/10 border border-white/10 rounded-full px-5 py-2.5 mb-8"
         >
-          <span class="text-sm font-semibold font-display text-ink-800"
-            >Early access is open —
-            <span id="cta-count">limited spots</span></span
+          <span class="relative flex h-2 w-2"
+            ><span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"
+            ></span
+            ><span
+              class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"
+            ></span
+          ></span>
+          <span class="text-sm font-semibold font-display text-white/80"
+            >Early access open —
+            <span id="cta-count"
+              >we're talking to the first cohort now</span
+            ></span
           >
         </div>
+
         <h2
-          class="text-5xl md:text-6xl font-display text-ink-900 tracking-tight mb-5"
+          class="text-5xl md:text-6xl font-display text-white tracking-tight mb-5"
           style="font-weight: 800; letter-spacing: -0.04em; line-height: 1.05"
         >
-          Get in early.<br /><span class="gradient-text"
-            >Shape the product.</span
+          Stop leaving clients<br /><span class="gradient-text"
+            >in your comments section.</span
           >
         </h2>
-        <p class="text-lg text-ink-500 font-body mb-5 leading-relaxed">
-          We're building with our early users, not just for them. Join the
-          waitlist to get direct input on what we build next — and lock in
-          launch pricing.
+
+        <p class="text-lg text-white/60 font-body mb-5 leading-relaxed">
+          Every week you don't have a system for this, you're leaving qualified
+          buyers on the table. They commented. They DM'd. They reached out. They
+          just didn't hear back fast enough, in the right way, with the right
+          next step.
         </p>
+        <p class="text-base text-white/80 font-body font-medium mb-10">
+          Socioflo closes that gap. Join the waitlist and we'll reach out
+          personally before we launch.
+        </p>
+
         <div class="flex flex-wrap justify-center gap-3 mb-10">
           <span
-            class="inline-flex items-center gap-1.5 bg-brand-50 text-brand-700 text-xs font-semibold font-display px-3 py-1.5 rounded-full"
-            >🎁 Launch pricing locked in</span
+            class="inline-flex items-center gap-1.5 bg-brand-500/20 text-brand-300 text-xs font-semibold font-display px-3 py-1.5 rounded-full border border-brand-500/20"
+            >🎯 Acquisition system, not a tool</span
           >
           <span
-            class="inline-flex items-center gap-1.5 bg-amber-50 text-amber-700 text-xs font-semibold font-display px-3 py-1.5 rounded-full"
-            >⚡ Priority onboarding</span
+            class="inline-flex items-center gap-1.5 bg-white/10 text-white/70 text-xs font-semibold font-display px-3 py-1.5 rounded-full border border-white/10"
+            >🔒 Launch pricing locked in</span
           >
           <span
-            class="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 text-xs font-semibold font-display px-3 py-1.5 rounded-full"
-            >🗺️ Input on the roadmap</span
+            class="inline-flex items-center gap-1.5 bg-white/10 text-white/70 text-xs font-semibold font-display px-3 py-1.5 rounded-full border border-white/10"
+            >💬 Founders reach out personally</span
           >
           <span
-            class="inline-flex items-center gap-1.5 bg-purple-50 text-purple-700 text-xs font-semibold font-display px-3 py-1.5 rounded-full"
-            >🔒 Early access</span
+            class="inline-flex items-center gap-1.5 bg-white/10 text-white/70 text-xs font-semibold font-display px-3 py-1.5 rounded-full border border-white/10"
+            >🗺️ Shape what we build</span
           >
         </div>
+
         <div id="cta-form-wrap">
           <div
-            class="flex flex-col sm:flex-row gap-3 p-2 bg-white rounded-2xl shadow-[0_4px_32px_rgba(12,15,10,0.12),0_0_0_1px_rgba(12,15,10,0.08)] max-w-lg mx-auto"
+            class="flex flex-col sm:flex-row gap-3 p-2 bg-white/10 backdrop-blur border border-white/10 rounded-2xl max-w-lg mx-auto"
           >
             <input
               id="cta-email"
               type="email"
-              placeholder="your@email.com"
-              class="flex-1 px-4 py-3.5 text-sm font-body text-ink-900 placeholder-ink-400 bg-transparent outline-none rounded-xl"
+              placeholder="your@business.com"
+              class="flex-1 px-4 py-3.5 text-sm font-body text-white placeholder-white/30 bg-transparent outline-none rounded-xl"
               autocomplete="email"
             />
             <button
               id="cta-btn"
               class="btn-primary !rounded-xl !py-3.5 !px-7 !text-sm whitespace-nowrap flex-shrink-0"
             >
-              <span id="cta-btn-label">Claim my spot</span>
+              <span id="cta-btn-label">Get early access</span>
               <svg
                 id="cta-btn-spin"
                 class="hidden animate-spin"
@@ -1714,40 +2250,42 @@
               </svg>
             </button>
           </div>
-          <p class="text-xs text-ink-400 font-body mt-4 text-center">
-            No spam. We'll email you once when we launch.
+          <p class="text-xs text-white/30 font-body mt-4 text-center">
+            No spam. We email you once when we're ready to onboard you.
           </p>
         </div>
         <div
           id="cta-success"
-          class="hidden mt-4 py-5 px-6 bg-brand-50 border border-brand-100 rounded-2xl text-center max-w-lg mx-auto"
+          class="hidden mt-4 py-5 px-6 bg-brand-500/10 border border-brand-500/20 rounded-2xl text-center max-w-lg mx-auto"
         >
-          <p class="text-2xl mb-1">🎉</p>
-          <p class="text-brand-700 font-semibold font-display">
-            You're on the list.
+          <p class="text-2xl mb-1">✓</p>
+          <p class="text-brand-300 font-semibold font-display">
+            You're in. We'll be in touch.
           </p>
-          <p class="text-brand-600/70 font-body text-sm mt-1">
-            Check your email to confirm. Follow
+          <p class="text-white/40 font-body text-sm mt-1">
+            Confirm your email then follow
             <a
               href="https://x.com/SociofloApp"
               target="_blank"
               rel="noopener noreferrer"
-              class="underline font-medium"
+              class="underline font-medium text-white/60"
               >@SociofloApp</a
             >
             for updates.
           </p>
         </div>
-        <div class="mt-10 pt-8 border-t border-surface-100">
-          <p class="text-sm text-ink-500 font-body mb-4">
-            Know an agency or brand that could use this? Share it.
+
+        <!-- Share -->
+        <div class="mt-12 pt-8 border-t border-white/10">
+          <p class="text-sm text-white/40 font-body mb-4">
+            Know a service business leaving leads in their DMs? Share this.
           </p>
           <div class="flex flex-wrap justify-center gap-3">
             <a
-              href="https://twitter.com/intent/tweet?text=Just+joined+the+waitlist+for+%40SociofloApp+%E2%80%94+a+social+media+OS+for+agencies.+One+inbox%2C+automation%2C+AI+content%2C+scheduling.+Check+it+out+%F0%9F%9A%80&url=https%3A%2F%2Fsocioflo.app"
+              href="https://twitter.com/intent/tweet?text=Just+joined+the+waitlist+for+%40SociofloApp+%E2%80%94+AI-native+customer+acquisition+for+service+businesses.+Turns+every+social+DM%2C+comment+%26+mention+into+a+qualified+lead+automatically.+%F0%9F%9A%80&url=https%3A%2F%2Fsocioflo.app"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 bg-[#0f1419] hover:bg-[#1d2735] text-white text-xs font-semibold font-display px-4 py-2.5 rounded-xl transition-colors"
+              class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold font-display px-4 py-2.5 rounded-xl transition-colors border border-white/10"
             >
               <svg
                 width="14"
@@ -1781,7 +2319,7 @@
             </a>
             <button
               id="copy-btn"
-              class="inline-flex items-center gap-2 bg-surface-50 hover:bg-surface-100 border border-surface-200 text-ink-700 text-xs font-semibold font-display px-4 py-2.5 rounded-xl transition-colors"
+              class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 text-white text-xs font-semibold font-display px-4 py-2.5 rounded-xl transition-colors"
             >
               <svg
                 width="14"
@@ -1805,8 +2343,8 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-ink-900 text-white pt-16 pb-8">
+    <!-- ░░ FOOTER ░░ -->
+    <footer class="bg-ink-900 text-white pt-16 pb-8 border-t border-white/5">
       <div class="max-w-6xl mx-auto px-6">
         <div class="grid md:grid-cols-5 gap-10 mb-12">
           <div class="md:col-span-2">
@@ -1825,8 +2363,9 @@
             <p
               class="text-white/50 font-body text-sm leading-relaxed mb-5 max-w-xs"
             >
-              One place to manage every social channel. Built for agencies and
-              brands that need to move fast without things slipping.
+              AI-native customer acquisition for service businesses. Every
+              inbound social conversation, turned into a paying client —
+              automatically.
             </p>
             <div id="footer-form-wrap" class="flex gap-2 max-w-xs">
               <input
@@ -1872,13 +2411,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-                ><svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="white"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                ><svg width="16" height="16" viewBox="0 0 24 24" fill="white">
                   <path
                     d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"
                   /></svg
@@ -1888,13 +2421,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-                ><svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 512 512"
-                  fill="white"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                ><svg width="16" height="16" viewBox="0 0 512 512" fill="white">
                   <path
                     d="M116.504,500.219V170.654H6.975v329.564H116.504z M61.751,125.674c38.183,0,61.968-25.328,61.968-56.953c-0.722-32.328-23.785-56.941-61.252-56.941C24.994,11.781,0.5,36.394,0.5,68.722c0,31.625,23.772,56.953,60.53,56.953H61.751z M177.124,500.219c0,0,1.437-298.643,0-329.564H286.67v47.794h-0.727c14.404-22.49,40.354-55.533,99.44-55.533c72.085,0,126.116,47.103,126.116,148.333v188.971H401.971V323.912c0-44.301-15.848-74.531-55.497-74.531c-30.254,0-48.284,20.38-56.202,40.08c-2.897,7.012-3.602,16.861-3.602,26.711v184.047H177.124z"
                   /></svg
@@ -1904,13 +2431,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-                ><svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="white"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                ><svg width="16" height="16" viewBox="0 0 24 24" fill="white">
                   <path
                     d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"
                   /></svg
@@ -1920,13 +2441,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-                ><svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="white"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                ><svg width="16" height="16" viewBox="0 0 24 24" fill="white">
                   <path
                     d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"
                   /></svg
@@ -1943,9 +2458,16 @@
             <ul class="space-y-3">
               <li>
                 <a
-                  href="#features"
+                  href="#system"
                   class="text-sm text-white/60 hover:text-white transition-colors font-body"
-                  >Features</a
+                  >The system</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#how-it-works"
+                  class="text-sm text-white/60 hover:text-white transition-colors font-body"
+                  >How it works</a
                 >
               </li>
               <li>
@@ -1993,7 +2515,7 @@
                 <a
                   href="#"
                   class="text-sm text-white/60 hover:text-white transition-colors font-body"
-                  >Terms & Policy</a
+                  >Terms &amp; Policy</a
                 >
               </li>
             </ul>
@@ -2025,153 +2547,122 @@
       </div>
     </footer>
 
+    <!-- ░░ SCRIPTS ░░ -->
     <script>
-      // ── CONTENT ──────────────────────────────────────────────────
+      // ── CONTENT DATA ─────────────────────────────────────────────
       const siteContent = {
         features: [
           {
             delayClass: "",
-            iconBgClass: "bg-purple-50",
-            icon: "📥",
-            title: "One inbox for every platform.",
+            iconBgClass: "bg-blue-50",
+            icon: "📡",
+            title: "Signal capture. Every conversation, every platform.",
             description:
-              "DMs, comments, and mentions from Instagram, TikTok, WhatsApp, X, and more — all in one place. No more tab-switching. No more missed messages.",
+              "Every DM, comment, mention, and reply your business receives — across Instagram, TikTok, WhatsApp, LinkedIn, X, and more — is captured in real time. Nothing is missed. Nothing is read manually. Every inbound signal enters the acquisition pipeline automatically.",
             bullets: [
-              "Every platform in a single view",
-              "Assign threads to team members",
-              "Filter by platform, status, or urgency",
+              "Real-time capture across 8+ platforms simultaneously",
+              "Comments, DMs, mentions, and replies — all treated as potential leads",
+              "Zero manual monitoring required after setup",
             ],
           },
           {
             delayClass: "reveal-delay-1",
             iconBgClass: "bg-amber-50",
-            icon: "⚡",
-            title: "Automation that actually works.",
+            icon: "🎯",
+            title: "AI lead qualification. Scored before you see it.",
             description:
-              "Set rules once. Socioflo handles the rest — auto-replying to DMs, responding to comments, and routing leads to the right person or tool, automatically.",
+              "Not every comment is a buyer. Socioflo's qualification engine asks the right follow-up questions, scores each lead based on intent signals, budget indicators, and urgency — and only surfaces the ones worth your time. The rest are nurtured automatically.",
             bullets: [
-              "Keyword-triggered DM and comment replies",
-              "Route leads to your CRM automatically",
-              "Works 24/7 across all connected accounts",
+              "Conversational qualification via AI — feels human, runs automatically",
+              "Intent score (0–100) assigned to every lead based on conversation signals",
+              "Unqualified leads stay in nurture sequences, not in your attention",
             ],
           },
           {
             delayClass: "reveal-delay-2",
-            iconBgClass: "bg-pink-50",
-            icon: "✨",
-            title: "Content for every platform, from one brief.",
+            iconBgClass: "bg-brand-50",
+            icon: "🔁",
+            title: "Sales orchestration. Follow-up that never drops the ball.",
             description:
-              "Give Socioflo a topic, a link, or a rough idea. It writes platform-specific posts for Instagram, TikTok, LinkedIn, and X — formatted correctly for each.",
+              "Most leads go cold because of one thing: slow or inconsistent follow-up. Socioflo orchestrates the entire follow-up sequence — first response in under 90 seconds, follow-up at 24h, re-engagement at 72h — tuned to each platform's context and the lead's behavior.",
             bullets: [
-              "One input, four platform-ready outputs",
-              "Adapts tone and format per platform",
-              "Generates captions, hashtags, and hooks",
+              "First response in under 90 seconds, regardless of time of day",
+              "Personalised multi-step follow-up sequences per lead",
+              "Sequences adapt based on lead behavior — open, reply, click",
             ],
           },
           {
             delayClass: "reveal-delay-3",
-            iconBgClass: "bg-blue-50",
-            icon: "📅",
-            title: "Schedule once, publish everywhere.",
+            iconBgClass: "bg-purple-50",
+            icon: "📣",
+            title: "Content engine. Build the pipeline before the DM.",
             description:
-              "Drag and drop posts onto a shared content calendar. Set timing or let Socioflo suggest it. Approve and queue content without leaving the app.",
+              "The best acquisition starts upstream. Socioflo's AI content engine generates platform-native posts designed to attract the right inbound signals — the kind that are more likely to convert. Publish consistently, attract qualified buyers, let the system handle the rest.",
             bullets: [
-              "Visual calendar for every client account",
-              "Cross-platform publishing in one click",
-              "Approval flows for team sign-off",
+              "Brief-to-post in minutes: one input, four platform-specific outputs",
+              "Optimised for intent signals, not just engagement",
+              "Scheduling + publishing across all platforms from one place",
             ],
           },
           {
             delayClass: "reveal-delay-4",
             iconBgClass: "bg-green-50",
             icon: "📊",
-            title: "Analytics your clients will actually read.",
+            title: "Conversion attribution. Know exactly what's working.",
             description:
-              "Track reach, engagement, and follower growth across all accounts. Generate white-label PDF reports for clients in under a minute — no spreadsheets required.",
+              "The question most businesses can't answer is: which content led to which client? Socioflo tracks the full journey — from the post that created the first interaction, through every touchpoint, to the closed deal. Revenue from social, measured for the first time.",
             bullets: undefined,
           },
         ],
         howItWorks: [
           {
-            icon: "🔗",
+            icon: "🔌",
             step: "1",
             title: "Connect your accounts",
-            desc: "Link every social profile for every client. Takes a few minutes. Works immediately.",
+            desc: "Link every social channel for your business — or every client's business. Role-based access, workspace isolation. Done in minutes.",
             delayClass: "",
           },
           {
-            icon: "⚡",
+            icon: "⚙️",
             step: "2",
-            title: "Set up automation",
-            desc: "Configure auto-replies and lead routing. Set it once, let it run in the background.",
+            title: "Configure your acquisition rules",
+            desc: "Define what a qualified lead looks like for your business. Set qualification questions, scoring criteria, and follow-up sequences. Takes one setup session.",
             delayClass: "reveal-delay-1",
           },
           {
-            icon: "✨",
+            icon: "⚡",
             step: "3",
-            title: "Generate and schedule",
-            desc: "Drop in a brief. Review AI-generated posts. Schedule them across all platforms with one click.",
+            title: "The system runs",
+            desc: "Every inbound signal is captured, qualified, followed up, and routed — automatically. You see warm, scored leads ready for your closing process.",
             delayClass: "reveal-delay-2",
           },
           {
             icon: "📈",
             step: "4",
-            title: "Report and improve",
-            desc: "See what's working. Share client-ready reports. Iterate based on actual performance data.",
+            title: "Measure revenue, not vanity metrics",
+            desc: "See which channels and content are converting to clients. Improve the system. Watch the pipeline compound over time.",
             delayClass: "reveal-delay-3",
           },
-        ],
-        testimonials: [
-          // {
-          //   quote:
-          //     '"We manage 12 client accounts. Before Socioflo, our team spent half the day switching between apps. Now everything is in one place and response time is genuinely faster."',
-          //   initials: "AK",
-          //   name: "Aisha K.",
-          //   role: "Co-founder, SF Labs",
-          //   gradientClass: "from-purple-300 to-pink-300",
-          //   delayClass: "",
-          //   cardBorderClass: "",
-          // },
-          // {
-          //   quote:
-          //     '"The content feature saves us hours every week. We give it a brief, pick from the outputs, and schedule — without touching four different tools."',
-          //   initials: "JM",
-          //   name: "James M.",
-          //   role: "Head of Content, growth agency",
-          //   gradientClass: "from-blue-300 to-cyan-300",
-          //   delayClass: "reveal-delay-1",
-          //   cardBorderClass: "border-2 border-brand-100",
-          // },
-          // {
-          //   quote:
-          //     '"Our clients ask how we send such polished reports. It takes five minutes. That used to take half a day in Google Slides."',
-          //   initials: "SN",
-          //   name: "Sofia N.",
-          //   role: "Agency founder",
-          //   gradientClass: "from-amber-300 to-orange-300",
-          //   delayClass: "reveal-delay-2",
-          //   cardBorderClass: "",
-          // },
         ],
         stats: [
           {
             value: "Early access",
-            label: "Open now",
+            label: "Open now — limited cohort",
             valueClass: "text-ink-900",
           },
           {
-            value: "Beta",
-            label: "Active testers",
+            value: "Service biz",
+            label: "Our only focus right now",
             valueClass: "text-ink-900",
           },
           {
-            value: "* / 5",
-            label: "Beta feedback score",
+            value: "< 90s",
+            label: "Target first response time",
             valueClass: "gradient-text",
           },
           {
             value: "8+",
-            label: "Platforms supported",
+            label: "Platforms supported at launch",
             valueClass: "text-ink-900",
           },
         ],
@@ -2179,8 +2670,9 @@
 
       // ── RENDER ────────────────────────────────────────────────────
       function renderContent() {
-        document.getElementById("features-grid").innerHTML =
-          siteContent.features
+        const fg = document.getElementById("features-grid");
+        if (fg)
+          fg.innerHTML = siteContent.features
             .map(
               (f, i) => `
           <div class="min-h-64 stacking-card p-8 md:p-10 reveal ${f.delayClass}" style="--card-index:${i}">
@@ -2196,8 +2688,9 @@
             )
             .join("");
 
-        document.getElementById("how-it-works-grid").innerHTML =
-          siteContent.howItWorks
+        const hw = document.getElementById("how-it-works-grid");
+        if (hw)
+          hw.innerHTML = siteContent.howItWorks
             .map(
               (h) => `
           <div class="reveal ${h.delayClass} text-center">
@@ -2209,30 +2702,17 @@
             )
             .join("");
 
-        document.getElementById("testimonials-grid").innerHTML =
-          siteContent.testimonials
+        const sg = document.getElementById("stats-grid");
+        if (sg)
+          sg.innerHTML = siteContent.stats
             .map(
-              (t) => `
-          <div class="card p-7 reveal ${t.delayClass} ${t.cardBorderClass || ""}">
-            <div class="flex gap-1 mb-4 text-yellow-400 text-sm">★★★★★</div>
-            <p class="text-ink-700 font-body leading-relaxed mb-6 text-[15px]">${t.quote}</p>
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-gradient-to-br ${t.gradientClass} flex items-center justify-center font-display text-white text-sm" style="font-weight:700">${t.initials}</div>
-              <div><p class="font-semibold font-display text-ink-900 text-sm">${t.name}</p><p class="text-xs text-ink-400 font-body">${t.role}</p></div>
-            </div>
+              (s) => `
+          <div class="text-center p-6 bg-surface-50 rounded-2xl border border-surface-100">
+            <p class="text-2xl font-display ${s.valueClass} mb-1" style="font-weight:800">${s.value}</p>
+            <p class="text-sm text-ink-500 font-body">${s.label}</p>
           </div>`,
             )
             .join("");
-
-        document.getElementById("stats-grid").innerHTML = siteContent.stats
-          .map(
-            (s) => `
-          <div class="text-center p-6 bg-surface-50 rounded-2xl border border-surface-100">
-            <p class="text-3xl font-display ${s.valueClass} mb-1" style="font-weight:800">${s.value}</p>
-            <p class="text-sm text-ink-500 font-body">${s.label}</p>
-          </div>`,
-          )
-          .join("");
       }
 
       // ── STACKING CARDS ────────────────────────────────────────────
@@ -2282,7 +2762,6 @@
 
       // ── KIT FORM ──────────────────────────────────────────────────
       const KIT_FORM_URL = "https://app.kit.com/forms/9306048/subscriptions";
-
       async function kitSubmit(emailId, formWrapId, successId, btnId) {
         const emailInput = document.getElementById(emailId);
         const email = emailInput.value.trim();
@@ -2378,7 +2857,7 @@
           );
       });
 
-      // ── WIRE UP BUTTONS ───────────────────────────────────────────
+      // ── WIRE UP ───────────────────────────────────────────────────
       document.addEventListener("DOMContentLoaded", () => {
         document
           .getElementById("waitlist-btn")
@@ -2417,7 +2896,7 @@
       });
     </script>
 
-    <!-- ── COOKIE CONSENT BANNER ─────────────────────────────── -->
+    <!-- ░░ COOKIE CONSENT ░░ -->
     <div id="consent-backdrop" class="consent-backdrop"></div>
     <div
       id="consent-banner"
@@ -2432,7 +2911,7 @@
       <p class="consent-text">
         We use cookies and similar technologies to improve your experience,
         analyze traffic, and personalize content. You can choose to accept all
-        cookies or decline non-essential ones.
+        cookies or decline non-essential ones. <a href="#">Learn more</a>.
       </p>
       <div class="consent-actions">
         <button id="consent-decline" class="consent-btn consent-btn-decline">
@@ -2445,18 +2924,12 @@
     </div>
 
     <script>
-      // ── GEO-TARGETED CONSENT BANNER LOGIC ──────────────────────
       (function () {
         var banner = document.getElementById("consent-banner");
         var backdrop = document.getElementById("consent-backdrop");
         var stored = localStorage.getItem("cookie_consent");
-
-        // If user already made a choice, don't show anything
         if (stored) return;
-
-        // ── Regulated country/region codes (must match the consent default) ──
-        var REGULATED_COUNTRIES = [
-          // EU/EEA
+        var REG_COUNTRIES = [
           "AT",
           "BE",
           "BG",
@@ -2487,14 +2960,11 @@
           "IS",
           "LI",
           "NO",
-          // UK, CH, BR
           "GB",
           "CH",
           "BR",
         ];
-
-        // US states with comprehensive privacy laws
-        var REGULATED_US_STATES = [
+        var REG_US_STATES = [
           "California",
           "Virginia",
           "Colorado",
@@ -2509,14 +2979,12 @@
           "Indiana",
           "Florida",
         ];
-
         function showBanner() {
           setTimeout(function () {
             banner.classList.add("visible");
             backdrop.classList.add("visible");
           }, 1200);
         }
-
         function hideBanner() {
           banner.classList.remove("visible");
           banner.classList.add("hiding");
@@ -2526,7 +2994,6 @@
             backdrop.style.display = "none";
           }, 500);
         }
-
         function grantAll() {
           localStorage.setItem("cookie_consent", "granted");
           gtag("consent", "update", {
@@ -2539,7 +3006,6 @@
             security_storage: "granted",
           });
         }
-
         function denyAll() {
           localStorage.setItem("cookie_consent", "denied");
           gtag("consent", "update", {
@@ -2552,52 +3018,33 @@
             security_storage: "granted",
           });
         }
-
-        // ── Geo-lookup: determine if user is in a regulated region ──
         fetch("https://ipapi.co/json/")
-          .then(function (res) {
-            return res.json();
+          .then(function (r) {
+            return r.json();
           })
           .then(function (geo) {
-            var country = (geo.country_code || "").toUpperCase();
-            var region = geo.region || "";
-            var needsConsent = false;
-
-            // Check if country is in the regulated list
-            if (REGULATED_COUNTRIES.indexOf(country) !== -1) {
-              needsConsent = true;
-            }
-            // For US visitors, check if their state is regulated
-            if (
-              country === "US" &&
-              REGULATED_US_STATES.indexOf(region) !== -1
-            ) {
-              needsConsent = true;
-            }
-
-            if (needsConsent) {
-              // Show the consent banner for regulated regions
+            var c = (geo.country_code || "").toUpperCase();
+            var reg = geo.region || "";
+            var needs =
+              REG_COUNTRIES.indexOf(c) !== -1 ||
+              (c === "US" && REG_US_STATES.indexOf(reg) !== -1);
+            if (needs) {
               showBanner();
             } else {
-              // Non-regulated region → auto-grant and hide banner
               grantAll();
               banner.style.display = "none";
               backdrop.style.display = "none";
             }
           })
           .catch(function () {
-            // If geo-lookup fails, show the banner as a safe fallback
             showBanner();
           });
-
-        // ── Button handlers ──
         document
           .getElementById("consent-accept")
           .addEventListener("click", function () {
             grantAll();
             hideBanner();
           });
-
         document
           .getElementById("consent-decline")
           .addEventListener("click", function () {
