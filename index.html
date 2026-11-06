@@ -137,7 +137,10 @@
     />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://socioflo.app" />
-    <link rel="icon" type="image/png" href="favicon.ico" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="theme-color" content="#F4F1EA" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://socioflo.app" />
     <meta
@@ -179,7 +182,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@500&display=swap"
       rel="stylesheet"
     />
 
@@ -188,45 +191,53 @@
         theme: {
           extend: {
             fontFamily: {
-              display: ["Sora", "sans-serif"],
-              body: ["DM Sans", "sans-serif"],
+              display: ["Outfit", "sans-serif"],
+              body: ["Geist", "sans-serif"],
+              mono: ["Geist Mono", "ui-monospace", "monospace"],
             },
             colors: {
+              /* Signal #E0521F: the person. Sparing. On Paper only for graphics / 24px+ type; small text uses 700. */
               brand: {
-                50: "#eefbf3",
-                100: "#d6f5e3",
-                200: "#b0eaca",
-                300: "#7dd9aa",
-                400: "#48c183",
-                500: "#25a566",
-                600: "#198652",
-                700: "#156b43",
-                800: "#135537",
-                900: "#10452e",
+                50: "#FCEEE8",
+                100: "#F9DCD0",
+                200: "#F2B9A2",
+                300: "#EC9672",
+                400: "#E6744A",
+                500: "#E0521F",
+                600: "#B8421A",
+                700: "#8F3314",
+                800: "#6B2610",
+                900: "#4A1A0B",
               },
+              /* Ink #121418 */
               ink: {
-                900: "#0c0f0a",
-                800: "#1a1f17",
-                700: "#2a3025",
-                600: "#3d4637",
-                500: "#5a6652",
+                900: "#121418",
+                800: "#1E2127",
+                700: "#2E323A",
+                600: "#454A54",
+                500: "#5C626C",
+                400: "#6F747E",
+                300: "#9A9EA6",
+                200: "#C4C7CC",
+                100: "#E4E5E8",
               },
+              /* Paper #F4F1EA */
               surface: {
                 0: "#ffffff",
-                50: "#f7f9f6",
-                100: "#eef2ec",
-                200: "#e2e8df",
+                50: "#F4F1EA",
+                100: "#EBE6DB",
+                200: "#DED7C8",
               },
             },
             boxShadow: {
-              "glow-sm": "0 0 20px 0 rgba(37,165,102,0.15)",
-              glow: "0 0 40px 0 rgba(37,165,102,0.20)",
-              card: "0 2px 20px 0 rgba(12,15,10,0.07), 0 1px 3px 0 rgba(12,15,10,0.05)",
+              "glow-sm": "0 0 20px 0 rgba(224, 82, 31,0.15)",
+              glow: "0 0 40px 0 rgba(224, 82, 31,0.20)",
+              card: "0 2px 20px 0 rgba(18, 20, 24,0.07), 0 1px 3px 0 rgba(18, 20, 24,0.05)",
               "card-hover":
-                "0 8px 40px 0 rgba(12,15,10,0.12), 0 2px 8px 0 rgba(12,15,10,0.06)",
+                "0 8px 40px 0 rgba(18, 20, 24,0.12), 0 2px 8px 0 rgba(18, 20, 24,0.06)",
             },
             backgroundImage: {
-              mesh: "radial-gradient(at 20% 30%, rgba(37,165,102,0.12) 0px, transparent 55%), radial-gradient(at 80% 10%, rgba(72,193,131,0.08) 0px, transparent 45%), radial-gradient(at 60% 80%, rgba(37,165,102,0.06) 0px, transparent 45%)",
+              mesh: "radial-gradient(at 20% 30%, rgba(224, 82, 31,0.12) 0px, transparent 55%), radial-gradient(at 80% 10%, rgba(230, 116, 74,0.08) 0px, transparent 45%), radial-gradient(at 60% 80%, rgba(224, 82, 31,0.06) 0px, transparent 45%)",
             },
           },
         },
@@ -243,9 +254,9 @@
         scroll-behavior: smooth;
       }
       body {
-        font-family: "DM Sans", sans-serif;
-        background: #f7f9f6;
-        color: #0c0f0a;
+        font-family: "Geist", sans-serif;
+        background: #f4f1ea;
+        color: #121418;
       }
       h1,
       h2,
@@ -253,7 +264,15 @@
       h4,
       h5,
       h6 {
-        font-family: "Sora", sans-serif;
+        font-family: "Outfit", sans-serif;
+        font-weight: 600;
+      }
+      body {
+        font-variant-numeric: tabular-nums;
+      }
+      ::selection {
+        background: #f9dcd0;
+        color: #121418;
       }
 
       @keyframes float {
@@ -267,13 +286,13 @@
       }
       @keyframes pulse-ring {
         0% {
-          box-shadow: 0 0 0 0 rgba(37, 165, 102, 0.35);
+          box-shadow: 0 0 0 0 rgba(224, 82, 31, 0.35);
         }
         70% {
-          box-shadow: 0 0 0 14px rgba(37, 165, 102, 0);
+          box-shadow: 0 0 0 14px rgba(224, 82, 31, 0);
         }
         100% {
-          box-shadow: 0 0 0 0 rgba(37, 165, 102, 0);
+          box-shadow: 0 0 0 0 rgba(224, 82, 31, 0);
         }
       }
       @keyframes slide-up {
@@ -357,52 +376,43 @@
         animation-delay: 0.5s;
       }
 
-      .gradient-text {
-        background: linear-gradient(
-          135deg,
-          #25a566 0%,
-          #48c183 50%,
-          #198652 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
+      .gradient-text,
       .gradient-text-warm {
-        background: linear-gradient(
-          135deg,
-          #f59e0b 0%,
-          #25a566 60%,
-          #198652 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: #e0521f;
       }
 
       .btn-primary {
-        background: linear-gradient(135deg, #25a566 0%, #1d9059 100%);
-        color: #fff;
-        font-family: "Sora", sans-serif;
+        background: #121418;
+        color: #f4f1ea;
+        font-family: "Geist", sans-serif;
         font-weight: 600;
-        letter-spacing: -0.01em;
+        letter-spacing: -0.005em;
         border-radius: 12px;
         padding: 14px 28px;
         font-size: 15px;
         transition: all 0.2s ease;
-        box-shadow: 0 4px 14px rgba(37, 165, 102, 0.35);
+        box-shadow: 0 4px 14px rgba(18, 20, 24, 0.18);
         display: inline-flex;
         align-items: center;
         gap: 8px;
       }
       .btn-primary:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(37, 165, 102, 0.4);
+        background: #2e323a;
+        box-shadow: 0 8px 24px rgba(18, 20, 24, 0.22);
+      }
+      .bg-ink-900 .btn-primary {
+        background: #e0521f;
+        color: #121418;
+        box-shadow: 0 4px 14px rgba(224, 82, 31, 0.3);
+      }
+      .bg-ink-900 .btn-primary:hover {
+        background: #e6744a;
       }
       .btn-secondary {
         background: #fff;
-        color: #1a1f17;
-        font-family: "Sora", sans-serif;
+        color: #1e2127;
+        font-family: "Geist", sans-serif;
         font-weight: 600;
         letter-spacing: -0.01em;
         border-radius: 12px;
@@ -410,8 +420,8 @@
         font-size: 15px;
         transition: all 0.2s ease;
         box-shadow:
-          0 1px 4px rgba(12, 15, 10, 0.1),
-          0 0 0 1px rgba(12, 15, 10, 0.08);
+          0 1px 4px rgba(18, 20, 24, 0.1),
+          0 0 0 1px rgba(18, 20, 24, 0.08);
         display: inline-flex;
         align-items: center;
         gap: 8px;
@@ -419,22 +429,22 @@
       .btn-secondary:hover {
         transform: translateY(-2px);
         box-shadow:
-          0 6px 20px rgba(12, 15, 10, 0.12),
-          0 0 0 1px rgba(12, 15, 10, 0.1);
+          0 6px 20px rgba(18, 20, 24, 0.12),
+          0 0 0 1px rgba(18, 20, 24, 0.1);
       }
 
       .card {
         background: #fff;
         border-radius: 20px;
         box-shadow:
-          0 2px 20px rgba(12, 15, 10, 0.07),
-          0 1px 3px rgba(12, 15, 10, 0.05);
+          0 2px 20px rgba(18, 20, 24, 0.07),
+          0 1px 3px rgba(18, 20, 24, 0.05);
         transition: all 0.25s ease;
       }
       .card:hover {
         box-shadow:
-          0 8px 40px rgba(12, 15, 10, 0.12),
-          0 2px 8px rgba(12, 15, 10, 0.06);
+          0 8px 40px rgba(18, 20, 24, 0.12),
+          0 2px 8px rgba(18, 20, 24, 0.06);
         transform: translateY(-3px);
       }
 
@@ -442,8 +452,8 @@
         background: #fff;
         border-radius: 24px;
         box-shadow:
-          0 2px 20px rgba(12, 15, 10, 0.07),
-          0 1px 3px rgba(12, 15, 10, 0.05);
+          0 2px 20px rgba(18, 20, 24, 0.07),
+          0 1px 3px rgba(18, 20, 24, 0.05);
         transition: box-shadow 0.25s ease;
         transform-origin: top center;
         will-change: transform, filter;
@@ -451,16 +461,16 @@
       }
       .stacking-card:hover {
         box-shadow:
-          0 -12px 40px rgba(12, 15, 10, 0.08),
-          0 8px 40px rgba(12, 15, 10, 0.12);
+          0 -12px 40px rgba(18, 20, 24, 0.08),
+          0 8px 40px rgba(18, 20, 24, 0.12);
       }
       @media (min-width: 768px) {
         .stacking-card {
           position: sticky;
           top: calc(100px + (var(--card-index) * 20px));
           box-shadow:
-            0 -8px 30px rgba(12, 15, 10, 0.05),
-            0 2px 20px rgba(12, 15, 10, 0.07);
+            0 -8px 30px rgba(18, 20, 24, 0.05),
+            0 2px 20px rgba(18, 20, 24, 0.07);
         }
       }
 
@@ -483,27 +493,27 @@
         font-size: 13px;
         font-weight: 500;
         box-shadow:
-          0 2px 12px rgba(12, 15, 10, 0.09),
-          0 0 0 1px rgba(12, 15, 10, 0.06);
-        font-family: "Sora", sans-serif;
+          0 2px 12px rgba(18, 20, 24, 0.09),
+          0 0 0 1px rgba(18, 20, 24, 0.06);
+        font-family: "Geist", sans-serif;
       }
 
       .pricing-card {
         background: #fff;
         border-radius: 24px;
         box-shadow:
-          0 2px 20px rgba(12, 15, 10, 0.07),
-          0 1px 3px rgba(12, 15, 10, 0.05);
+          0 2px 20px rgba(18, 20, 24, 0.07),
+          0 1px 3px rgba(18, 20, 24, 0.05);
         transition: all 0.25s ease;
         position: relative;
         overflow: hidden;
       }
       .pricing-card:hover {
-        box-shadow: 0 12px 48px rgba(12, 15, 10, 0.13);
+        box-shadow: 0 12px 48px rgba(18, 20, 24, 0.13);
         transform: translateY(-4px);
       }
       .pricing-card.featured {
-        background: linear-gradient(160deg, #1a1f17 0%, #0c0f0a 100%);
+        background: linear-gradient(160deg, #1e2127 0%, #121418 100%);
         color: #fff;
       }
       .pricing-card.featured::before {
@@ -512,7 +522,7 @@
         inset: 0;
         background: radial-gradient(
           ellipse at 70% 20%,
-          rgba(37, 165, 102, 0.18) 0%,
+          rgba(224, 82, 31, 0.18) 0%,
           transparent 60%
         );
         pointer-events: none;
@@ -521,14 +531,14 @@
       .nav-blur {
         backdrop-filter: blur(16px) saturate(180%);
         -webkit-backdrop-filter: blur(16px) saturate(180%);
-        background: rgba(247, 249, 246, 0.85);
+        background: rgba(244, 241, 234, 0.85);
       }
       .shimmer-badge {
         background: linear-gradient(
           90deg,
-          #eef2ec 25%,
-          #d6f5e3 50%,
-          #eef2ec 75%
+          #ebe6db 25%,
+          #f9dcd0 50%,
+          #ebe6db 75%
         );
         background-size: 200% 100%;
         animation: shimmer 2.5s ease-in-out infinite;
@@ -538,15 +548,15 @@
       .flow-node {
         background: #fff;
         border-radius: 16px;
-        border: 1px solid #eef2ec;
+        border: 1px solid #ebe6db;
         padding: 16px 20px;
-        box-shadow: 0 2px 12px rgba(12, 15, 10, 0.06);
+        box-shadow: 0 2px 12px rgba(18, 20, 24, 0.06);
       }
       .flow-arrow {
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #b0eaca;
+        color: #f2b9a2;
         font-size: 20px;
       }
 
@@ -555,18 +565,18 @@
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background: #25a566;
-        box-shadow: 0 0 0 3px rgba(37, 165, 102, 0.2);
+        background: #e0521f;
+        box-shadow: 0 0 0 3px rgba(224, 82, 31, 0.2);
       }
 
       ::-webkit-scrollbar {
         width: 6px;
       }
       ::-webkit-scrollbar-track {
-        background: #f7f9f6;
+        background: #f4f1ea;
       }
       ::-webkit-scrollbar-thumb {
-        background: #b0eaca;
+        background: #c4c7cc;
         border-radius: 3px;
       }
 
@@ -599,21 +609,21 @@
         align-items: center;
         gap: 6px;
         background: #fff;
-        border: 1px solid #e2e8df;
+        border: 1px solid #ded7c8;
         border-radius: 100px;
         padding: 6px 14px;
         font-size: 12px;
         font-weight: 600;
-        font-family: "Sora", sans-serif;
-        color: #3d4637;
-        box-shadow: 0 1px 6px rgba(12, 15, 10, 0.06);
+        font-family: "Geist", sans-serif;
+        color: #454a54;
+        box-shadow: 0 1px 6px rgba(18, 20, 24, 0.06);
       }
 
       /* Cookie banner */
       .consent-backdrop {
         position: fixed;
         inset: 0;
-        background: rgba(12, 15, 10, 0.25);
+        background: rgba(18, 20, 24, 0.25);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
         z-index: 9998;
@@ -636,9 +646,9 @@
         background: #fff;
         border-radius: 20px;
         box-shadow:
-          0 20px 60px rgba(12, 15, 10, 0.18),
-          0 4px 16px rgba(12, 15, 10, 0.08),
-          0 0 0 1px rgba(12, 15, 10, 0.06);
+          0 20px 60px rgba(18, 20, 24, 0.18),
+          0 4px 16px rgba(18, 20, 24, 0.08),
+          0 0 0 1px rgba(18, 20, 24, 0.06);
         padding: 28px 28px 24px;
         opacity: 0;
         transition:
@@ -657,7 +667,7 @@
         width: 44px;
         height: 44px;
         border-radius: 12px;
-        background: linear-gradient(135deg, #d6f5e3 0%, #b0eaca 100%);
+        background: #fceee8;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -665,21 +675,21 @@
         flex-shrink: 0;
       }
       .consent-title {
-        font-family: "Sora", sans-serif;
-        font-weight: 700;
+        font-family: "Outfit", sans-serif;
+        font-weight: 600;
         font-size: 16px;
-        color: #0c0f0a;
+        color: #121418;
         letter-spacing: -0.02em;
       }
       .consent-text {
-        font-family: "DM Sans", sans-serif;
+        font-family: "Geist", sans-serif;
         font-size: 13.5px;
         line-height: 1.6;
-        color: #5a6652;
+        color: #5c626c;
         margin-top: 12px;
       }
       .consent-text a {
-        color: #25a566;
+        color: #e0521f;
         text-decoration: underline;
         text-underline-offset: 2px;
       }
@@ -692,7 +702,7 @@
         flex: 1;
         padding: 12px 20px;
         border-radius: 12px;
-        font-family: "Sora", sans-serif;
+        font-family: "Geist", sans-serif;
         font-weight: 600;
         font-size: 13.5px;
         letter-spacing: -0.01em;
@@ -701,21 +711,21 @@
         transition: all 0.2s ease;
       }
       .consent-btn-accept {
-        background: linear-gradient(135deg, #25a566 0%, #1d9059 100%);
-        color: #fff;
-        box-shadow: 0 4px 14px rgba(37, 165, 102, 0.3);
+        background: #121418;
+        color: #f4f1ea;
+        box-shadow: 0 4px 14px rgba(18, 20, 24, 0.18);
       }
       .consent-btn-accept:hover {
         transform: translateY(-1px);
-        box-shadow: 0 6px 20px rgba(37, 165, 102, 0.4);
+        background: #2e323a;
       }
       .consent-btn-decline {
-        background: #f7f9f6;
-        color: #3d4637;
-        box-shadow: 0 0 0 1px rgba(12, 15, 10, 0.1);
+        background: #f4f1ea;
+        color: #454a54;
+        box-shadow: 0 0 0 1px rgba(18, 20, 24, 0.1);
       }
       .consent-btn-decline:hover {
-        background: #eef2ec;
+        background: #ebe6db;
         transform: translateY(-1px);
       }
       @media (max-width: 480px) {
@@ -748,17 +758,14 @@
       <div
         class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between"
       >
-        <a href="#" class="flex items-center gap-2.5">
-          <div
-            class="w-8 h-8 rounded-xl bg-white flex items-center justify-center shadow-glow-sm border border-surface-100"
-          >
-            <img src="Socioflo--logo.png" alt="Socioflo" class="w-6 h-6" />
-          </div>
-          <span
-            class="font-display text-ink-900 text-lg"
-            style="font-weight: 700; letter-spacing: -0.03em"
-            >Socioflo</span
-          >
+        <a href="#" class="flex items-center" aria-label="Socioflo home">
+          <img
+            src="brand/socioflo-wordmark-color-on-light.svg"
+            alt="Socioflo"
+            width="112"
+            height="27"
+            class="h-[27px] w-auto"
+          />
         </a>
         <div class="hidden md:flex items-center gap-8">
           <a
@@ -791,7 +798,7 @@
           style="
             background: radial-gradient(
               circle,
-              rgba(37, 165, 102, 0.1) 0%,
+              rgba(224, 82, 31, 0.1) 0%,
               transparent 70%
             );
           "
@@ -801,7 +808,7 @@
           style="
             background: radial-gradient(
               circle,
-              rgba(72, 193, 131, 0.08) 0%,
+              rgba(230, 116, 74, 0.08) 0%,
               transparent 70%
             );
           "
@@ -810,8 +817,8 @@
           class="absolute inset-0 opacity-[0.18]"
           style="
             background-image:
-              linear-gradient(#e2e8df 1px, transparent 1px),
-              linear-gradient(90deg, #e2e8df 1px, transparent 1px);
+              linear-gradient(#ded7c8 1px, transparent 1px),
+              linear-gradient(90deg, #ded7c8 1px, transparent 1px);
             background-size: 60px 60px;
           "
         ></div>
@@ -831,14 +838,18 @@
               ></span
             ></span>
             <span
-              class="text-xs font-semibold text-brand-700 font-display tracking-wide uppercase"
+              class="text-xs font-semibold text-brand-700 font-body tracking-wide uppercase"
               >Early access open — limited spots</span
             >
           </div>
 
           <h1
             class="font-display text-4xl md:text-[64px] tracking-tight leading-none mb-7 animate-slide-up delay-100"
-            style="font-weight: 800; letter-spacing: -0.04em; line-height: 1.02"
+            style="
+              font-weight: 600;
+              letter-spacing: -0.025em;
+              line-height: 1.02;
+            "
           >
             Your social media gets<br />thousands of signals.<br /><span
               class="gradient-text"
@@ -872,7 +883,7 @@
           >
             <div id="waitlist-form-wrap">
               <div
-                class="flex flex-col sm:flex-row gap-3 p-2 bg-white rounded-2xl shadow-[0_4px_24px_rgba(12,15,10,0.10),0_0_0_1px_rgba(12,15,10,0.07)]"
+                class="flex flex-col sm:flex-row gap-3 p-2 bg-white rounded-2xl shadow-[0_4px_24px_rgba(18, 20, 24,0.10),0_0_0_1px_rgba(18, 20, 24,0.07)]"
               >
                 <input
                   id="waitlist-email"
@@ -978,14 +989,14 @@
           <div class="max-w-5xl mx-auto">
             <!-- Browser chrome -->
             <div
-              class="rounded-2xl overflow-hidden shadow-[0_32px_80px_rgba(12,15,10,0.16),0_0_0_1px_rgba(12,15,10,0.06)] bg-white animate-float"
+              class="rounded-2xl overflow-hidden shadow-[0_32px_80px_rgba(18, 20, 24,0.16),0_0_0_1px_rgba(18, 20, 24,0.06)] bg-white animate-float"
             >
               <div
                 class="flex items-center gap-2 px-5 py-3.5 border-b border-surface-100 bg-surface-50"
               >
-                <span class="w-3 h-3 rounded-full bg-red-300"></span>
-                <span class="w-3 h-3 rounded-full bg-yellow-300"></span>
-                <span class="w-3 h-3 rounded-full bg-green-300"></span>
+                <span class="w-3 h-3 rounded-full bg-surface-200"></span>
+                <span class="w-3 h-3 rounded-full bg-surface-200"></span>
+                <span class="w-3 h-3 rounded-full bg-surface-200"></span>
                 <div
                   class="ml-4 flex-1 bg-surface-100 rounded-lg px-4 py-1 text-xs text-ink-500 font-body max-w-xs"
                 >
@@ -1003,8 +1014,7 @@
                     <div
                       class="w-6 h-6 rounded-lg bg-gradient-to-br from-brand-400 to-brand-600"
                     ></div>
-                    <span
-                      class="text-xs font-semibold font-display text-ink-800"
+                    <span class="text-xs font-semibold font-body text-ink-800"
                       >Acme Studio</span
                     >
                   </div>
@@ -1071,17 +1081,17 @@
                     class="flex md:hidden items-center gap-2 mb-3 overflow-x-auto pb-1"
                   >
                     <div
-                      class="flex items-center gap-1.5 px-2.5 py-1.5 bg-surface-100 rounded-lg text-xs font-medium text-ink-500 font-display whitespace-nowrap flex-shrink-0"
+                      class="flex items-center gap-1.5 px-2.5 py-1.5 bg-surface-100 rounded-lg text-xs font-medium text-ink-500 font-body whitespace-nowrap flex-shrink-0"
                     >
                       📥 Inbox
                     </div>
                     <div
-                      class="flex items-center gap-1.5 px-2.5 py-1.5 bg-brand-50 rounded-lg text-xs font-medium text-brand-700 font-display whitespace-nowrap flex-shrink-0"
+                      class="flex items-center gap-1.5 px-2.5 py-1.5 bg-brand-50 rounded-lg text-xs font-medium text-brand-700 font-body whitespace-nowrap flex-shrink-0"
                     >
                       ⚡ Pipeline
                     </div>
                     <div
-                      class="flex items-center gap-1.5 px-2.5 py-1.5 bg-surface-100 rounded-lg text-xs font-medium text-ink-500 font-display whitespace-nowrap flex-shrink-0"
+                      class="flex items-center gap-1.5 px-2.5 py-1.5 bg-surface-100 rounded-lg text-xs font-medium text-ink-500 font-body whitespace-nowrap flex-shrink-0"
                     >
                       📊 Conversions
                     </div>
@@ -1089,9 +1099,7 @@
 
                   <div class="flex items-center justify-between mb-3">
                     <div>
-                      <h3
-                        class="text-sm font-semibold font-display text-ink-900"
-                      >
+                      <h3 class="text-sm font-semibold font-body text-ink-900">
                         Acquisition Pipeline
                       </h3>
                       <p class="text-xs text-ink-500 font-body">
@@ -1103,7 +1111,7 @@
                         class="w-2 h-2 rounded-full bg-brand-400 animate-pulse-ring"
                       ></div>
                       <span
-                        class="text-[11px] text-brand-600 font-semibold font-display"
+                        class="text-[11px] text-brand-600 font-semibold font-body"
                         >Live</span
                       >
                     </div>
@@ -1114,13 +1122,13 @@
                     <!-- Col 1: Captured -->
                     <div class="flex-shrink-0 w-44">
                       <div class="flex items-center gap-1.5 mb-2">
-                        <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                        <span class="w-2 h-2 rounded-full bg-ink-300"></span>
                         <span
-                          class="text-[10px] font-semibold font-display text-ink-500 uppercase tracking-wide"
+                          class="text-[10px] font-semibold font-body text-ink-500 uppercase tracking-wide"
                           >Captured</span
                         >
                         <span
-                          class="ml-auto text-[10px] bg-blue-50 text-blue-600 font-semibold font-display px-1.5 py-0.5 rounded-full"
+                          class="ml-auto text-[10px] bg-surface-100 text-ink-600 font-semibold font-body px-1.5 py-0.5 rounded-full"
                           >14</span
                         >
                       </div>
@@ -1131,7 +1139,7 @@
                           <div class="flex items-center gap-1.5 mb-1">
                             <span class="text-[10px]">📸</span
                             ><span
-                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              class="text-[10px] font-semibold font-body text-ink-700 truncate"
                               >@maya.design</span
                             >
                           </div>
@@ -1150,7 +1158,7 @@
                           <div class="flex items-center gap-1.5 mb-1">
                             <span class="text-[10px]">🎵</span
                             ><span
-                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              class="text-[10px] font-semibold font-body text-ink-700 truncate"
                               >@fitlife_coach</span
                             >
                           </div>
@@ -1169,7 +1177,7 @@
                           <div class="flex items-center gap-1.5 mb-1">
                             <span class="text-[10px]">💬</span
                             ><span
-                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              class="text-[10px] font-semibold font-body text-ink-700 truncate"
                               >+44 7700 900142</span
                             >
                           </div>
@@ -1188,24 +1196,24 @@
                     <!-- Col 2: Qualifying -->
                     <div class="flex-shrink-0 w-44">
                       <div class="flex items-center gap-1.5 mb-2">
-                        <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                        <span class="w-2 h-2 rounded-full bg-brand-200"></span>
                         <span
-                          class="text-[10px] font-semibold font-display text-ink-500 uppercase tracking-wide"
+                          class="text-[10px] font-semibold font-body text-ink-500 uppercase tracking-wide"
                           >Qualifying</span
                         >
                         <span
-                          class="ml-auto text-[10px] bg-amber-50 text-amber-600 font-semibold font-display px-1.5 py-0.5 rounded-full"
+                          class="ml-auto text-[10px] bg-brand-50 text-brand-700 font-semibold font-body px-1.5 py-0.5 rounded-full"
                           >8</span
                         >
                       </div>
                       <div class="space-y-1.5">
                         <div
-                          class="bg-white rounded-lg p-2.5 border border-amber-100 shadow-sm"
+                          class="bg-white rounded-lg p-2.5 border border-brand-100 shadow-sm"
                         >
                           <div class="flex items-center gap-1.5 mb-1">
                             <span class="text-[10px]">📸</span
                             ><span
-                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              class="text-[10px] font-semibold font-body text-ink-700 truncate"
                               >@sarahbrand_co</span
                             >
                           </div>
@@ -1216,10 +1224,10 @@
                           </p>
                           <div class="flex items-center gap-1 mt-1">
                             <span
-                              class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"
+                              class="w-1.5 h-1.5 rounded-full bg-brand-200 animate-pulse"
                             ></span
                             ><span
-                              class="text-[9px] text-amber-500 font-body font-medium"
+                              class="text-[9px] text-brand-700 font-body font-medium"
                               >AI qualifying now</span
                             >
                           </div>
@@ -1230,7 +1238,7 @@
                           <div class="flex items-center gap-1.5 mb-1">
                             <span class="text-[10px]">💼</span
                             ><span
-                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              class="text-[10px] font-semibold font-body text-ink-700 truncate"
                               >techventures_hq</span
                             >
                           </div>
@@ -1240,7 +1248,7 @@
                             Score: 82 / 100
                           </p>
                           <span
-                            class="text-[9px] text-brand-500 font-body font-medium"
+                            class="text-[9px] text-brand-700 font-body font-medium"
                             >High intent ↑</span
                           >
                         </div>
@@ -1252,11 +1260,11 @@
                       <div class="flex items-center gap-1.5 mb-2">
                         <span class="w-2 h-2 rounded-full bg-brand-500"></span>
                         <span
-                          class="text-[10px] font-semibold font-display text-ink-500 uppercase tracking-wide"
+                          class="text-[10px] font-semibold font-body text-ink-500 uppercase tracking-wide"
                           >Qualified</span
                         >
                         <span
-                          class="ml-auto text-[10px] bg-brand-50 text-brand-600 font-semibold font-display px-1.5 py-0.5 rounded-full"
+                          class="ml-auto text-[10px] bg-brand-50 text-brand-600 font-semibold font-body px-1.5 py-0.5 rounded-full"
                           >6</span
                         >
                       </div>
@@ -1267,7 +1275,7 @@
                           <div class="flex items-center gap-1.5 mb-1">
                             <span class="text-[10px]">📸</span
                             ><span
-                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              class="text-[10px] font-semibold font-body text-ink-700 truncate"
                               >@james.studio</span
                             >
                           </div>
@@ -1287,7 +1295,7 @@
                           <div class="flex items-center gap-1.5 mb-1">
                             <span class="text-[10px]">🎵</span
                             ><span
-                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              class="text-[10px] font-semibold font-body text-ink-700 truncate"
                               >@novaagency</span
                             >
                           </div>
@@ -1307,31 +1315,29 @@
                     <!-- Col 4: Converted -->
                     <div class="flex-shrink-0 w-44">
                       <div class="flex items-center gap-1.5 mb-2">
+                        <span class="w-2 h-2 rounded-full bg-brand-500"></span>
                         <span
-                          class="w-2 h-2 rounded-full bg-emerald-500"
-                        ></span>
-                        <span
-                          class="text-[10px] font-semibold font-display text-ink-500 uppercase tracking-wide"
+                          class="text-[10px] font-semibold font-body text-ink-500 uppercase tracking-wide"
                           >Converted</span
                         >
                         <span
-                          class="ml-auto text-[10px] bg-emerald-50 text-emerald-600 font-semibold font-display px-1.5 py-0.5 rounded-full"
+                          class="ml-auto text-[10px] bg-brand-50 text-brand-700 font-semibold font-body px-1.5 py-0.5 rounded-full"
                           >2 today</span
                         >
                       </div>
                       <div class="space-y-1.5">
                         <div
-                          class="bg-gradient-to-br from-brand-50 to-emerald-50 rounded-lg p-2.5 border border-brand-100 shadow-sm"
+                          class="bg-gradient-to-br from-brand-50 to-surface-50 rounded-lg p-2.5 border border-brand-100 shadow-sm"
                         >
                           <div class="flex items-center gap-1.5 mb-1">
                             <span class="text-[10px]">💬</span
                             ><span
-                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              class="text-[10px] font-semibold font-body text-ink-700 truncate"
                               >@luna_wellness</span
                             >
                           </div>
                           <p
-                            class="text-[10px] text-emerald-600 font-body font-medium"
+                            class="text-[10px] text-brand-700 font-body font-medium"
                           >
                             Booked · $1,800/mo
                           </p>
@@ -1340,17 +1346,17 @@
                           >
                         </div>
                         <div
-                          class="bg-gradient-to-br from-brand-50 to-emerald-50 rounded-lg p-2.5 border border-brand-100 shadow-sm"
+                          class="bg-gradient-to-br from-brand-50 to-surface-50 rounded-lg p-2.5 border border-brand-100 shadow-sm"
                         >
                           <div class="flex items-center gap-1.5 mb-1">
                             <span class="text-[10px]">📸</span
                             ><span
-                              class="text-[10px] font-semibold font-display text-ink-700 truncate"
+                              class="text-[10px] font-semibold font-body text-ink-700 truncate"
                               >@redbrick_build</span
                             >
                           </div>
                           <p
-                            class="text-[10px] text-emerald-600 font-body font-medium"
+                            class="text-[10px] text-brand-700 font-body font-medium"
                           >
                             Closed · $4,500
                           </p>
@@ -1367,9 +1373,7 @@
                 <div
                   class="hidden lg:flex w-52 border-l border-surface-100 p-4 bg-surface-50 flex-shrink-0 flex-col"
                 >
-                  <p
-                    class="text-xs font-semibold font-display text-ink-800 mb-3"
-                  >
+                  <p class="text-xs font-semibold font-body text-ink-800 mb-3">
                     Revenue impact
                   </p>
                   <div class="space-y-2.5">
@@ -1427,12 +1431,12 @@
               style="animation-delay: 0.8s"
             >
               <div
-                class="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center text-lg"
+                class="w-9 h-9 rounded-xl bg-brand-50 flex items-center justify-center text-lg"
               >
                 💰
               </div>
               <div>
-                <p class="text-xs font-semibold font-display text-ink-900">
+                <p class="text-xs font-semibold font-body text-ink-900">
                   New client closed
                 </p>
                 <p class="text-[10px] text-ink-400 font-body">
@@ -1450,7 +1454,7 @@
                 🎯
               </div>
               <div>
-                <p class="text-xs font-semibold font-display text-ink-900">
+                <p class="text-xs font-semibold font-body text-ink-900">
                   Lead scored: 94/100
                 </p>
                 <p class="text-[10px] text-ink-400 font-body">
@@ -1468,7 +1472,7 @@
       class="py-12 border-y border-surface-100 bg-surface-50 overflow-hidden"
     >
       <p
-        class="text-center text-xs font-semibold font-display uppercase tracking-widest text-ink-400 mb-8"
+        class="text-center text-xs font-semibold font-body uppercase tracking-widest text-ink-400 mb-8"
       >
         Captures inbound signals from every platform your customers use
       </p>
@@ -1500,12 +1504,12 @@
       <div class="max-w-5xl mx-auto px-6">
         <div class="text-center mb-16 reveal">
           <span
-            class="inline-flex items-center gap-2 bg-red-50 text-red-600 rounded-full px-4 py-1.5 text-xs font-semibold font-display tracking-wide uppercase mb-4"
+            class="inline-flex items-center gap-2 bg-surface-100 text-ink-700 rounded-full px-4 py-1.5 text-xs font-semibold font-body tracking-wide uppercase mb-4"
             >The real problem</span
           >
           <h2
             class="text-4xl md:text-5xl font-display text-ink-900 tracking-tight mb-5"
-            style="font-weight: 800; letter-spacing: -0.03em"
+            style="font-weight: 600; letter-spacing: -0.025em"
           >
             Your social media is generating<br />more demand than you can
             convert.
@@ -1526,7 +1530,7 @@
             <div class="text-3xl mb-4">⏰</div>
             <h3
               class="font-display text-ink-900 mb-2 text-lg"
-              style="font-weight: 700"
+              style="font-weight: 600"
             >
               The 5-minute rule is real
             </h3>
@@ -1542,7 +1546,7 @@
             <div class="text-3xl mb-4">🔍</div>
             <h3
               class="font-display text-ink-900 mb-2 text-lg"
-              style="font-weight: 700"
+              style="font-weight: 600"
             >
               You can't qualify at scale
             </h3>
@@ -1558,7 +1562,7 @@
             <div class="text-3xl mb-4">📉</div>
             <h3
               class="font-display text-ink-900 mb-2 text-lg"
-              style="font-weight: 700"
+              style="font-weight: 600"
             >
               The gap is invisible until it isn't
             </h3>
@@ -1575,13 +1579,13 @@
           <div class="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <p
-                class="text-brand-400 text-xs font-semibold font-display uppercase tracking-widest mb-3"
+                class="text-brand-400 text-xs font-semibold font-body uppercase tracking-widest mb-3"
               >
                 The acquisition gap
               </p>
               <h3
                 class="text-2xl md:text-3xl font-display mb-4"
-                style="font-weight: 700; letter-spacing: -0.02em"
+                style="font-weight: 600; letter-spacing: -0.02em"
               >
                 Between someone showing interest on social and them becoming a
                 paying client, there is a gap. Most businesses have no system to
@@ -1602,7 +1606,7 @@
                   📢
                 </div>
                 <div>
-                  <p class="text-sm font-semibold font-display text-white">
+                  <p class="text-sm font-semibold font-body text-white">
                     You publish content
                   </p>
                   <p class="text-xs text-white/40 font-body">
@@ -1622,7 +1626,7 @@
                   ⚡
                 </div>
                 <div>
-                  <p class="text-sm font-semibold font-display text-brand-300">
+                  <p class="text-sm font-semibold font-body text-brand-300">
                     Socioflo captures, qualifies, follows up
                   </p>
                   <p class="text-xs text-white/40 font-body">
@@ -1635,12 +1639,12 @@
               </div>
               <div class="flex items-center gap-4 bg-white/5 rounded-xl p-4">
                 <div
-                  class="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center text-xl flex-shrink-0"
+                  class="w-10 h-10 rounded-xl bg-brand-500/20 flex items-center justify-center text-xl flex-shrink-0"
                 >
                   💰
                 </div>
                 <div>
-                  <p class="text-sm font-semibold font-display text-white">
+                  <p class="text-sm font-semibold font-body text-white">
                     Qualified leads reach your sales process
                   </p>
                   <p class="text-xs text-white/40 font-body">
@@ -1659,12 +1663,12 @@
       <div class="max-w-5xl mx-auto px-6">
         <div class="text-center mb-20 reveal">
           <span
-            class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-display tracking-wide uppercase mb-4"
+            class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-body tracking-wide uppercase mb-4"
             >The acquisition system</span
           >
           <h2
             class="text-4xl md:text-5xl font-display text-ink-900 tracking-tight mb-4"
-            style="font-weight: 800; letter-spacing: -0.03em"
+            style="font-weight: 600; letter-spacing: -0.025em"
           >
             Five layers. One outcome.<br />Paying customers.
           </h2>
@@ -1687,12 +1691,12 @@
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-20 reveal">
           <span
-            class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-display tracking-wide uppercase mb-4"
+            class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-body tracking-wide uppercase mb-4"
             >How it runs</span
           >
           <h2
             class="text-4xl md:text-5xl font-display text-ink-900 tracking-tight mb-4"
-            style="font-weight: 800; letter-spacing: -0.03em"
+            style="font-weight: 600; letter-spacing: -0.025em"
           >
             Connect once.<br />Acquire customers continuously.
           </h2>
@@ -1712,7 +1716,7 @@
         <div class="text-center mb-12 reveal">
           <h2
             class="text-3xl md:text-4xl font-display text-ink-900 tracking-tight mb-3"
-            style="font-weight: 800; letter-spacing: -0.03em"
+            style="font-weight: 600; letter-spacing: -0.025em"
           >
             Built for service businesses<br />with inbound social demand.
           </h2>
@@ -1728,13 +1732,13 @@
             <div class="flex items-center gap-2.5 mb-5">
               <div
                 class="w-8 h-8 rounded-xl bg-brand-500 flex items-center justify-center text-white text-sm"
-                style="font-weight: 700"
+                style="font-weight: 600"
               >
                 ✓
               </div>
               <h3
                 class="font-display text-ink-900 text-lg"
-                style="font-weight: 700"
+                style="font-weight: 600"
               >
                 Socioflo is right for you if…
               </h3>
@@ -1781,13 +1785,13 @@
             <div class="flex items-center gap-2.5 mb-5">
               <div
                 class="w-8 h-8 rounded-xl bg-surface-200 flex items-center justify-center text-ink-500 text-sm"
-                style="font-weight: 700"
+                style="font-weight: 600"
               >
                 –
               </div>
               <h3
                 class="font-display text-ink-900 text-lg"
-                style="font-weight: 700"
+                style="font-weight: 600"
               >
                 Socioflo is not the right fit if…
               </h3>
@@ -1836,7 +1840,7 @@
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-10 reveal">
           <span
-            class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-display tracking-wide uppercase mb-4"
+            class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-body tracking-wide uppercase mb-4"
             >Where we are</span
           >
         </div>
@@ -1860,12 +1864,12 @@
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-16 reveal">
           <span
-            class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-display tracking-wide uppercase mb-4"
+            class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 rounded-full px-4 py-1.5 text-xs font-semibold font-body tracking-wide uppercase mb-4"
             >Pricing</span
           >
           <h2
             class="text-4xl md:text-5xl font-display text-ink-900 tracking-tight mb-4"
-            style="font-weight: 800; letter-spacing: -0.03em"
+            style="font-weight: 600; letter-spacing: -0.025em"
           >
             Priced on outcomes,<br />not on seat count.
           </h2>
@@ -1879,13 +1883,13 @@
           >
             <button
               id="btn-monthly"
-              class="px-4 py-2 rounded-full text-sm font-semibold font-display text-brand-700 bg-brand-50 transition-all"
+              class="px-4 py-2 rounded-full text-sm font-semibold font-body text-brand-700 bg-brand-50 transition-all"
             >
               Monthly
             </button>
             <button
               id="btn-annual"
-              class="px-4 py-2 rounded-full text-sm font-semibold font-display text-ink-500 hover:text-ink-800 transition-all"
+              class="px-4 py-2 rounded-full text-sm font-semibold font-body text-ink-500 hover:text-ink-800 transition-all"
             >
               Annually <span class="text-brand-600 text-xs">Save 16%</span>
             </button>
@@ -1897,7 +1901,7 @@
           <div class="pricing-card p-8 reveal">
             <div class="mb-6">
               <p
-                class="text-xs font-semibold font-display uppercase tracking-widest text-ink-400 mb-2"
+                class="text-xs font-semibold font-body uppercase tracking-widest text-ink-400 mb-2"
               >
                 Growth
               </p>
@@ -1905,7 +1909,7 @@
                 <span
                   class="text-4xl font-display text-ink-900"
                   id="price-starter"
-                  style="font-weight: 800"
+                  style="font-weight: 600"
                   >$19</span
                 ><span class="text-ink-400 font-body mb-1">/mo</span>
               </div>
@@ -1968,13 +1972,13 @@
           <!-- Operate (featured) -->
           <div class="pricing-card featured p-8 reveal reveal-delay-1">
             <div
-              class="absolute top-5 right-5 bg-brand-500 text-white text-xs font-semibold font-display px-3 py-1 rounded-full"
+              class="absolute top-5 right-5 bg-brand-500 text-ink-900 text-xs font-semibold font-body px-3 py-1 rounded-full"
             >
               Most popular
             </div>
             <div class="mb-6">
               <p
-                class="text-xs font-semibold font-display uppercase tracking-widest text-brand-300 mb-2"
+                class="text-xs font-semibold font-body uppercase tracking-widest text-brand-300 mb-2"
               >
                 Operate
               </p>
@@ -1982,7 +1986,7 @@
                 <span
                   class="text-4xl font-display text-white"
                   id="price-agency"
-                  style="font-weight: 800"
+                  style="font-weight: 600"
                   >$69</span
                 ><span class="text-white/50 font-body mb-1">/mo</span>
               </div>
@@ -2042,7 +2046,7 @@
             </ul>
             <a
               href="#waitlist"
-              class="btn-primary w-full justify-center !bg-brand-400 hover:!bg-brand-500"
+              class="btn-primary w-full justify-center !bg-brand-500 hover:!bg-brand-400 !text-ink-900"
               >Get early access →</a
             >
           </div>
@@ -2051,7 +2055,7 @@
           <div class="pricing-card p-8 reveal reveal-delay-2">
             <div class="mb-6">
               <p
-                class="text-xs font-semibold font-display uppercase tracking-widest text-ink-400 mb-2"
+                class="text-xs font-semibold font-body uppercase tracking-widest text-ink-400 mb-2"
               >
                 Scale
               </p>
@@ -2059,7 +2063,7 @@
                 <span
                   class="text-4xl font-display text-ink-900"
                   id="price-scale"
-                  style="font-weight: 800"
+                  style="font-weight: 600"
                   >$119</span
                 ><span class="text-ink-400 font-body mb-1">/mo</span>
               </div>
@@ -2136,7 +2140,7 @@
           style="
             background: radial-gradient(
               ellipse 80% 60% at 50% 30%,
-              rgba(37, 165, 102, 0.12) 0%,
+              rgba(224, 82, 31, 0.12) 0%,
               transparent 70%
             );
           "
@@ -2167,7 +2171,7 @@
               class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"
             ></span
           ></span>
-          <span class="text-sm font-semibold font-display text-white/80"
+          <span class="text-sm font-semibold font-body text-white/80"
             >Early access open —
             <span id="cta-count"
               >we're talking to the first cohort now</span
@@ -2177,7 +2181,7 @@
 
         <h2
           class="text-5xl md:text-6xl font-display text-white tracking-tight mb-5"
-          style="font-weight: 800; letter-spacing: -0.04em; line-height: 1.05"
+          style="font-weight: 600; letter-spacing: -0.025em; line-height: 1.05"
         >
           Stop leaving clients<br /><span class="gradient-text"
             >in your comments section.</span
@@ -2197,19 +2201,19 @@
 
         <div class="flex flex-wrap justify-center gap-3 mb-10">
           <span
-            class="inline-flex items-center gap-1.5 bg-brand-500/20 text-brand-300 text-xs font-semibold font-display px-3 py-1.5 rounded-full border border-brand-500/20"
+            class="inline-flex items-center gap-1.5 bg-brand-500/20 text-brand-300 text-xs font-semibold font-body px-3 py-1.5 rounded-full border border-brand-500/20"
             >🎯 Acquisition system, not a tool</span
           >
           <span
-            class="inline-flex items-center gap-1.5 bg-white/10 text-white/70 text-xs font-semibold font-display px-3 py-1.5 rounded-full border border-white/10"
+            class="inline-flex items-center gap-1.5 bg-white/10 text-white/70 text-xs font-semibold font-body px-3 py-1.5 rounded-full border border-white/10"
             >🔒 Launch pricing locked in</span
           >
           <span
-            class="inline-flex items-center gap-1.5 bg-white/10 text-white/70 text-xs font-semibold font-display px-3 py-1.5 rounded-full border border-white/10"
+            class="inline-flex items-center gap-1.5 bg-white/10 text-white/70 text-xs font-semibold font-body px-3 py-1.5 rounded-full border border-white/10"
             >💬 Founders reach out personally</span
           >
           <span
-            class="inline-flex items-center gap-1.5 bg-white/10 text-white/70 text-xs font-semibold font-display px-3 py-1.5 rounded-full border border-white/10"
+            class="inline-flex items-center gap-1.5 bg-white/10 text-white/70 text-xs font-semibold font-body px-3 py-1.5 rounded-full border border-white/10"
             >🗺️ Shape what we build</span
           >
         </div>
@@ -2285,7 +2289,7 @@
               href="https://twitter.com/intent/tweet?text=Just+joined+the+waitlist+for+%40SociofloApp+%E2%80%94+AI-native+customer+acquisition+for+service+businesses.+Turns+every+social+DM%2C+comment+%26+mention+into+a+qualified+lead+automatically.+%F0%9F%9A%80&url=https%3A%2F%2Fsocioflo.app"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold font-display px-4 py-2.5 rounded-xl transition-colors border border-white/10"
+              class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold font-body px-4 py-2.5 rounded-xl transition-colors border border-white/10"
             >
               <svg
                 width="14"
@@ -2303,7 +2307,7 @@
               href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fsocioflo.app"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 bg-[#0077b5] hover:bg-[#005c8f] text-white text-xs font-semibold font-display px-4 py-2.5 rounded-xl transition-colors"
+              class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 text-white text-xs font-semibold font-body px-4 py-2.5 rounded-xl transition-colors"
             >
               <svg
                 width="14"
@@ -2319,7 +2323,7 @@
             </a>
             <button
               id="copy-btn"
-              class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 text-white text-xs font-semibold font-display px-4 py-2.5 rounded-xl transition-colors"
+              class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 text-white text-xs font-semibold font-body px-4 py-2.5 rounded-xl transition-colors"
             >
               <svg
                 width="14"
@@ -2348,17 +2352,14 @@
       <div class="max-w-6xl mx-auto px-6">
         <div class="grid md:grid-cols-5 gap-10 mb-12">
           <div class="md:col-span-2">
-            <div class="flex items-center gap-2.5 mb-4">
-              <div
-                class="w-8 h-8 rounded-xl bg-white flex items-center justify-center shadow-glow-sm"
-              >
-                <img src="Socioflo--logo.png" alt="Socioflo" class="w-6 h-6" />
-              </div>
-              <span
-                class="font-display text-white text-lg"
-                style="font-weight: 700; letter-spacing: -0.03em"
-                >Socioflo</span
-              >
+            <div class="mb-5">
+              <img
+                src="brand/socioflo-wordmark-color-on-dark.svg"
+                alt="Socioflo"
+                width="124"
+                height="30"
+                class="h-[30px] w-auto"
+              />
             </div>
             <p
               class="text-white/50 font-body text-sm leading-relaxed mb-5 max-w-xs"
@@ -2376,7 +2377,7 @@
               />
               <button
                 id="footer-btn"
-                class="flex-shrink-0 bg-brand-500 hover:bg-brand-400 text-white text-xs font-semibold font-display px-3 py-2 rounded-xl transition-colors flex items-center gap-1.5"
+                class="flex-shrink-0 bg-brand-500 hover:bg-brand-400 text-ink-900 text-xs font-semibold font-body px-3 py-2 rounded-xl transition-colors flex items-center gap-1.5"
               >
                 <span id="footer-btn-label">Join</span>
                 <svg
@@ -2391,7 +2392,7 @@
                     cx="12"
                     cy="12"
                     r="10"
-                    stroke="white"
+                    stroke="currentColor"
                     stroke-width="3"
                     stroke-dasharray="31"
                     stroke-dashoffset="10"
@@ -2450,7 +2451,7 @@
           </div>
           <div>
             <p
-              class="font-display text-white text-xs uppercase tracking-widest mb-4 opacity-50"
+              class="font-body text-white text-xs uppercase tracking-widest mb-4 opacity-50"
               style="font-weight: 600"
             >
               Product
@@ -2481,7 +2482,7 @@
           </div>
           <div>
             <p
-              class="font-display text-white text-xs uppercase tracking-widest mb-4 opacity-50"
+              class="font-body text-white text-xs uppercase tracking-widest mb-4 opacity-50"
               style="font-weight: 600"
             >
               Company
@@ -2505,7 +2506,7 @@
           </div>
           <div>
             <p
-              class="font-display text-white text-xs uppercase tracking-widest mb-4 opacity-50"
+              class="font-body text-white text-xs uppercase tracking-widest mb-4 opacity-50"
               style="font-weight: 600"
             >
               Legal
@@ -2554,7 +2555,7 @@
         features: [
           {
             delayClass: "",
-            iconBgClass: "bg-blue-50",
+            iconBgClass: "bg-surface-100",
             icon: "📡",
             title: "Signal capture. Every conversation, every platform.",
             description:
@@ -2567,7 +2568,7 @@
           },
           {
             delayClass: "reveal-delay-1",
-            iconBgClass: "bg-amber-50",
+            iconBgClass: "bg-surface-100",
             icon: "🎯",
             title: "AI lead qualification. Scored before you see it.",
             description:
@@ -2593,7 +2594,7 @@
           },
           {
             delayClass: "reveal-delay-3",
-            iconBgClass: "bg-purple-50",
+            iconBgClass: "bg-surface-100",
             icon: "📣",
             title: "Content engine. Build the pipeline before the DM.",
             description:
@@ -2606,7 +2607,7 @@
           },
           {
             delayClass: "reveal-delay-4",
-            iconBgClass: "bg-green-50",
+            iconBgClass: "bg-surface-100",
             icon: "📊",
             title: "Conversion attribution. Know exactly what's working.",
             description:
@@ -2679,7 +2680,7 @@
             <div class="flex flex-col md:flex-row items-start gap-8">
               <div class="feature-icon ${f.iconBgClass} flex-shrink-0 !w-14 !h-14 text-3xl">${f.icon}</div>
               <div class="flex-1">
-                <h3 class="text-2xl font-display text-ink-900 mb-3" style="font-weight:700;letter-spacing:-0.02em">${f.title}</h3>
+                <h3 class="text-2xl font-display text-ink-900 mb-3" style="font-weight: 600;letter-spacing:-0.02em">${f.title}</h3>
                 <p class="text-ink-500 font-body leading-relaxed mb-6 text-lg">${f.description}</p>
                 ${f.bullets ? `<ul class="space-y-3">${f.bullets.map((b) => `<li class="flex items-center gap-2.5 text-sm text-ink-600 font-body"><span class="w-5 h-5 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center text-xs">✓</span>${b}</li>`).join("")}</ul>` : ""}
               </div>
@@ -2695,8 +2696,8 @@
               (h) => `
           <div class="reveal ${h.delayClass} text-center">
             <div class="w-14 h-14 rounded-2xl bg-white shadow-card border border-surface-100 flex items-center justify-center text-2xl mx-auto mb-5">${h.icon}</div>
-            <div class="w-8 h-8 rounded-full bg-brand-500 text-white font-display text-sm flex items-center justify-center mx-auto mb-4" style="font-weight:700">${h.step}</div>
-            <h4 class="font-display text-ink-900 mb-2" style="font-weight:700">${h.title}</h4>
+            <div class="w-8 h-8 rounded-full bg-brand-500 text-ink-900 font-body text-sm flex items-center justify-center mx-auto mb-4" style="font-weight: 600">${h.step}</div>
+            <h4 class="font-display text-ink-900 mb-2" style="font-weight: 600">${h.title}</h4>
             <p class="text-sm text-ink-500 font-body leading-relaxed">${h.desc}</p>
           </div>`,
             )
@@ -2708,7 +2709,7 @@
             .map(
               (s) => `
           <div class="text-center p-6 bg-surface-50 rounded-2xl border border-surface-100">
-            <p class="text-2xl font-display ${s.valueClass} mb-1" style="font-weight:800">${s.value}</p>
+            <p class="text-2xl font-display ${s.valueClass} mb-1" style="font-weight: 600">${s.value}</p>
             <p class="text-sm text-ink-500 font-body">${s.label}</p>
           </div>`,
             )
